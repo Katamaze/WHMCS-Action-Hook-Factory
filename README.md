@@ -59,3 +59,49 @@ Second it shows this modal on screen where you can freely choose to auto-recalcu
 
 [Get the Code »](https://github.com/Katamaze/WHMCS-Action-Hooks/blob/master/hooks/BulkAutoRecalculateClientDomainsProducts.php)
 
+## cPanel & Plesk login button in My Services
+
+Managing multiple hosting accounts could be frustrating for customers. The following hook makes things easier allowing them to login to any control panel directly from My Services list. Here's the preview.
+
+![image](https://katamaze.com/modules/addons/Mercury/uploads/files/Blog/92b1487d05bc7249c65af0f94cde4732/whmcs-login-to-plesk-cpanel-from-service-list.png)
+
+The hook works with any panel (cPanel, Plesk, DirectAdmin, Centova Cast...) provided that servers and products/services have been configured correctly. Before you get the code, keep in mind that this action hook requires some changes to two template files.
+
+Open `templates/{YOUR_TEMPLATE}/clientareaproducts.tpl` and add the new *Manage* column in `thead` like follows.
+
+>><thead>
+    <tr>
+        <th>{$LANG.orderproduct}</th>
+        <th>{$LANG.clientareaaddonpricing}</th>
+        <th>{$LANG.clientareahostingnextduedate}</th>
+        <th>{$LANG.clientareastatus}</th>
+        <th>Manage</th>
+        <th class="responsive-edit-button" style="display: none;"></th>
+    </tr>
+</thead>
+
+Your `thead` could be slightly different (eg. your first column could be the SSL icon check) so change things accordingly. We suggest you to replace *Manage* with `$LANG` variable for multi-language support. Next move to `tbody` and add the cell right inside `{foreach}` loop.
+
+>><td class="text-center">
+	{if $kt_autologin[$service.id]}
+	<div class="btn-group btn-group-sm plesk-login" style="width:60px;">
+		<a href="clientarea.php?action=productdetails&id={$service.id}&autologin=1" class="btn btn-primary btn-xs" alt="Click to Login" title="Click to Login" style="padding: 2px 5px;"><img src="templates/{$template}/img/katamaze_autologin/{$kt_autologin[$service.id]->type}.png" style="height:22px; max-width:39px"> <i class="fa fa-sign-in fa-fw" aria-hidden="true"></i></a>
+	</div>
+	{/if}
+</td>
+
+Now we need to disable sorting for the newly added column. On top of the file you'll find the following statement.
+
+>>{include file="$template/includes/tablelist.tpl" tableName="ServicesList" noSortColumns="4" filterColumn="3"}
+
+Focus on `noSortColumns="4"`. *4* means that the 5th column will be not sortable (column count start from zero). Change it accordingly. For example if your template uses the SSL check as 1st column, you have to use `noSortColumns="0, 5"`. Last but no least open `templates/{YOUR_TEMPLATE}/includes/head.tpl` and place this code at the very bottom.
+
+>>{if $smarty.get.autologin}
+<style>
+body {
+	visibility:hidden;
+}
+</style>
+{/if}
+
+[Get the Code »](https://github.com/Katamaze/WHMCS-Action-Hooks/blob/master/hooks/AutoLoginToAnyPanelFromMyServices.php)
