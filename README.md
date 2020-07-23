@@ -97,11 +97,11 @@ Now we need to disable sorting for the newly added column. On top of the file yo
 Focus on `noSortColumns="4"`. *4* means that the 5th column will be not sortable (column count start from zero). Change it accordingly. For example if your template uses the SSL check as 1st column, you have to use `noSortColumns="0, 5"`. Last but no least open `templates/{YOUR_TEMPLATE}/includes/head.tpl` and place this code at the very bottom.
 
 >{if $smarty.get.autologin}
-<style>
-body {
-	visibility:hidden;
-}
-</style>
-{/if}
+><style>
+>body {
+>	visibility:hidden;
+>}
+></style>
+>{/if}
 
 [Get the Code »](https://github.com/Katamaze/WHMCS-Action-Hooks/blob/master/hooks/AutoLoginToAnyPanelFromMyServices.php)
