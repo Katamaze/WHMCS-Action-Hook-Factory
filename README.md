@@ -251,7 +251,7 @@ Here is a preview of the message.
 
 ## Automatically Accept Order when Invoice is Paid
 
-WHMCS requires administrators to manually accept orders even if automation tasks already took place. This hook automatically accept orders via API when Invoice is paid.
+WHMCS requires administrators to manually accept orders even if automation tasks already took place. This hook automatically accepts orders via API when Invoice is paid.
 
 [Get the Code »](https://github.com/Katamaze/WHMCS-Free-Action-Hooks/blob/master/hooks/AcceptOrderOnInvociePaid.php)
 
