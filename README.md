@@ -10,7 +10,9 @@ Continue reading our [beginners guide to WHMCS](https://katamaze.com/blog/23/wha
 
 # Action Hooks
 
-Action Hooks allow you to execute your own code when events occurr inside WHMCS. With them you can achieve impressive results. For example we managed to [transform WHMCS into a CMS](https://katamaze.com/whmcs/mercury/specifications) like WordPress with full support for [Search Engine Optimization](https://katamaze.com/blog/37/whmcs-seo-ways-to-improve-your-site-ranking-in-2020). We've also introduced new [billing concepts](https://katamaze.com/whmcs/billing-extension/specifications) (monthly invoicing, electronic invoicing, credit notes) and [Affiliate Marketing](https://katamaze.com/whmcs/commission-manager/specifications).
+Action Hooks allow you to execute your own code when events occurr inside WHMCS. With them you can achieve impressive results.
+
+For example we managed to [transform WHMCS into a CMS](https://katamaze.com/whmcs/mercury/specifications) like WordPress with full support for [Search Engine Optimization](https://katamaze.com/blog/37/whmcs-seo-ways-to-improve-your-site-ranking-in-2020). We've also introduced new [billing concepts](https://katamaze.com/whmcs/billing-extension/specifications) (monthly invoicing, electronic invoicing, credit notes) and [Affiliate Marketing](https://katamaze.com/whmcs/commission-manager/specifications).
 
 As you can see you can there's no limit to imagination. If you're new to WHMCS and Action Hook, please refer to the following articles:
 
