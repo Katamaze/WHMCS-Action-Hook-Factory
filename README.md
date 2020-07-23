@@ -152,6 +152,56 @@ Automatically assign a customer to a Client Group based on the product/service h
 
 ## Prevent changes to Client Custom Fields
 
-WHMCS has an in-built function to lock client profile fields you want to prevent clients being able to edit from clientarea (eg. email, company name). This feature however is not avaiable for client custom fields. Making such fields "disabled" via HTML or jQuery is not an option. Anyone with bit of knowledge of HTML can skip this form of protection.
+WHMCS has an in-built function to lock client profile fields you want to prevent clients being able to edit from clientarea (eg. email, company name). This feature however is not avaiable for client custom fields. Making such fields "disabled" via HTML is not an option. Anyone with bit of knowledge can skip this form of protection.
 
 This hook acts as the last line of defense. It makes grants that no customer can submit changes. If necessary it can be enabled also for WHMCS Administrators.
+
+[Get the Code »](https://github.com/Katamaze/WHMCS-Action-Hooks/blob/master/hooks/PreventChangesToClientCustomFields.php)
+
+## Quote to Invoice conversion without redirect
+
+If you are sending out a lot of quotes on a daily basis, the fact that WHMCS forces a redirect to the newly issued invoice could be frustrating. This hook prevents WHMCS from performing the redirect allowing you to keep woriking on the quote.
+
+[Get the Code »](https://github.com/Katamaze/WHMCS-Action-Hooks/blob/master/hooks/QuoteToInvoiceNoRedirect.php)
+
+## Remove/Hide Breadcrumb
+
+WHMCS prements *Portal Home* to breadcrumb. There's nothing wrong with that but some people don't like it. This hook removes it from all WHMCS pages.
+
+Bonus tip: if you don't want to use an action hook, you can use the following CSS. The result is the same.
+
+```
+.breadcrumb li:first-child {
+    display:none;
+}
+.breadcrumb li:nth-child(2):before {
+    content:" ";
+}
+```
+
+[Get the Code »](https://github.com/Katamaze/WHMCS-Action-Hooks/blob/master/hooks/RemovePortalHomeBreadcrumb.php)
+
+## Knowledgebase Last Updated Date
+
+WHMCS doesn't store *Last Updated* date when you edit Knowledgebase articles but you can retreive from Activity Log. It's not a stylish solution but it works. The hook adds `lastupdated` element to the existing `$kbarticle` Smarty array. Once done, change your KB template accordingly.
+
+If you're looking for something more professional and up to date, learn how to benefit from [WHMCS SEO](https://katamaze.com/blog/37/whmcs-seo-ways-to-improve-your-site-ranking-in-2020) using [WHMCS as CMS](https://katamaze.com/whmcs/mercury).
+
+[Get the Code »](https://github.com/Katamaze/WHMCS-Action-Hooks/blob/master/hooks/KnowledgebaseLastUpdatedDate.php)
+
+## Login as Client Language
+
+Every time an administrator uses *Login as Client*, WHMCS overrides the default language of the selected customer with the one used by the administrator in WHMCS backend. This is bad because you're unknowingly changing the language for your customer. This also applies for languages that can't be used in clientarea.
+
+Let's say your clientarea is in italian and you're using WHMCS backend in english. When you perform the *Login as Client*, WHMCS switches customer's language from italian to english and there's no way back. The customer in question is stucked with a language he cannot change. The following hook prevents that to happen.
+
+[Get the Code »](https://github.com/Katamaze/WHMCS-Action-Hooks/blob/master/hooks/LoginAsClientPreserveLanguage.php)
+
+## Prevent Emails to be sent based on Client Group
+
+This hook prevents WHMCS from sending *General Messages* email templats to specific client groups based on a sort of blacklist.
+
+[Get the Code »](https://github.com/Katamaze/WHMCS-Action-Hooks/blob/master/hooks/PreventEmailSendingBasedOnClientGroup.php)
+
+
+
