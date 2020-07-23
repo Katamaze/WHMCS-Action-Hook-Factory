@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Automatically Accept when invoice is Paid
+ * Automatically Accept Order when invoice is Paid
  *
  * @package     WHMCS
  * @copyright   Katamaze
