@@ -69,7 +69,7 @@ The hook works with any panel (cPanel, Plesk, DirectAdmin, Centova Cast...) prov
 
 Open `templates/{YOUR_TEMPLATE}/clientareaproducts.tpl` and add the new *Manage* column in `thead` like follows.
 
->><thead>
+><thead>
     <tr>
         <th>{$LANG.orderproduct}</th>
         <th>{$LANG.clientareaaddonpricing}</th>
@@ -82,7 +82,7 @@ Open `templates/{YOUR_TEMPLATE}/clientareaproducts.tpl` and add the new *Manage*
 
 Your `thead` could be slightly different (eg. your first column could be the SSL icon check) so change things accordingly. We suggest you to replace *Manage* with `$LANG` variable for multi-language support. Next move to `tbody` and add the cell right inside `{foreach}` loop.
 
->><td class="text-center">
+><td class="text-center">
 	{if $kt_autologin[$service.id]}
 	<div class="btn-group btn-group-sm plesk-login" style="width:60px;">
 		<a href="clientarea.php?action=productdetails&id={$service.id}&autologin=1" class="btn btn-primary btn-xs" alt="Click to Login" title="Click to Login" style="padding: 2px 5px;"><img src="templates/{$template}/img/katamaze_autologin/{$kt_autologin[$service.id]->type}.png" style="height:22px; max-width:39px"> <i class="fa fa-sign-in fa-fw" aria-hidden="true"></i></a>
@@ -96,7 +96,7 @@ Now we need to disable sorting for the newly added column. On top of the file yo
 
 Focus on `noSortColumns="4"`. *4* means that the 5th column will be not sortable (column count start from zero). Change it accordingly. For example if your template uses the SSL check as 1st column, you have to use `noSortColumns="0, 5"`. Last but no least open `templates/{YOUR_TEMPLATE}/includes/head.tpl` and place this code at the very bottom.
 
->>{if $smarty.get.autologin}
+>{if $smarty.get.autologin}
 <style>
 body {
 	visibility:hidden;
