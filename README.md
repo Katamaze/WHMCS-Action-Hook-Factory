@@ -92,7 +92,7 @@ Your `thead` could be slightly different (eg. your first column could be the SSL
 
 Now we need to disable sorting for the newly added column. On top of the file you'll find the following statement.
 
->>{include file="$template/includes/tablelist.tpl" tableName="ServicesList" noSortColumns="4" filterColumn="3"}
+>{include file="$template/includes/tablelist.tpl" tableName="ServicesList" noSortColumns="4" filterColumn="3"}
 
 Focus on `noSortColumns="4"`. *4* means that the 5th column will be not sortable (column count start from zero). Change it accordingly. For example if your template uses the SSL check as 1st column, you have to use `noSortColumns="0, 5"`. Last but no least open `templates/{YOUR_TEMPLATE}/includes/head.tpl` and place this code at the very bottom.
 
