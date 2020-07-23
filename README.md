@@ -203,5 +203,49 @@ This hook prevents WHMCS from sending *General Messages* email templats to speci
 
 [Get the Code »](https://github.com/Katamaze/WHMCS-Action-Hooks/blob/master/hooks/PreventEmailSendingBasedOnClientGroup.php)
 
+## Abort Auto-Provisioning when there's a Note in the Order
+
+A customer orders a VPS and adds notes to request a particular configuration that requires your manual intervention. In case you're using auto-provisioning, there's no way to stop WHMCS from creating the VPS to let you intervene manually. This hook however can stop auto-provisioning when there's a note in the order.
+
+[Get the Code »](https://github.com/Katamaze/WHMCS-Action-Hooks/blob/master/hooks/NoteInTheOrderAbortAutoProvisioning.php)
+
+## Add Button next to Module's Functions
+
+Here is how you can add a button next to *Create*, *Suspend*, *Unsuspend* (...) functions in product/service view.
+
+[Get the Code »](https://github.com/Katamaze/WHMCS-Action-Hooks/blob/master/hooks/AddButtonNextToModulesFunctions.php)
+
+## Announcements Meta Description
+
+Before you think *«Great! I can finally add meta descriptions to WHMCS announcements»* wait for a sec and understand the following:
+
+* [WHMCS is terrible at SEO](https://katamaze.com/blog/37/whmcs-seo-ways-to-improve-your-site-ranking-in-2020). You need more than an hook to improve rankings
+* [Meta Description](https://katamaze.com/blog/37/whmcs-seo-ways-to-improve-your-site-ranking-in-2020#Meta-description) is **not** a ranking factor. It doesn't affect your rankings but CTR
+
+You can use the same approach to implement other meta tags but stay away from [meta keywords](https://katamaze.com/blog/37/whmcs-seo-ways-to-improve-your-site-ranking-in-2020#Meta-keywords). It is useless and has been deprecated more than a decade ago by all search engines.
+
+[Get the Code »](https://github.com/Katamaze/WHMCS-Action-Hooks/blob/master/hooks/AnnuncementsMetaDescription.php)
+
+## Promotion Code in Email Template
+
+*Invoice Payment Confirmation* is an email template that WHMCS sends to customers when they pay invoices. By default this message doesn't include any information about promotions. The following hook add coupon code to the invoice recepit (if a promo has been applied).
+
+Once the hook has been added to WHMCS, you can edit *Invoice Payment Confirmation* email template to customize the look of your message like follows.
+
+```
+{if $assigned_promos}
+Promo below:
+{foreach from=$assigned_promos item=promo}
+{$promo}
+{/foreach}
+{/if}
+```
+
+Here is a preview of the message.
+
+![image](https://katamaze.com/modules/addons/Mercury/uploads/files/Blog/92b1487d05bc7249c65af0f94cde4732/whmcs-promotion-code-invoice-payment-confirmation.png)
+
+[Get the Code »](https://github.com/Katamaze/WHMCS-Action-Hooks/blob/master/hooks/CouponCodeInEmailTemplate.php)
+
 
 
