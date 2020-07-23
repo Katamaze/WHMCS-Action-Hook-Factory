@@ -1,4 +1,4 @@
-<?
+<?php
 
 /**
  * Add button next to module's functions
