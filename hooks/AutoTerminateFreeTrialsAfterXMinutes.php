@@ -1,4 +1,4 @@
-<?
+<?php
 
 /**
  * Auto-Terminate Free Trials After X Minutes (not one full day)
