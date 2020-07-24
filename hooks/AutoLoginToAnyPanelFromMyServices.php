@@ -9,7 +9,8 @@
  * @author      Davide Mantenuto <info@katamaze.com>
  */
 
-# IMPORTANT! The hook requires changes to two template files. Use README for more details
+// IMPORTANT! The hook requires changes to two template files. Read the following for instructions
+// https://github.com/Katamaze/WHMCS-Free-Action-Hooks/blob/master/README.md#cpanel--plesk-login-button-in-my-services
 
 use WHMCS\Database\Capsule;
 
