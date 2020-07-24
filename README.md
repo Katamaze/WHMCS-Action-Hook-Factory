@@ -136,7 +136,7 @@ Let's face it. In an ideal world we would be receiving money just with Bank Tran
 * Let's suppose on a yearly basis you receive 10 payments of 1000 €
 * At the end of the year you gave to PayPal 353.5 €
 
-With this hook you can keep this money for you. As if it wasn't enough, the hook can be customized to force the payment gateway depending on customers' country. For example you can use the hook just for specific countries (eg. IT, FR, DE) and/or European Union. Don't worry about multiple currencies, the script automatically handles currency conversion when needed.
+With this hook you can keep this money for you. As if it wasn't enough, the hook can be customized to force the payment gateway depending on customers' country. For example you can use the hook just for specific countries (eg. IT, FR, DE) and/or European Union. Don't worry about multiple currencies. The script automatically handles currency conversion when needed.
 
 [Get the Code »](https://github.com/Katamaze/WHMCS-Free-Action-Hooks/blob/master/hooks/ForcePaymentGatewayDependingOnInvoiceBalance.php)
 
