@@ -279,6 +279,6 @@ WHMCS requires administrators to manually accept orders even if automation tasks
 
 ## Hide Google Invisible reCAPTCHA Badge
 
-All it takes to hide Google Invisible reCAPTCHA Badge (bottom-right corner) is a CSS rule. If you don't want to edit your CSS and/or want preserve changes to templates with updates, use this hook. Before you ask, yes, the correct way to hide the Badge is to use `opacity`. Using things like `display: none` and `visibility: hidden` breaks reCAPTCHA.
+All it takes to hide Google Invisible reCAPTCHA Badge (bottom-right corner) is a CSS rule. If you don't want to edit your CSS and/or want preserve the chgange with template updates, use this hook. Before you ask, yes, the correct way to hide the Badge is to use `opacity`. Using things like `display: none` and `visibility: hidden` breaks reCAPTCHA.
 
 [Get the Code »](https://github.com/Katamaze/WHMCS-Free-Action-Hooks/blob/master/hooks/HideGoogleInvisibleReCAPTCHA.php)
