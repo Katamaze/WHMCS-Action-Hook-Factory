@@ -33,3 +33,34 @@ No. All `use` statements must be on top of the file right after `<?php` opening 
 ## What about `$LANG`?
 
 We are open to discussion but we avoid implementing multi-language in action hooks since we can't "predict" name collision.
+
+## `return` or nested `if`?
+
+Readability hands down. Do this:
+
+```
+if ($country != 'IT'): return; endif;
+if ($federation != 'EU'): return; endif;
+if ($currency != 'EUR'): return; endif;
+if (!$taxed): return; endif;
+
+die('Done!');
+```
+
+Don't do this:
+
+```
+if ($country == 'IT')
+{
+    if ($federation == 'EU')
+    {
+        if ($currency == 'EUR')
+        {
+            if ($taxed)
+            {
+                die('Done!');
+            }
+        }
+    }
+}
+```
