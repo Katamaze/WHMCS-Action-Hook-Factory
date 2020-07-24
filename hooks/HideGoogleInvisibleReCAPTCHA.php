@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Hide Google Invisible reCAPTCHA
+ * Hide Google Invisible reCAPTCHA Badge
  *
  * @package     WHMCS
  * @copyright   Katamaze
