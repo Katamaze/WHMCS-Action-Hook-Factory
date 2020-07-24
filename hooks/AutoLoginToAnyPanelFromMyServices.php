@@ -1,13 +1,13 @@
 <?php
 
 /**
- * Auto-Login to cPanel/Plesk from My Services
- *
- * @package     WHMCS
- * @copyright   Katamaze
- * @link        https://katamaze.com
- * @author      Davide Mantenuto <info@katamaze.com>
- */
+* Auto-Login to cPanel/Plesk from My Services
+*
+* @package     WHMCS
+* @copyright   Katamaze
+* @link        https://katamaze.com
+* @author      Davide Mantenuto <info@katamaze.com>
+*/
 
 // IMPORTANT! The hook requires changes to two template files. Read the following for instructions
 // https://github.com/Katamaze/WHMCS-Free-Action-Hooks/blob/master/README.md#cpanel--plesk-login-button-in-my-services
@@ -26,6 +26,15 @@ add_hook('ClientAreaPage', 1, function($vars)
         }
 
         return $output;
+    }
+    elseif ($vars['filename'] == 'clientarea' AND $_GET['action'] == 'productdetails' AND $_GET['id'] AND $_GET['autologin'])
+    {
+        $product = Capsule::select(Capsule::raw('SELECT t2.type FROM tblhosting AS t1 LEFT JOIN tblservers AS t2 ON t1.server = t2.id WHERE t1.id = ' . $_GET['id'] . ' AND t1.server != "0" AND t1.domainstatus IN ("Active", "Suspended") AND t1.username IS NOT NULL AND t1.password IS NOT NULL AND t2.type IS NOT NULL LIMIT 1'))[0];
+
+        switch ($product->type)
+        {
+            case 'cpanel': header('Location: clientarea.php?action=productdetails&id=' . $_GET['id'] . '&dosinglesignon=1'); die(); break;
+        }
     }
 });
 
