@@ -43,6 +43,7 @@ if ($country != 'IT'): return; endif;
 if ($federation != 'EU'): return; endif;
 if ($currency != 'EUR'): return; endif;
 if (!$taxed): return; endif;
+if (!in_array($clientID, $customers)): return; endif;
 die('Done!');
 ```
 
@@ -57,7 +58,10 @@ if ($country == 'IT')
         {
             if ($taxed)
             {
-                die('Done!');
+                if (in_array($clientID, $customers))
+                {
+                    die('Done!');
+                }
             }
         }
     }
