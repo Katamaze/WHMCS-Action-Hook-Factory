@@ -14,4 +14,4 @@ For us backward compatibility has always been important since we have customers 
 
 ## You use `Capsule::raw` a lot. Why?
 
-We dislike Laravel (aka Capsule) a lot for more one reason but that's another story. Simply put, we value **readability over verbosity**. A `JOIN` between multiple tables is not a big thing but we think that Laravel makes this unnecessarily long and confusing.
+We dislike Laravel (aka Capsule) for more one reason but that's another story. Simply put, we value **readability over verbosity**. A `JOIN` between multiple tables is not a big thing but we think that Laravel makes this unnecessarily long and confusing hence we make it `raw`.
