@@ -43,7 +43,6 @@ if ($country != 'IT'): return; endif;
 if ($federation != 'EU'): return; endif;
 if ($currency != 'EUR'): return; endif;
 if (!$taxed): return; endif;
-
 die('Done!');
 ```
 
