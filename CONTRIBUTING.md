@@ -27,4 +27,4 @@ Nope. Some servers don't support it so we don't use it. Recap:
 
 ## Can I place `use` operator wherever I need?
 
-No. All `use` statements must be on top of the file right after `<?php` opening tag. Don't place `use` in the middle of the hook. You don't know where people are copy/paste the hook and we don't want to see `Whoops\Exception\ErrorException` (...) `the name is already in use`.
+No. All `use` statements must be on top of the file right after `<?php` opening tag. Don't place `use` in the middle of the hook. You don't know where people copy/paste the hook and we don't want to see `Whoops\Exception\ErrorException` (...) `the name is already in use`.
