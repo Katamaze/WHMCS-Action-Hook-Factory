@@ -4,7 +4,7 @@ First off, thanks for taking the time to contribuite 👍
 
 The point of this this package is to help **Developers**, **Hosting Providers**, **Web Agencies** and **IT professionals** to perfect WHMCS. Over the years we kept improving our code based on customers' feedback but together we can make it even better.
 
-Feel free to propose changes to existing scripts, request new action hooks and report bugs.
+Feel free to propose changes to existing scripts, request new action hooks and report bugs. Please read the following FAQ to know more about coding conventions.
 
 # Frequently Asked Question
 
