@@ -126,6 +126,20 @@ Customers can specify the related service/domain on ticket submission but once t
 
 [Get the Code »](https://github.com/Katamaze/WHMCS-Free-Action-Hooks/blob/master/hooks/RelatedServiceInInfoTicketSidebar.php)
 
+## Force Payment Gateway depending on Invoice Balance
+
+It doesn't matter what payment method you use. It can be PayPal, Stripe, Skrill or Credit Card. The typical gateway charges absurdly high fees to manage your money. [Billing Extension](https://katamaze.com/whmcs/billing-extension/specifications) helps you [saving up to 18% on transaction fees](https://katamaze.com/docs/billing-extension/4/reducing-the-number-of-invoices#OnePayment) but such costs can be lowered even further.
+
+Let's face it. In an ideal world we would be receiving money just with Bank Transfer (aka Wire Transfer) since it doesn't cost you anything. The following hook can be used to force the most convenient gateway you have depending on invoice balance. For example *if invoice balance >= 1000 euro force banktransfer*. Let's do some math.
+
+* PayPal charges 3.4% + 0.35 € per transaction meaning that receiving 1000 € costs you 35.35 €
+* Let's suppose on a yearly basis you receive 10 payments of 1000 €
+* At the end of the year you gave to PayPal 353.5 €
+
+With this hook you can keep this money for you. As if it wasn't enough, the hook can be customized to force the payment gateway depending on customers' country. For example you can use the hook just for specific countries (eg. IT, FR, DE) and/or European Union.
+
+[Get the Code »](https://github.com/Katamaze/WHMCS-Free-Action-Hooks/blob/master/hooks/ForcePaymentGatewayDependingOnInvoiceBalance.php)
+
 ## Auto-Terminate Free Trials After X Minutes
 
 Free trials for a limited period is a good marketing strategy to capitalize on the leads you get. The problem with trials is that the smallest unit of time for WHMCS is the day meaning that for example you can't provide a trial for VPS that last for a couple of hours. WHMCS can't "think" for a period of less than a full day.
