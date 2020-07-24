@@ -118,6 +118,14 @@ body {
 
 [Get the Code »](https://github.com/Katamaze/WHMCS-Action-Hooks/blob/master/hooks/AutoLoginToAnyPanelFromMyServices.php)
 
+## Related Service in Into Ticket Sidebar
+
+Customers can specify the related service/domain on ticket submission but once the ticket has been sent the information is no longer visible. This hook makes sure that related service is always included in ticket sidebar (if specified).
+
+![image](https://katamaze.com/modules/addons/Mercury/uploads/files/Blog/92b1487d05bc7249c65af0f94cde4732/whmcs-related-service-domain-in-ticket-sidebar.PNG)
+
+[Get the Code »](https://github.com/Katamaze/WHMCS-Free-Action-Hooks/blob/master/hooks/RelatedServiceInInfoTicketSidebar.php)
+
 ## Auto-Terminate Free Trials After X Minutes
 
 Free trials for a limited period is a good marketing strategy to capitalize on the leads you get. The problem with trials is that the smallest unit of time for WHMCS is the day meaning that for example you can't provide a trial for VPS that last for a couple of hours. WHMCS can't "think" for a period of less than a full day.
