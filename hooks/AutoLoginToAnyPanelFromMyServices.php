@@ -1,13 +1,13 @@
 <?php
 
 /**
-* Auto-Login to cPanel/Plesk from My Services
-*
-* @package     WHMCS
-* @copyright   Katamaze
-* @link        https://katamaze.com
-* @author      Davide Mantenuto <info@katamaze.com>
-*/
+ * Auto-Login to cPanel/Plesk from My Services
+ *
+ * @package     WHMCS
+ * @copyright   Katamaze
+ * @link        https://katamaze.com
+ * @author      Davide Mantenuto <info@katamaze.com>
+ */
 
 // IMPORTANT! The hook requires changes to two template files. Read the following for instructions
 // https://github.com/Katamaze/WHMCS-Free-Action-Hooks/blob/master/README.md#cpanel--plesk-login-button-in-my-services
@@ -43,6 +43,11 @@ add_hook('ClientAreaHeadOutput', 1, function($vars)
     if ($vars['filename'] == 'clientarea' AND $_GET['action'] == 'productdetails' AND $_GET['id'] AND $_GET['autologin'])
     {
         return <<<HTML
+<style>
+body {
+	visibility:hidden;
+}
+</style>
 <script type="text/javascript">
 $(document).ready(function() {
     $("#domain form").removeAttr('target');
