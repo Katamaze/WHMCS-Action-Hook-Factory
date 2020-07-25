@@ -14,7 +14,7 @@ Action Hooks allow you to execute your own code when events occurr inside WHMCS.
 
 For example we managed to [transform WHMCS into a CMS](https://katamaze.com/whmcs/mercury/specifications) like WordPress with full support for [Search Engine Optimization](https://katamaze.com/blog/37/whmcs-seo-ways-to-improve-your-site-ranking-in-2020). We've also introduced new [billing concepts](https://katamaze.com/whmcs/billing-extension/specifications) (monthly invoicing, electronic invoicing, credit notes) and [Affiliate Marketing](https://katamaze.com/whmcs/commission-manager/specifications).
 
-As you can see you can there's no limit to imagination. If you're new to WHMCS and Action Hook, please refer to the following articles:
+As you can see you can there's no limit to imagination. If you're new to WHMCS and Action Hooks, please refer to the following docs:
 
 * [Getting Started](https://developers.whmcs.com/hooks/getting-started/)
 * [Hook Index](https://developers.whmcs.com/hooks/hook-index/)
@@ -23,7 +23,12 @@ As you can see you can there's no limit to imagination. If you're new to WHMCS a
 
 Over the years we coded thousand of action hooks most of which are part of our [WHMCS modules](https://katamaze.com/whmcs).
 
-In this repository we share a collection of action hooks for free that you can copy/paste on your WHMCS site. You can also adapt them to your specific needs or use as inspiration for your projects. We are continually adding and improving hooks so stay tuned.
+In this repository we share a collection of action hooks for free that you can copy/paste on your WHMCS site. You can also adapt them to your specific needs or use as inspiration for your projects.
+
+The point of this this package is to help **Developers**, **Hosting Providers**, **Web Agencies** and **IT professionals** to perfect WHMCS. We are continually adding and improving hooks. It would be great if you join the project!
+
+* [Contributing Guidelines](https://github.com/Katamaze/WHMCS-Free-Action-Hooks/blob/master/CONTRIBUTING.md)
+* [Report a Bug](https://github.com/Katamaze/WHMCS-Free-Action-Hooks/issues)
 
 # Action Hooks Collection
 
@@ -178,7 +183,7 @@ If you are sending out a lot of quotes on a daily basis, the fact that WHMCS for
 
 ## Remove/Hide Breadcrumb
 
-WHMCS prements *Portal Home* to breadcrumb. There's nothing wrong with that but some people don't like it. This hook removes it from all WHMCS pages.
+WHMCS prepends *Portal Home* to breadcrumb. There's nothing wrong with that but some people don't like it. This hook removes it from all WHMCS pages.
 
 Bonus tip: if you don't want to use an action hook, you can use the following CSS. The result is the same.
 
