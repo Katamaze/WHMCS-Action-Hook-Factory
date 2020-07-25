@@ -10,10 +10,8 @@ assignees: Kian987
 ## Before reporting a bug
 Make sure you're running the most up-to-date version of the action hook.
 
-## Action Hook name
-We created [a lot of action hooks](https://github.com/Katamaze/WHMCS-Free-Action-Hooks/tree/master/hooks) hence knowing the name of the hook that is causing you a problem is mandatory.
-
-**Hook name corresponds to file name** (eg. `AcceptOrderOnInvociePaid.php`, `DailyCronJonOnDemand.php`).
+## Action Hook File Name
+We created a lot of action hooks hence knowing the name of the hook that is causing you a problem is mandatory. Hook name corresponds to file name (eg. `AcceptOrderOnInvociePaid.php`, `DailyCronJonOnDemand.php`).
 
 ## Describe the Bug
 A clear and concise description of what the bug is.
