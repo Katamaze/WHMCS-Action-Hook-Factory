@@ -19,7 +19,7 @@ Continue reading our [beginners guide to WHMCS](https://katamaze.com/blog/23/wha
   * [Force Payment Gateway depending on Invoice Balance](#force-payment-gateway-depending-on-invoice-balance)
   * [Auto-Terminate Free Trials After X Minutes](#auto-terminate-free-trials-after-x-minutes)
   * [Stronger Password Generator for Auto-Provisioning](#stronger-password-generator-for-auto-provisioning)
-  * [One-off Products/Services & Domain purchase require Product/Service](#aaaa)
+  * [One-off Products/Services & Domain purchase require Product/Service](#one-off-productsservices--domain-purchase-require-productservice)
   * [New Clients as Affiliates](#new-clients-as-affiliates)
   * [Send Email & Add Reply on Ticket Status Change](#send-email--add-reply-on-ticket-status-change)
   * [Client to Group based on Purchased Product/Service](#client-to-group-based-on-purchased-productservice)
