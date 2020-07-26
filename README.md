@@ -19,6 +19,7 @@ Continue reading our [beginners guide to WHMCS](https://katamaze.com/blog/23/wha
   * [Force Payment Gateway depending on Invoice Balance](#force-payment-gateway-depending-on-invoice-balance)
   * [Auto-Terminate Free Trials After X Minutes](#auto-terminate-free-trials-after-x-minutes)
   * [Stronger Password Generator for Auto-Provisioning](#stronger-password-generator-for-auto-provisioning)
+  * [One-off Products/Services & Domain purchase require Product/Service](#aaaa)
   * [New Clients as Affiliates](#new-clients-as-affiliates)
   * [Send Email & Add Reply on Ticket Status Change](#send-email--add-reply-on-ticket-status-change)
   * [Client to Group based on Purchased Product/Service](#client-to-group-based-on-purchased-productservice)
@@ -176,6 +177,22 @@ We give you not one, not two but three action hooks to override default password
 * [v1](https://github.com/Katamaze/WHMCS-Action-Hooks/blob/master/hooks/StrongerPasswordGeneratorForAutoProvisioning_v1.php) randomly picks 10 characters from `a-zA-Z0-9` and `!@#$%^&*()-=+?`
 * [v2](https://github.com/Katamaze/WHMCS-Action-Hooks/blob/master/hooks/StrongerPasswordGeneratorForAutoProvisioning_v2.php) same as above but makes sure that at least one special character is included in the password
 * [v3](https://github.com/Katamaze/WHMCS-Action-Hooks/blob/master/hooks/StrongerPasswordGeneratorForAutoProvisioning_v3.php) for extremely strong passwords. Individually define the number of digits, lowercase, uppercase and special characters to use. The resulting password will not use the same character twice
+
+## One-off Products/Services & Domain purchase require Product/Service
+
+If you have a bit of experience with WHMCS, you know that offering promotions just via [coupon codes](https://docs.whmcs.com/Promotions) isn't so flexible. Many prefer to have products/services created specifically for special deals. Similarly some others want to restrict domain purchase to customers with at least a product/service in their accounts. This hook lets you achieve both goals by customizing the following variables:
+
+* `$onetimeProducts` an array of Product IDs that are treated as "one-off" (each customer can purchase them only once)
+* `$onetimeProductGroups` same as above but works on Product Group IDs ("one-off" concept extends to all products/services in such groups)
+* `$domainRequiresProduct` domain purchase is allowed only if any of the following conditions is met:
+	* Customer has an existing product/service (`Pending` and `Terminated` don't count)
+	* Customer is purchasing a domain and a product/service
+	
+When the hook detects that the customer is not allowed to order specific products/services and/or domains, it removes them from WHMCS cart showing the following alerts on screen.
+
+![image](https://katamaze.com/modules/addons/Mercury/uploads/files/Blog/92b1487d05bc7249c65af0f94cde4732/whmcs-domain-require-product-one-off-products.png)
+
+[Get the Code »](https://github.com/Katamaze/WHMCS-Free-Action-Hooks/blob/master/hooks/OneOffProductsDomainRequireProduct.php)
 
 ## New Clients as Affiliates
 
