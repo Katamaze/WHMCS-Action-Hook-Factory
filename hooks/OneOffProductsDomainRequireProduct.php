@@ -1,7 +1,7 @@
 <?php
 
 /**
- * One-off Products/Services & Domain purchase require existing Product/Service
+ * One-off Products/Services & Domain purchase require Product/Service
  *
  * @package     WHMCS
  * @copyright   Katamaze
