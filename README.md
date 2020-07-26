@@ -8,6 +8,33 @@ That said, similarities end here. WordPress is free, open source and good at man
 
 Continue reading our [beginners guide to WHMCS](https://katamaze.com/blog/23/what-is-whmcs-and-when-to-use-it-explained-for-beginners) for more details.
 
+- [Action Hooks](#action-hooks)
+- [Perfect your WHMCS](#perfect-your-WHMCS)
+- [Action Hooks Collection](#action-hooks-collection)
+  * [Simulate / Run WHMCS Daily Cron Job on Demand](#simulate--run-whmcs-daily-cron-job-on-demand)
+  * [Accept Quote without Logging In](#accept-quote-without-logging-in)
+  * [Bulk Auto Recalculate Client Domain & Products/Services](#bulk-auto-recalculate-client-domain--productsservices)
+  * [cPanel & Plesk login button in My Services](#cpanel--plesk-login-button-in-my-services)
+  * [Related Service in Into Ticket Sidebar](#related-service-in-into-ticket-sidebar)
+  * [Force Payment Gateway depending on Invoice Balance](#force-payment-gateway-depending-on-invoice-balance)
+  * [Auto-Terminate Free Trials After X Minutes](#auto-terminate-free-trials-after-x-minutes)
+  * [Stronger Password Generator for Auto-Provisioning](#stronger-password-generator-for-auto-provisioning)
+  * [New Clients as Affiliates](#new-clients-as-affiliates)
+  * [Send Email & Add Reply on Ticket Status Change](#send-email--add-reply-on-ticket-status-change)
+  * [Client to Group based on Purchased Product/Service](#client-to-group-based-on-purchased-productservice)
+  * [Prevent changes to Client Custom Fields](#prevent-changes-to-client-custom-fields)
+  * [Quote to Invoice conversion without redirect](#quote-to-invoice-conversion-without-redirect)
+  * [Remove/Hide Breadcrumb](#removehide-breadcrumb)
+  * [Knowledgebase Last Updated Date](#knowledgebase-last-updated-date)
+  * [Login as Client Language](#login-as-client-language)
+  * [Prevent Emails to be sent based on Client Group](#prevent-emails-to-be-sent-based-on-client-group)
+  * [Abort Auto-Provisioning when there's a Note in the Order](#abort-auto-provisioning-when-theres-a-note-in-the-order)
+  * [Add Button next to Module's Functions](#add-button-next-to-modules-functions)
+  * [Announcements Meta Description](#announcements-meta-description)
+  * [Promotion Code in Email Template](#promotion-code-in-email-template)
+  * [Automatically Accept Order when Invoice is Paid](#automatically-accept-order-when-invoice-is-paid)
+  * [Hide Google Invisible reCAPTCHA Badge](#hide-google-invisible-recaptcha-badge)  
+
 # Action Hooks
 
 Action Hooks allow you to execute your own code when events occurr inside WHMCS. With them you can achieve impressive results.
