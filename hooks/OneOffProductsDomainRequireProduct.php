@@ -13,9 +13,9 @@ use WHMCS\Database\Capsule;
 
 add_hook('ClientAreaHeadOutput', 1, function($vars)
 {
-    $onetimeProductGroups = array('2');
-    $onetimeProducts = array('1');
-    $domainRequiresProduct = true;
+    $onetimeProducts = array(); // The following Product/Service IDs are treated as "one-off" (customers can purchase them only once)
+    $onetimeProductGroups = array(); // As above but works on Product Group IDs (the "one-off" concept extends to all products/service in groups)
+    $domainRequiresProduct = false; // Allow domain purchase only when if any of the following conditions is met: a) Customer has an existing Product/Service (not pending, not terminated) b) Customer is purchasing a domain and a Product/Service
 
     if ($_SESSION['uid'])
     {
@@ -41,7 +41,7 @@ add_hook('ClientAreaHeadOutput', 1, function($vars)
         }
         elseif ($_SESSION['cart']['domains'] AND $domainRequiresProduct)
         {
-            $userHasProduct = Capsule::table('tblhosting')->where('userid', '=', $_SESSION['uid'])->pluck('id');
+            $userHasProduct = Capsule::table('tblhosting')->where('userid', '=', $_SESSION['uid'])->whereNotIn('domainstatus', array('Pending', 'Terminated'))->pluck('id');
 
             if (!$userHasProduct AND !$_SESSION['cart']['products'])
             {
