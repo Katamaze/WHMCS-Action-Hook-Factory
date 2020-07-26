@@ -310,13 +310,13 @@ In case you have now idea of what Chatstack is, let me give you a little bit of 
 
 It is worth to mention that in past Chatstack was named LiveHelp. You can purchase it directly from [chatstack.com](https://www.chatstack.com/) or from WHMCS [Marketplace](https://marketplace.whmcs.com/product/34-live-chat-visitor-tracking). Ignore all the negative reviews. Most of them are from people that have no idea of how to install and configure it 😑
 
-Let's now move to the hook itself. Once Chatstack is installed on your WHMCS site, it starts tracking everyone including WHMCS administrators and logged in users. This creates the following problems:
+Let's now move to the hook itself. Once Chatstack is installed on your WHMCS site, it starts tracking everyone including WHMCS administrators and logged-in users. This creates the following problems:
 
 * You receive notifications about administrators' activities
 * Chatstack puts visitors and administrators on the same level
-* Most companies want to reserve the chat for pre-sales and not for support requests
+* Most companies want to use the chat for pre-sales and not for support requests
 
-The hook we made has two option that allows to:
+The hook we made provides two options that allows to:
 
 * Stop tracking and notifying administrators' activities
 * Prevent logged-in users (existing customers) to use the chat
