@@ -13,9 +13,9 @@ use WHMCS\Database\Capsule;
 
 add_hook('ClientAreaHeadOutput', 1, function($vars)
 {
-    $onetimeProducts = array(); // The following Product/Service IDs are treated as "one-off" (each customer can purchase them only once)
-    $onetimeProductGroups = array(); // Same as above but works on Product Group IDs ("one-off" concept extends to all products/services in such groups)
-    $domainRequiresProduct = false; // Allow domain purchase only when if any of the following conditions is met: a) Customer has an existing Product/Service (Pending and Terminated don't count) b) Customer is purchasing a domain and a Product/Service
+    $onetimeProducts = array(); // Array of Product IDs to treat as "one-off" (each customer can purchase them only once)
+    $onetimeProductGroups = array(); // Same as above but for Product Group IDs ("one-off" concept extends to products in such groups)
+    $domainRequiresProduct = false; // Domain purchase is allowed only if any of the following conditions is met: a) Customer has an existing product/service (`Pending` and `Terminated` don't count) b) Customer is purchasing a domain and a product/service
 
     if ($_SESSION['uid'])
     {
