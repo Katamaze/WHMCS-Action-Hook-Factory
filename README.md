@@ -33,7 +33,8 @@ Continue reading our [beginners guide to WHMCS](https://katamaze.com/blog/23/wha
   * [Announcements Meta Description](#announcements-meta-description)
   * [Promotion Code in Email Template](#promotion-code-in-email-template)
   * [Automatically Accept Order when Invoice is Paid](#automatically-accept-order-when-invoice-is-paid)
-  * [Hide Google Invisible reCAPTCHA Badge](#hide-google-invisible-recaptcha-badge)  
+  * [Hide Google Invisible reCAPTCHA Badge](#hide-google-invisible-recaptcha-badge)
+  * [Chatstack Disable for Logged-In Users and Administrators](#chatstack-disable-for-logged-in-users-and-administrators)
 
 # Action Hooks
 
