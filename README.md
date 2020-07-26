@@ -180,7 +180,9 @@ We give you not one, not two but three action hooks to override default password
 
 ## One-off Products/Services & Domain purchase require Product/Service
 
-If you have a bit of experience with WHMCS, you know that offering promotions just via [coupon codes](https://docs.whmcs.com/Promotions) isn't so flexible. Many prefer to have products/services created specifically for special deals. Similarly some others want to restrict domain purchase to customers with at least a product/service in their accounts. This hook lets you achieve both goals by customizing the following variables:
+If you have a bit of experience with WHMCS, you know that offering promotions just via [coupon codes](https://docs.whmcs.com/Promotions) isn't so flexible.
+
+Many prefer to have products/services created specifically for special deals.Similarly some others want to restrict domain purchase to customers with at least a product/service in their accounts. This hook lets you achieve both goals by customizing the following variables:
 
 * `$onetimeProducts` an array of Product IDs that are treated as "one-off" (each customer can purchase them only once)
 * `$onetimeProductGroups` same as above but works on Product Group IDs ("one-off" concept extends to all products/services in such groups)
