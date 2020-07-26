@@ -302,3 +302,24 @@ WHMCS requires administrators to manually accept orders even if automation tasks
 All it takes to hide Google Invisible reCAPTCHA Badge (bottom-right corner) is a CSS rule. If you don't want to edit your CSS and/or want preserve the chgange with template updates, use this hook. Before you ask, yes, the correct way to hide the Badge is to use `opacity`. Using things like `display: none` and `visibility: hidden` breaks reCAPTCHA.
 
 [Get the Code »](https://github.com/Katamaze/WHMCS-Free-Action-Hooks/blob/master/hooks/HideGoogleInvisibleReCAPTCHA.php)
+
+## Chatstack Disable for Logged-In Users and Administrators
+
+In case you have now idea of what Chatstack is, let me give you a little bit of background. It's an official module for WHMCS that allows to track and chat with visitors. We use it ourselves on [our site](https://katamaze.com/). It's the little badge at the bottom right corner. Visitors can click it to start chatting with us. In case we're not online, the badge redirects to *contact us*.
+
+It is worth to mention that in past Chatstack was named LiveHelp. You can purchase it directly from [chatstack.com](https://www.chatstack.com/) or from WHMCS [Marketplace](https://marketplace.whmcs.com/product/34-live-chat-visitor-tracking). Ignore all the negative reviews. Most of them are from people that have no idea of how to install and configure it 😑
+
+Let's now move to the hook itself. Once Chatstack is installed on your WHMCS site, it starts tracking everyone including WHMCS administrators and logged in users. This creates the following problems:
+
+* You receive notifications about administrators' activities
+* Chatstack puts visitors and administrators on the same level
+* Most companies want to reserve the chat for pre-sales and not for support requests
+
+The hook we made has two option that allows to:
+
+* Stop tracking and notifying administrators' activities
+* Prevent logged-in users (existing customers) to use the chat
+
+The only requirement is that you remove any existing integration between WHMCS & Chatstack. The action hook handles everything and supports also [WHMCS multi-domain and multi-brand](https://katamaze.it/docs/mercury/48/multi-brand-e-geolocalizzazione#Multi-brand-e-multi-dominio).
+
+[Get the Code »](https://github.com/Katamaze/WHMCS-Free-Action-Hooks/blob/master/hooks/ChatstackDisableLoggedInAndAdmin.php)
