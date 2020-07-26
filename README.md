@@ -185,7 +185,7 @@ If you have a bit of experience with WHMCS, you know that offering promotions ju
 Many prefer to have products/services created specifically for special deals. Similarly others want to restrict domain purchase to customers with at least a product/service in their accounts. The hook lets you achieve both goals. Simply configure the following variables:
 
 * `$onetimeProducts` an array of Product IDs to treat as "one-off" (each customer can purchase them only once)
-* `$onetimeProductGroups` same as above but for Product Group IDs ("one-off" concept extends to products/services in such groups)
+* `$onetimeProductGroups` same as above but for Product Group IDs ("one-off" concept extends to products in such groups)
 * `$domainRequiresProduct` domain purchase is allowed only if any of the following conditions is met:
 	* Customer has an existing product/service (`Pending` and `Terminated` don't count)
 	* Customer is purchasing a domain and a product/service
