@@ -30,7 +30,7 @@ add_hook('PreModuleCreate', 1, function($vars)
     $special            = '!@#$%^&*?'; // Plesk does not consider (, ), -, = and + as special characters
     $digits             = substr(str_shuffle($digits), 0, $length['digit']);
     $lower              = substr(str_shuffle($chars), 0, $length['lower']);
-    $upper              = substr(str_shuffle(strtoupper( str_replace(str_split($lower), '', $chars) )), 0, $length['lower']);
+    $upper              = substr(str_shuffle(strtoupper(str_replace(str_split($lower), '', $chars) )), 0, $length['lower']);
     $special            = substr(str_shuffle($special), 0, $length['special']);
     $password           = str_shuffle($digits . $lower . $upper . $special);
 
