@@ -14,9 +14,9 @@ use WHMCS\Database\Capsule;
 add_hook('ClientAreaPage', 1, function($vars)
 {
     $gateway = 'banktransfer'; // Force this payment gateway when invoice balance is >= $limit. Use System Name (eg. banktransfer, paypal)
-    $limit = '1000'; // Specifiy the limit in WHMCS Default Currency. The hook automatically handles currency conversion
+    $limit = '0'; // Specifiy the limit in WHMCS Default Currency. The hook automatically handles currency conversion (0 to disable)
     $countries = array(); // Optionally define countries where you want to apply this hook. Use ISO 3166-1 alpha-2 country codes (eg. IT, FR, US)
-    $europe = true; // Set true to use the hook on EU-based customers. This option can be used together with $countries
+    $europe = false; // Set true to use the hook on EU-based customers. This option can be used together with $countries
 
     if ($vars['filename'] == 'viewinvoice' AND $_GET['id'])
     {
