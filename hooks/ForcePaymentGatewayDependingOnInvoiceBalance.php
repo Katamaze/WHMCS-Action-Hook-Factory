@@ -16,7 +16,7 @@ add_hook('ClientAreaPage', 1, function($vars)
     $gateway = 'banktransfer'; // Force this payment gateway when invoice balance is >= $limit. Use System Name (eg. banktransfer, paypal)
     $limit = '1000'; // Specifiy the limit in WHMCS Default Currency. The hook automatically handles currency conversion
     $countries = array(); // Optionally define countries where you want to apply this hook. Use ISO 3166-1 alpha-2 country codes (eg. IT, FR, US)
-    $europe = false; // Set true to use the hook on EU-based customers. This option can be used together with $countries
+    $europe = true; // Set true to use the hook on EU-based customers. This option can be used together with $countries
 
     if ($vars['filename'] == 'viewinvoice' AND $_GET['id'])
     {
@@ -25,11 +25,10 @@ add_hook('ClientAreaPage', 1, function($vars)
 
         if ($gateway AND $limit)
         {
-            $currencyKey = array_keys(array_column($vars['currencies'], 'id'), $vars['clientsdetails']['currency'])[0];
+            $currencyRate = Capsule::table('tblcurrencies')->where('id', '=', $vars['clientsdetails']['currency'])->where('default', '!=', '1')->pluck('rate')[0];
 
-            if (!$vars['currencies'][$currencyKey]['default'])
+            if ($currencyRate)
             {
-                $currencyRate = Capsule::table('tblcurrencies')->where('id', '=', $vars['currencies'][$currencyKey]['id'])->pluck('rate')[0];
                 $balance = number_format($vars['balance']->toNumeric() / $currencyRate, 2, '.', '');
             }
             else
