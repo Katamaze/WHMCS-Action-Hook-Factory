@@ -124,7 +124,7 @@ Your `thead` could be slightly different (eg. your first column could be the SSL
 <td class="text-center">
 	{if $kt_autologin[$service.id]}
 	<div class="btn-group btn-group-sm plesk-login" style="width:60px;">
-		<a href="clientarea.php?action=productdetails&id={$service.id}&autologin=1" class="btn btn-primary btn-xs" alt="Click to Login" title="Click to Login" style="padding: 2px 5px;"><img src="templates/{$template}/img/katamaze_autologin/{$kt_autologin[$service.id]->type}.png" style="height:22px; max-width:39px"> <i class="fa fa-sign-in fa-fw" aria-hidden="true"></i></a>
+		<a href="clientarea.php?action=productdetails&id={$service.id}&autologin=1" target="_blank" class="btn btn-primary btn-xs" alt="Click to Login" title="Click to Login" style="padding: 2px 5px;"><img src="templates/{$template}/img/katamaze_autologin/{$kt_autologin[$service.id]->type}.png" style="height:22px; max-width:39px"> <i class="fa fa-sign-in fa-fw" aria-hidden="true"></i></a>
 	</div>
 	{/if}
 </td>
