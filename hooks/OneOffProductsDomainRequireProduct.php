@@ -13,9 +13,9 @@ use WHMCS\Database\Capsule;
 
 add_hook('ClientAreaHeadOutput', 1, function($vars)
 {
-    $onetimeProducts = array('1'); // Array of product IDs to treat as "one-off" (customer is not allowed to order the same product multiple times)
-    $onetimeProductGroups = array('1'); // Same as above but for product group IDs. All producs inside such groups are treated as one-off
-    $firstTimerTollerance = true; // Product-based restrictions are disabled for new customers placing their first order with you
+    $onetimeProducts = array(); // Array of product IDs to treat as "one-off" (customer is not allowed to order the same product multiple times)
+    $onetimeProductGroups = array(); // Same as above but for product group IDs. All producs inside such groups are treated as one-off
+    $firstTimerTollerance = false; // Product-based restrictions are disabled for new customers placing their first order with you
     $notRepeatable = false; // If a customer already has a one-off product, he can't purchase further one-offs ($firstTimerTollerance is ignored)
     $domainRequiresProduct = false; // Domain purchase is allowed only if any of the following conditions is met: a) Customer has an existing product/service (`Pending` and `Terminated` don't count) b) Customer is purchasing a domain and a product/service
 
