@@ -94,7 +94,7 @@ add_hook('ClientAreaHeadOutput', 1, function($vars)
 
 add_hook('ClientAreaHeadOutput', 1, function($vars)
 {
-    $promptRemoval = 'js-alert'; // Choose one of the following options: "bootstrap-alert", "modal", "js-alert" (works on Six template. Change jQuery selectors accordingly for custom templates)
+    $promptRemoval = 'modal'; // Choose one of the following options: "bootstrap-alert", "modal", "js-alert" (works on Six template. Change jQuery selectors accordingly for custom templates)
     $textDisallowed = 'The Product/Service can be purchased only once.'; // Don't forget to "\" escape
     $textRequireProduct = 'Domain purchase require an active Product/Service.'; // Don't forget to "\" escape
 
