@@ -200,7 +200,7 @@ Many prefer to have products/services created specifically for special deals. Si
 	
 When the hook detects that the customer is not allowed to order specific products/services and/or domains, it removes them from WHMCS cart showing an alert.
 
-![image](https://katamaze.com/modules/addons/Mercury/uploads/files/Blog/92b1487d05bc7249c65af0f94cde4732/whmcs-domain-require-product-one-off-products.png)
+![image](https://katamaze.com/modules/addons/Mercury/uploads/files/Blog/92b1487d05bc7249c65af0f94cde4732/whmcs-domain-require-product-one-off-products-2.png)
 
 [Get the Code »](https://github.com/Katamaze/WHMCS-Free-Action-Hooks/blob/master/hooks/OneOffProductsDomainRequireProduct.php)
 
