@@ -8,6 +8,32 @@ That said, similarities end here. WordPress is free, open source and good at man
 
 Continue reading our [beginners guide to WHMCS](https://katamaze.com/blog/23/what-is-whmcs-and-when-to-use-it-explained-for-beginners) for more details.
 
+# Action Hooks
+
+Action Hooks allow you to execute your own code when events occurr inside WHMCS. With them you can achieve impressive results.
+
+For example we managed to [transform WHMCS into a CMS](https://katamaze.com/whmcs/mercury/specifications) like WordPress with full support for [Search Engine Optimization](https://katamaze.com/blog/37/whmcs-seo-ways-to-improve-your-site-ranking-in-2020). We've also introduced new [billing concepts](https://katamaze.com/whmcs/billing-extension/specifications) (monthly invoicing, electronic invoicing, credit notes) and [Affiliate Marketing](https://katamaze.com/whmcs/commission-manager/specifications).
+
+As you can see you can there's no limit to imagination. If you're new to WHMCS and Action Hooks, please refer to the following docs:
+
+* [Getting Started](https://developers.whmcs.com/hooks/getting-started/)
+* [Hook Index](https://developers.whmcs.com/hooks/hook-index/)
+
+# Perfect your WHMCS
+
+Over the years we coded thousand of action hooks most of which are part of our [WHMCS modules](https://katamaze.com/whmcs).
+
+In this repository we share a collection of action hooks for free that you can copy/paste on your WHMCS site. You can also adapt them to your specific needs or use as inspiration for your projects.
+
+The point of this this package is to help **Developers**, **Hosting Providers**, **Web Agencies** and **IT professionals** to perfect WHMCS. We are continually adding and improving hooks. It would be great if you join the project!
+
+* [Contributing Guidelines](https://github.com/Katamaze/WHMCS-Free-Action-Hooks/blob/master/CONTRIBUTING.md)
+* [Report a Bug](https://github.com/Katamaze/WHMCS-Free-Action-Hooks/issues)
+
+# Action Hooks Collection
+
+This [blog post](https://katamaze.com/blog/32/whmcs-action-hooks-collection-2020-updated-monthly) contains in-depth instructions and previews. The post is available also in [italian language](https://katamaze.it/blog/32/whmcs-action-hooks-collection-2020-updated-monthly). We are always willing to code new hooks based on your feedback so feel free to comment and ask for new ones. Let's start!
+
 - [Action Hooks](#action-hooks)
 - [Perfect your WHMCS](#perfect-your-WHMCS)
 - [Action Hooks Collection](#action-hooks-collection)
@@ -37,32 +63,6 @@ Continue reading our [beginners guide to WHMCS](https://katamaze.com/blog/23/wha
   * [Hide Google Invisible reCAPTCHA Badge](#hide-google-invisible-recaptcha-badge)
   * [Chatstack Disable for Logged-In Users and Administrators](#chatstack-disable-for-logged-in-users-and-administrators)
   * [Notify Fradulent Orders](#notify-fradulent-orders)
-
-# Action Hooks
-
-Action Hooks allow you to execute your own code when events occurr inside WHMCS. With them you can achieve impressive results.
-
-For example we managed to [transform WHMCS into a CMS](https://katamaze.com/whmcs/mercury/specifications) like WordPress with full support for [Search Engine Optimization](https://katamaze.com/blog/37/whmcs-seo-ways-to-improve-your-site-ranking-in-2020). We've also introduced new [billing concepts](https://katamaze.com/whmcs/billing-extension/specifications) (monthly invoicing, electronic invoicing, credit notes) and [Affiliate Marketing](https://katamaze.com/whmcs/commission-manager/specifications).
-
-As you can see you can there's no limit to imagination. If you're new to WHMCS and Action Hooks, please refer to the following docs:
-
-* [Getting Started](https://developers.whmcs.com/hooks/getting-started/)
-* [Hook Index](https://developers.whmcs.com/hooks/hook-index/)
-
-# Perfect your WHMCS
-
-Over the years we coded thousand of action hooks most of which are part of our [WHMCS modules](https://katamaze.com/whmcs).
-
-In this repository we share a collection of action hooks for free that you can copy/paste on your WHMCS site. You can also adapt them to your specific needs or use as inspiration for your projects.
-
-The point of this this package is to help **Developers**, **Hosting Providers**, **Web Agencies** and **IT professionals** to perfect WHMCS. We are continually adding and improving hooks. It would be great if you join the project!
-
-* [Contributing Guidelines](https://github.com/Katamaze/WHMCS-Free-Action-Hooks/blob/master/CONTRIBUTING.md)
-* [Report a Bug](https://github.com/Katamaze/WHMCS-Free-Action-Hooks/issues)
-
-# Action Hooks Collection
-
-This [blog post](https://katamaze.com/blog/32/whmcs-action-hooks-collection-2020-updated-monthly) contains in-depth instructions and previews. The post is available also in [italian language](https://katamaze.it/blog/32/whmcs-action-hooks-collection-2020-updated-monthly). We are always willing to code new hooks based on your feedback so feel free to comment and ask for new ones. Let's start!
 
 ## Simulate / Run WHMCS Daily Cron Job on Demand
 
