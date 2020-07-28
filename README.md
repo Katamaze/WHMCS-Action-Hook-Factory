@@ -2,7 +2,7 @@
 - [WHMCS as Fast as Possible](#whmcs-as-fast-as-possible)
 - [Action Hooks](#action-hooks)
 - [Perfect your WHMCS](#perfect-your-whmcs)
-- [Free Hooks Collection](#action-hooks-collection)
+- [Free Hooks Collection](#free-hooks-collection)
 
 # WHMCS as Fast as Possible
 
