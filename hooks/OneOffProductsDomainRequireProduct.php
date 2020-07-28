@@ -13,10 +13,10 @@ use WHMCS\Database\Capsule;
 
 add_hook('ClientAreaHeadOutput', 1, function($vars)
 {
-    $onetimeProducts = array('1'); // Array of product IDs to treat as "one-off" (customer is not allowed to purchase the same one-off product more than once)
+    $onetimeProducts = array('1'); // Array of product IDs to treat as "one-off" (customer is not allowed to order the same product multiple times)
     $onetimeProductGroups = array('1'); // Same as above but for product group IDs. All producs inside such groups are treated as one-off
-    $firstTimerTollerance = true; // If true, new customers are allowed to purchase multiple one-off products in their first order with you
-    $notRepeatable = false; // Customer with a one-off product is not allowed to purchase any other one-off. The option overrides tollerance for new customers
+    $firstTimerTollerance = true; // Product-based restrictions are disabled for new customers placing their first order with you
+    $notRepeatable = false; // If a customer already has a one-off product, he can't purchase further one-offs ($firstTimerTollerance is ignored)
     $domainRequiresProduct = false; // Domain purchase is allowed only if any of the following conditions is met: a) Customer has an existing product/service (`Pending` and `Terminated` don't count) b) Customer is purchasing a domain and a product/service
 
     if ($_SESSION['cart']['products'] AND ($onetimeProductGroups OR $onetimeProducts))
@@ -94,7 +94,7 @@ add_hook('ClientAreaHeadOutput', 1, function($vars)
 
 add_hook('ClientAreaHeadOutput', 1, function($vars)
 {
-    $promptRemoval = 'modal'; // Choose one of the following options: "bootstrap-alert", "modal", "js-alert" (works on Six template. Change jQuery selectors accordingly for custom templates)
+    $promptRemoval = 'js-alert'; // Choose one of the following options: "bootstrap-alert", "modal", "js-alert" (works on Six template. Change jQuery selectors accordingly for custom templates)
     $textDisallowed = 'The Product/Service can be purchased only once.'; // Don't forget to "\" escape
     $textRequireProduct = 'Domain purchase require an active Product/Service.'; // Don't forget to "\" escape
 
