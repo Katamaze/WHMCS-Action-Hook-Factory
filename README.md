@@ -1,4 +1,4 @@
-##### Table of Contents
+#### Table of Contents
 - [WHMCS as Fast as Possible](#whmcs-as-fast-as-possible)
 - [Action Hooks](#action-hooks)
 - [Perfect your WHMCS](#perfect-your-whmcs)
