@@ -36,6 +36,7 @@ Continue reading our [beginners guide to WHMCS](https://katamaze.com/blog/23/wha
   * [Automatically Accept Order when Invoice is Paid](#automatically-accept-order-when-invoice-is-paid)
   * [Hide Google Invisible reCAPTCHA Badge](#hide-google-invisible-recaptcha-badge)
   * [Chatstack Disable for Logged-In Users and Administrators](#chatstack-disable-for-logged-in-users-and-administrators)
+  * [Notify Fradulent Orders](#notify-fradulent-orders)
 
 # Action Hooks
 
@@ -351,3 +352,9 @@ The hook we made provides two options that allows to:
 The only requirement is that you remove any existing integration between WHMCS & Chatstack. The action hook handles everything and supports also [WHMCS multi-domain and multi-brand](https://katamaze.it/docs/mercury/48/multi-brand-e-geolocalizzazione#Multi-brand-e-multi-dominio).
 
 [Get the Code »](https://github.com/Katamaze/WHMCS-Free-Action-Hooks/blob/master/hooks/ChatstackDisableLoggedInAndAdmin.php)
+
+## Notify Fradulent Orders
+
+When an order is set as fraud, prior to the change of status actually occurring, the hook sends email notifications to all existing WHMCS administrators (disabled administrators are ignored).
+
+[Get the Code »](https://github.com/Katamaze/WHMCS-Free-Action-Hooks/blob/master/hooks/NotifyFradulentOrders.php)
