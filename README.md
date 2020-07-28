@@ -196,7 +196,7 @@ Many prefer to have products/services created specifically for special deals. Si
 	* `modal` on screen
 	* `js-alert` on scren
 * `$textDisallowed` message displayed for product-based restriction
-* `$textRequireProduct` message displayed for 
+* `$textRequireProduct` message displayed for domain-based resrticion
 	
 When the hook detects that the customer is not allowed to order specific products/services and/or domains, it removes them from WHMCS cart showing an alert.
 
