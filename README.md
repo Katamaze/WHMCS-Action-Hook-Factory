@@ -184,13 +184,21 @@ If you have a bit of experience with WHMCS, you know that offering promotions ju
 
 Many prefer to have products/services created specifically for special deals. Similarly others want to restrict domain purchase to customers with at least a product/service in their accounts. The hook lets you achieve both goals. Simply configure the following variables:
 
-* `$onetimeProducts` an array of Product IDs to treat as "one-off" (each customer can purchase them only once)
-* `$onetimeProductGroups` same as above but for Product Group IDs ("one-off" concept extends to products in such groups)
+* `$onetimeProducts` array of product IDs to treat as "one-off" (customer is not allowed to order the same product multiple times)
+* `$onetimeProductGroups` same as above but for product group IDs. Producs inside such groups are treated as one-off
+* `$firstTimerTollerance` product-based restrictions are disabled for new customers placing their first order with you
+* `$notRepeatable` if a customer already has a one-off product, he can't purchase any other product of this kind (`$firstTimerTollerance` is ignored)
 * `$domainRequiresProduct` domain purchase is allowed only if any of the following conditions is met:
 	* Customer has an existing product/service (`Pending` and `Terminated` don't count)
 	* Customer is purchasing a domain and a product/service
+* `$promptRemoval` notify customer about restrictions via (previews are below):
+	* `bootstrap-alert` right below Review & Checkout
+	* `modal` on screen
+	* `js-alert` on scren
+* `$textDisallowed` message displayed for product-based restriction
+* `$textRequireProduct` message displayed for 
 	
-When the hook detects that the customer is not allowed to order specific products/services and/or domains, it removes them from WHMCS cart showing the following alerts on screen.
+When the hook detects that the customer is not allowed to order specific products/services and/or domains, it removes them from WHMCS cart showing an alert.
 
 ![image](https://katamaze.com/modules/addons/Mercury/uploads/files/Blog/92b1487d05bc7249c65af0f94cde4732/whmcs-domain-require-product-one-off-products.png)
 
