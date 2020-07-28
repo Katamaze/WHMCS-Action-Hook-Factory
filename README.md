@@ -1,3 +1,9 @@
+##### Table of Contents
+- [WHMCS as Fast as Possible](#whmcs-as-fast-as-possible)
+- [Action Hooks](#action-hooks)
+- [Perfect your WHMCS](#perfect-your-whmcs)
+- [Free Hooks Collection](#action-hooks-collection)
+
 # WHMCS as Fast as Possible
 
 It's much easier to understand what is WHMCS making a parallelism with WordPress. Of the many free CMS, WordPress is the best and most popular solution to start a blog. WHMCS is the same in its reference market. It's the way go to [start an hosting business](https://katamaze.com/blog/38/starting-a-domain-and-hosting-company-in-2020) for **providers, web agencies and IT professionals**.
@@ -30,39 +36,36 @@ The point of this this package is to help **Developers**, **Hosting Providers**,
 * [Contributing Guidelines](https://github.com/Katamaze/WHMCS-Free-Action-Hooks/blob/master/CONTRIBUTING.md)
 * [Report a Bug](https://github.com/Katamaze/WHMCS-Free-Action-Hooks/issues)
 
-# Action Hooks Collection
+# Free Hooks Collection
 
 This [blog post](https://katamaze.com/blog/32/whmcs-action-hooks-collection-2020-updated-monthly) contains in-depth instructions and previews. The post is available also in [italian language](https://katamaze.it/blog/32/whmcs-action-hooks-collection-2020-updated-monthly). We are always willing to code new hooks based on your feedback so feel free to comment and ask for new ones. Let's start!
 
-- [Action Hooks](#action-hooks)
-- [Perfect your WHMCS](#perfect-your-WHMCS)
-- [Action Hooks Collection](#action-hooks-collection)
-  * [Simulate / Run WHMCS Daily Cron Job on Demand](#simulate--run-whmcs-daily-cron-job-on-demand)
-  * [Accept Quote without Logging In](#accept-quote-without-logging-in)
-  * [Bulk Auto Recalculate Client Domain & Products/Services](#bulk-auto-recalculate-client-domain--productsservices)
-  * [cPanel & Plesk login button in My Services](#cpanel--plesk-login-button-in-my-services)
-  * [Related Service in Into Ticket Sidebar](#related-service-in-into-ticket-sidebar)
-  * [Force Payment Gateway depending on Invoice Balance](#force-payment-gateway-depending-on-invoice-balance)
-  * [Auto-Terminate Free Trials After X Minutes](#auto-terminate-free-trials-after-x-minutes)
-  * [Stronger Password Generator for Auto-Provisioning](#stronger-password-generator-for-auto-provisioning)
-  * [One-off Products/Services & Domain purchase require Product/Service](#one-off-productsservices--domain-purchase-require-productservice)
-  * [New Clients as Affiliates](#new-clients-as-affiliates)
-  * [Send Email & Add Reply on Ticket Status Change](#send-email--add-reply-on-ticket-status-change)
-  * [Client to Group based on Purchased Product/Service](#client-to-group-based-on-purchased-productservice)
-  * [Prevent changes to Client Custom Fields](#prevent-changes-to-client-custom-fields)
-  * [Quote to Invoice conversion without redirect](#quote-to-invoice-conversion-without-redirect)
-  * [Remove/Hide Breadcrumb](#removehide-breadcrumb)
-  * [Knowledgebase Last Updated Date](#knowledgebase-last-updated-date)
-  * [Login as Client Language](#login-as-client-language)
-  * [Prevent Emails to be sent based on Client Group](#prevent-emails-to-be-sent-based-on-client-group)
-  * [Abort Auto-Provisioning when there's a Note in the Order](#abort-auto-provisioning-when-theres-a-note-in-the-order)
-  * [Add Button next to Module's Functions](#add-button-next-to-modules-functions)
-  * [Announcements Meta Description](#announcements-meta-description)
-  * [Promotion Code in Email Template](#promotion-code-in-email-template)
-  * [Automatically Accept Order when Invoice is Paid](#automatically-accept-order-when-invoice-is-paid)
-  * [Hide Google Invisible reCAPTCHA Badge](#hide-google-invisible-recaptcha-badge)
-  * [Chatstack Disable for Logged-In Users and Administrators](#chatstack-disable-for-logged-in-users-and-administrators)
-  * [Notify Fradulent Orders](#notify-fradulent-orders)
+* [Simulate / Run WHMCS Daily Cron Job on Demand](#simulate--run-whmcs-daily-cron-job-on-demand)
+* [Accept Quote without Logging In](#accept-quote-without-logging-in)
+* [Bulk Auto Recalculate Client Domain & Products/Services](#bulk-auto-recalculate-client-domain--productsservices)
+* [cPanel & Plesk login button in My Services](#cpanel--plesk-login-button-in-my-services)
+* [Related Service in Into Ticket Sidebar](#related-service-in-into-ticket-sidebar)
+* [Force Payment Gateway depending on Invoice Balance](#force-payment-gateway-depending-on-invoice-balance)
+* [Auto-Terminate Free Trials After X Minutes](#auto-terminate-free-trials-after-x-minutes)
+* [Stronger Password Generator for Auto-Provisioning](#stronger-password-generator-for-auto-provisioning)
+* [One-off Products/Services & Domain purchase require Product/Service](#one-off-productsservices--domain-purchase-require-productservice)
+* [New Clients as Affiliates](#new-clients-as-affiliates)
+* [Send Email & Add Reply on Ticket Status Change](#send-email--add-reply-on-ticket-status-change)
+* [Client to Group based on Purchased Product/Service](#client-to-group-based-on-purchased-productservice)
+* [Prevent changes to Client Custom Fields](#prevent-changes-to-client-custom-fields)
+* [Quote to Invoice conversion without redirect](#quote-to-invoice-conversion-without-redirect)
+* [Remove/Hide Breadcrumb](#removehide-breadcrumb)
+* [Knowledgebase Last Updated Date](#knowledgebase-last-updated-date)
+* [Login as Client Language](#login-as-client-language)
+* [Prevent Emails to be sent based on Client Group](#prevent-emails-to-be-sent-based-on-client-group)
+* [Abort Auto-Provisioning when there's a Note in the Order](#abort-auto-provisioning-when-theres-a-note-in-the-order)
+* [Add Button next to Module's Functions](#add-button-next-to-modules-functions)
+* [Announcements Meta Description](#announcements-meta-description)
+* [Promotion Code in Email Template](#promotion-code-in-email-template)
+* [Automatically Accept Order when Invoice is Paid](#automatically-accept-order-when-invoice-is-paid)
+* [Hide Google Invisible reCAPTCHA Badge](#hide-google-invisible-recaptcha-badge)
+* [Chatstack Disable for Logged-In Users and Administrators](#chatstack-disable-for-logged-in-users-and-administrators)
+* [Notify Fradulent Orders](#notify-fradulent-orders)
 
 ## Simulate / Run WHMCS Daily Cron Job on Demand
 
