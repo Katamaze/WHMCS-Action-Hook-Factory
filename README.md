@@ -213,7 +213,9 @@ When the hook detects that the customer is not allowed to order specific product
 
 ## New Clients as Affiliates
 
-Automatically sets newly registered customers as Affiliates on WHMCS. This way they don't need to join manually. That said, as you probably already know the affiliate system of WHMCS is very basic. If you need something more complete and sophisticated take a look at [Commission Manager](https://katamaze.com/whmcs/commission-manager/specifications).
+Automatically sets newly registered customers as Affiliates on WHMCS. This way they don't need to join manually.
+
+That said, as you probably already know the affiliate system of WHMCS is very basic. If you need something more complete and sophisticated take a look at [Commission Manager](https://katamaze.com/whmcs/commission-manager/specifications).
 
 [Get the Code »](https://github.com/Katamaze/WHMCS-Action-Hooks/blob/master/hooks/NewClientsAsAffiliates.php)
 
