@@ -1,7 +1,7 @@
 #### Table of Contents
 - [WHMCS as Fast as Possible](#whmcs-as-fast-as-possible)
 - [Understanding Action Hooks](#understanding-action-hooks)
-- [Perfect your WHMCS](#perfect-your-whmcs)
+- [Perfect Your WHMCS](#perfect-your-whmcs)
 - [Free Hooks Collection](#free-hooks-collection)
 
 # WHMCS as Fast as Possible
@@ -25,7 +25,7 @@ As you can see you can there's no limit to imagination. If you're new to WHMCS a
 * [Getting Started](https://developers.whmcs.com/hooks/getting-started/)
 * [Hook Index](https://developers.whmcs.com/hooks/hook-index/)
 
-# Perfect your WHMCS
+# Perfect Your WHMCS
 
 Over the years we coded thousand of action hooks most of which are part of our [WHMCS modules](https://katamaze.com/whmcs).
 
