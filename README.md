@@ -296,6 +296,8 @@ A customer orders a VPS and adds notes to request a particular configuration tha
 
 Here is how you can add a button next to *Create*, *Suspend*, *Unsuspend* (...) functions in product/service view.
 
+![image](https://katamaze.com/modules/addons/Mercury/uploads/files/Blog/92b1487d05bc7249c65af0f94cde4732/whmcs-add-button-next-to-module-function-create-change-password.png)
+
 [Get the Code »](https://github.com/Katamaze/WHMCS-Action-Hooks/blob/master/hooks/AddButtonNextToModulesFunctions.php)
 
 ## Announcements Meta Description
