@@ -12,7 +12,7 @@ Both systems are the undisputed market leaders in their respective field. WordPr
 
 That said, similarities end here. WordPress is free, open source and good at many things. WHMCS kicks off at [15.95 $ per month](https://www.whmcs.com/pricing/). Source code is obfuscated and even if it is a solid platform, there are [some shortcomings](https://katamaze.com/blog/41/my-wishlist-for-whmcs-v8).
 
-Continue reading our [beginners guide to WHMCS](https://katamaze.com/blog/23/what-is-whmcs-and-when-to-use-it-explained-for-beginners) for more details.
+Continue reading our [beginners guide to WHMCS](https://katamaze.com/blog/23/what-is-whmcs-and-when-to-use-it-explained-for-beginners) and [common mistakes to avoid in WHMCS](https://katamaze.com/blog/9/the-most-common-whmcs-mistakes-to-avoid) for more details.
 
 # Understanding Action Hooks
 
