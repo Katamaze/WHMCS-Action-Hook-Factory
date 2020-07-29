@@ -1,6 +1,6 @@
 #### Table of Contents
 - [WHMCS as Fast as Possible](#whmcs-as-fast-as-possible)
-- [Action Hooks](#action-hooks)
+- [Action Hooks](#understanding-action-hooks)
 - [Perfect your WHMCS](#perfect-your-whmcs)
 - [Free Hooks Collection](#free-hooks-collection)
 
@@ -14,7 +14,7 @@ That said, similarities end here. WordPress is free, open source and good at man
 
 Continue reading our [beginners guide to WHMCS](https://katamaze.com/blog/23/what-is-whmcs-and-when-to-use-it-explained-for-beginners) for more details.
 
-# Action Hooks
+# Understanding Action Hooks
 
 Action Hooks allow you to execute your own code when events occurr inside WHMCS. With them you can achieve impressive results.
 
