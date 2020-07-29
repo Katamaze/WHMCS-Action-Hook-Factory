@@ -31,7 +31,7 @@ Over the years we coded thousand of action hooks most of which are part of our [
 
 In this repository we share a collection of action hooks for free that you can copy/paste on your WHMCS site. You can also adapt them to your specific needs or use as inspiration for your projects.
 
-The point of this this package is to help **Developers**, **Hosting Providers**, **Web Agencies** and **IT professionals** to perfect WHMCS. We are continually adding and improving hooks. It would be great if you join the project!
+The point of this this project is to help **Developers**, **Hosting Providers**, **Web Agencies** and **IT professionals** to perfect WHMCS. We are continually adding and improving hooks. It would be great if you join the project!
 
 * [Contributing Guidelines](https://github.com/Katamaze/WHMCS-Free-Action-Hooks/blob/master/CONTRIBUTING.md)
 * [Report a Bug](https://github.com/Katamaze/WHMCS-Free-Action-Hooks/issues)
