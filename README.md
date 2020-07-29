@@ -173,7 +173,7 @@ With this hook you can keep this money for you. As if it wasn't enough, the hook
 
 Free trials for a limited period is a good marketing strategy to capitalize on the leads you get. The problem with trials is that the smallest unit of time for WHMCS is the day meaning that for example you can't provide a trial for VPS that last for a couple of hours. WHMCS can't "think" for a period of less than a full day.
 
-The following action hook allows to automatically terminate the given products/services after a certain number of minutes. It runs AfterCronJob hook point that normally triggers once every 5 minutes. Visit Setup > Automation Settings and make sure that cron.php runs every 5 minuts as suggested by WHMCS. The hook will do the rest. It also logs terminations in Activity Log.
+The following action hook allows to automatically terminate the given products/services after a certain number of minutes. It runs AfterCronJob hook point that normally triggers once every 5 minutes. Visit Setup > Automation Settings and make sure that cron.php runs every 5 minutes as suggested by WHMCS. The hook will do the rest. It also logs terminations in Activity Log.
 
 [Get the Code »](https://github.com/Katamaze/WHMCS-Action-Hooks/blob/master/hooks/AutoTerminateFreeTrialsAfterXMinutes.php)
 
@@ -348,7 +348,7 @@ All it takes to hide Google Invisible reCAPTCHA Badge (bottom-right corner) is a
 
 In case you have now idea of what Chatstack is, let me give you a little bit of background. It's an official module for WHMCS that allows to track and chat with visitors. We use it ourselves on [our site](https://katamaze.com/). It's the little badge at the bottom right corner. Visitors can click it to start chatting with us. In case we're not online, the badge redirects to *contact us*.
 
-It is worth to mention that in past Chatstack was named LiveHelp. You can purchase it directly from [chatstack.com](https://www.chatstack.com/) or from WHMCS [Marketplace](https://marketplace.whmcs.com/product/34-live-chat-visitor-tracking). Ignore all the negative reviews. Most of them are from people that have no idea of how to install and configure it 😑
+It is worth to mention that in past Chatstack was named LiveHelp. You can purchase it directly from [Chatstack](https://www.chatstack.com/) or from WHMCS [Marketplace](https://marketplace.whmcs.com/product/34-live-chat-visitor-tracking). Ignore all the negative reviews. Most of them are from people that have no idea of how to install and configure it 😑
 
 Let's now move to the hook itself. Once Chatstack is installed on your WHMCS site, it starts tracking everyone including WHMCS administrators and logged-in users. This creates the following problems:
 
