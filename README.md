@@ -1,6 +1,6 @@
 #### Table of Contents
 - [WHMCS as Fast as Possible](#whmcs-as-fast-as-possible)
-- [Action Hooks](#understanding-action-hooks)
+- [Undrstanding Action Hooks](#understanding-action-hooks)
 - [Perfect your WHMCS](#perfect-your-whmcs)
 - [Free Hooks Collection](#free-hooks-collection)
 
