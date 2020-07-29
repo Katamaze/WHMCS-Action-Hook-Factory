@@ -235,7 +235,9 @@ Automatically assign a customer to a Client Group based on the product/service h
 
 WHMCS has an in-built function to lock client profile fields you want to prevent clients being able to edit from clientarea (eg. email, company name). This feature however is not avaiable for client custom fields. Making such fields "disabled" via HTML is not an option. Anyone with bit of knowledge can skip this form of protection.
 
-This hook acts as the last line of defense. It makes grants that no customer can submit changes. If necessary it can be enabled also for WHMCS Administrators.
+This hook acts as the last line of defense. It grants that no customer can submit changes. If necessary it can be enabled also for WHMCS Administrators.
+
+If you need something more professional, [Billing Extension](https://katamaze.com/whmcs/billing-extension) can bring your WHMCS to the next level with things like [monthly invoicing](https://katamaze.com/docs/billing-extension/4/reducing-the-number-of-invoices), electronic invoicing, [customer retention](https://katamaze.com/docs/billing-extension/39/client-area#Customer-Retention), [Facebook Pixel](https://katamaze.com/docs/billing-extension/43/facebook-pixel) and much more.
 
 [Get the Code »](https://github.com/Katamaze/WHMCS-Action-Hooks/blob/master/hooks/PreventChangesToClientCustomFields.php)
 
