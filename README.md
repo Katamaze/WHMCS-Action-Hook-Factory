@@ -84,9 +84,9 @@ The hook adds *Run Daily Cronjob* button (the orange one) on top of your WHMCS A
 
 When you send a quote, WHMCS forces customers to login in order to accept it. This hook allows them to accept without the need to login. Every time the *Quote Delivery with PDF* mail is sent, the hook overrides `{$quote_link}` with a new link that contains an hash that ensures the authenticity of the request. This way only the recipient can accept the quote.
 
-![image](https://katamaze.com/modules/addons/Mercury/uploads/files/Blog/92b1487d05bc7249c65af0f94cde4732/quote-accepted.png)
+When the visitor clicks the link, the quote is automatically accepted and he/she sees the following modal on screen.
 
-When the visitor clicks the link, the quote is automatically accepted and he/she sees the above modal on screen.
+![image](https://katamaze.com/modules/addons/Mercury/uploads/files/Blog/92b1487d05bc7249c65af0f94cde4732/quote-accepted.png)
 
 [Get the Code »](https://github.com/Katamaze/WHMCS-Action-Hooks/blob/master/hooks/AcceptQuoteWithoutLogin.php)
 
