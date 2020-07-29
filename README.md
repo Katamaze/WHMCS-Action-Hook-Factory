@@ -47,7 +47,7 @@ Scripts are provided free of charge "as is" without warranty of any kind. **You'
 * [Accept Quote without Logging In](#accept-quote-without-logging-in)
 * [Bulk Auto Recalculate Client Domain & Products/Services](#bulk-auto-recalculate-client-domain--productsservices)
 * [cPanel & Plesk login button in My Services](#cpanel--plesk-login-button-in-my-services)
-* [Related Service in Into Ticket Sidebar](#related-service-in-into-ticket-sidebar)
+* [Related Service in Ticket Sidebar](#related-service-in-ticket-sidebar)
 * [Force Payment Gateway depending on Invoice Balance](#force-payment-gateway-depending-on-invoice-balance)
 * [Auto-Terminate Free Trials After X Minutes](#auto-terminate-free-trials-after-x-minutes)
 * [Stronger Password Generator for Auto-Provisioning](#stronger-password-generator-for-auto-provisioning)
@@ -147,7 +147,7 @@ Focus on `noSortColumns="4"`. *4* means that the 5th column will be not sortable
 
 [Get the Code »](https://github.com/Katamaze/WHMCS-Action-Hooks/blob/master/hooks/AutoLoginToAnyPanelFromMyServices.php)
 
-## Related Service in Into Ticket Sidebar
+## Related Service in Ticket Sidebar
 
 Customers can specify the related service/domain on ticket submission but once the ticket has been sent the information is no longer visible. This hook makes sure that related service is always included in ticket sidebar (if specified).
 
