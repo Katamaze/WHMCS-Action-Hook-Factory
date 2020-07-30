@@ -10,7 +10,7 @@ It's much easier to understand what is WHMCS making a parallelism with WordPress
 
 Both systems are the undisputed market leaders in their respective field. WordPress reaches 60% of market share. WHMCS attracts about 50.000 customers worldwide. They are both flexible and can accommodate several  businesses needs. In them there's more than a control panel and a blogging platform.
 
-That said, similarities end here. WordPress is free, open source and good at many things. WHMCS kicks off at [15.95 $ per month](https://www.whmcs.com/pricing/). Source code is obfuscated and even if it is a solid platform, there are [some shortcomings](https://katamaze.com/blog/41/my-wishlist-for-whmcs-v8).
+That said, similarities end here. WordPress is free, open source and good at many things. WHMCS kicks off at [15.95 $ per month](https://www.whmcs.com/pricing/). Source code is obfuscated and even if it is a solid platform, [WHMCS is not perfect](https://katamaze.com/blog/41/my-wishlist-for-whmcs-v8).
 
 Continue reading our [beginners guide to WHMCS](https://katamaze.com/blog/23/what-is-whmcs-and-when-to-use-it-explained-for-beginners) and [common mistakes to avoid in WHMCS](https://katamaze.com/blog/9/the-most-common-whmcs-mistakes-to-avoid) for more details.
 
@@ -20,7 +20,7 @@ Action Hooks allow you to execute your own code when events occurr inside WHMCS.
 
 For example we managed to [transform WHMCS into a CMS](https://katamaze.com/whmcs/mercury/specifications) like WordPress with full support for [Search Engine Optimization](https://katamaze.com/blog/37/whmcs-seo-ways-to-improve-your-site-ranking-in-2020). We've also introduced new [billing concepts](https://katamaze.com/whmcs/billing-extension/specifications) (monthly invoicing, electronic invoicing, credit notes) and [Affiliate Marketing](https://katamaze.com/whmcs/commission-manager/specifications).
 
-As you can see you can there's no limit to imagination. If you're new to WHMCS and Action Hooks, please refer to the following docs:
+As you can see you can there's no limit to imagination. If you're new to WHMCS and Action Hooks, please refer to documentation:
 
 * [Getting Started](https://developers.whmcs.com/hooks/getting-started/)
 * [Hook Index](https://developers.whmcs.com/hooks/hook-index/)
@@ -39,7 +39,7 @@ The point of this this project is to help **Developers**, **Hosting Providers**,
 
 # Free Hooks Collection
 
-This [blog post](https://katamaze.com/blog/32/whmcs-action-hooks-collection-2020-updated-monthly) contains in-depth instructions and previews. The post is available also in [italian language](https://katamaze.it/blog/32/whmcs-action-hooks-collection-2020-updated-monthly). We are always willing to code new hooks based on your feedback so feel free to [comment](https://katamaze.com/blog/32/whmcs-action-hooks-collection-2020-updated-monthly) and ask for new ones.
+This [blog post](https://katamaze.com/blog/32/whmcs-action-hooks-collection-2020-updated-monthly) contains in-depth instructions and previews. It is also available in [italian language](https://katamaze.it/blog/32/whmcs-action-hooks-collection-2020-updated-monthly). We are always willing to code new hooks based on your feedback so feel free to [comment](https://katamaze.com/blog/32/whmcs-action-hooks-collection-2020-updated-monthly) and ask for new ones.
 
 Scripts are provided free of charge "as is" without warranty of any kind. **You're not allowed to remove copyright notice**. Let's start!
 
