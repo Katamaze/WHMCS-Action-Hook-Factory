@@ -108,7 +108,7 @@ Managing multiple hosting accounts could be frustrating for customers. The follo
 
 ![image](https://katamaze.com/modules/addons/Mercury/uploads/files/Blog/92b1487d05bc7249c65af0f94cde4732/whmcs-login-to-plesk-cpanel-from-service-list.png)
 
-The hook works with any panel (cPanel, Plesk, DirectAdmin, Centova Cast...) provided that servers and products/services have been configured correctly. Before you get the code, keep in mind that this action hook requires some changes to two template files.
+The hook works with any panel (cPanel, Plesk, DirectAdmin, Centova Cast...) provided that servers and products/services have been intgrated correctly. Before you get the code, keep in mind that this action hook requires some changes to a template file.
 
 Open `templates/{YOUR_TEMPLATE}/clientareaproducts.tpl` and add the new *Manage* column in `thead` like follows.
 
@@ -199,13 +199,13 @@ Many prefer to have products/services created specifically for special deals. Si
 	* Customer has an existing product/service (`Pending` and `Terminated` don't count)
 	* Customer is purchasing a domain and a product/service
 * `$promptRemoval` notify customer about restrictions via (previews are below):
-	* `bootstrap-alert` right below Review & Checkout
+	* `bootstrap-alert` right below *Review & Checkout*
 	* `modal` on screen
 	* `js-alert` on scren
 * `$textDisallowed` message displayed for product-based restriction
 * `$textRequireProduct` message displayed for domain-based resrticion
 	
-When the hook detects that the customer is not allowed to order specific products/services and/or domains, it removes them from WHMCS cart showing an alert.
+When the hook detects that the customer is not allowed to order specific products/services and/or domains, it removes them from WHMCS cart showing alerts.
 
 ![image](https://katamaze.com/modules/addons/Mercury/uploads/files/Blog/92b1487d05bc7249c65af0f94cde4732/whmcs-domain-require-product-one-off-products-2.png)
 
@@ -274,7 +274,7 @@ If you're looking for something more professional and up to date, learn how to b
 
 ## Login as Client Language
 
-Every time an administrator uses *Login as Client*, WHMCS overrides the default language of the selected customer with the one used by the administrator in WHMCS backend. This is bad because you're unknowingly changing the language for your customer. This also applies for languages that can't be used in clientarea.
+Every time an administrator uses *Login as Client*, WHMCS overrides the default language of the selected customer with the one used by the administrator in WHMCS backend. This is bad because you're unknowingly changing the default language for your customer. This also applies for languages that can't be used in clientarea.
 
 Let's say your clientarea is in italian and you're using WHMCS backend in english. When you perform the *Login as Client*, WHMCS switches customer's language from italian to english and there's no way back. The customer in question is stucked with a language he cannot change. The following hook prevents that to happen.
 
@@ -282,7 +282,7 @@ Let's say your clientarea is in italian and you're using WHMCS backend in englis
 
 ## Prevent Emails to be sent based on Client Group
 
-This hook prevents WHMCS from sending *General Messages* email templats to specific client groups based on a sort of blacklist.
+The hook prevents WHMCS from sending *General Messages* email templats to specific client groups based on a sort of blacklist.
 
 [Get the Code »](https://github.com/Katamaze/WHMCS-Action-Hooks/blob/master/hooks/PreventEmailSendingBasedOnClientGroup.php)
 
@@ -313,7 +313,7 @@ You can use the same approach to implement other meta tags but stay away from [m
 
 ## Promotion Code in Email Template
 
-*Invoice Payment Confirmation* is an email template that WHMCS sends to customers when they pay invoices. By default this message doesn't include any information about promotions. The following hook add coupon code to the invoice recepit (if a promo has been applied).
+*Invoice Payment Confirmation* is an Email Template that WHMCS sends to customers when they pay invoices. By default this message doesn't include any information about promotions. The following hook add coupon code to the invoice recepit (if a promo has been applied).
 
 Once the hook has been added to WHMCS, you can edit *Invoice Payment Confirmation* email template to customize the look of your message like follows.
 
@@ -340,28 +340,28 @@ WHMCS requires administrators to manually accept orders even if automation tasks
 
 ## Hide Google Invisible reCAPTCHA Badge
 
-All it takes to hide Google Invisible reCAPTCHA Badge (bottom-right corner) is a CSS rule. If you don't want to edit your CSS and/or want preserve the chgange with template updates, use this hook. Before you ask, yes, the correct way to hide the Badge is to use `opacity`. Using things like `display: none` and `visibility: hidden` breaks reCAPTCHA.
+All it takes to hide Google Invisible reCAPTCHA Badge (bottom-right corner) is a CSS rule. If you don't want to edit your CSS and/or want preserve the change with template updates, use this hook. Before you ask, yes, the correct way to hide the Badge is to use `opacity`. Using things like `display: none` and `visibility: hidden` breaks reCAPTCHA.
 
 [Get the Code »](https://github.com/Katamaze/WHMCS-Free-Action-Hooks/blob/master/hooks/HideGoogleInvisibleReCAPTCHA.php)
 
 ## Chatstack Disable for Logged-In Users and Administrators
 
-In case you have now idea of what Chatstack is, let me give you a little bit of background. It's an official module for WHMCS that allows to track and chat with visitors. We use it ourselves on [our site](https://katamaze.com/). It's the little badge at the bottom right corner. Visitors can click it to start chatting with us. In case we're not online, the badge redirects to *contact us*.
+In case you have now idea of what Chatstack is, let me give you a little bit of background. It's an official module of WHMCS that allows to chat with visitors and track their activities. We use it ourselves on [our site](https://katamaze.com/). It's the little badge at the bottom right corner. Visitors can click it to start chatting with us. In case we're not online, the badge redirects to *contact us*.
 
 It is worth to mention that in past Chatstack was named LiveHelp. You can purchase it directly from [Chatstack](https://www.chatstack.com/) or from WHMCS [Marketplace](https://marketplace.whmcs.com/product/34-live-chat-visitor-tracking). Ignore all the negative reviews. Most of them are from people that have no idea of how to install and configure it 😑
 
 Let's now move to the hook itself. Once Chatstack is installed on your WHMCS site, it starts tracking everyone including WHMCS administrators and logged-in users. This creates the following problems:
 
 * You receive notifications about administrators' activities
-* Chatstack puts visitors and administrators on the same level
-* Most companies want to use the chat for pre-sales and not for support requests
+* Chatstack doesn't distinguish between visitors and administrators
+* Chat should be reserved for pre-sales but customers can use it for technical support
 
 The hook we made provides two options that allows to:
 
 * Stop tracking and notifying administrators' activities
 * Prevent logged-in users (existing customers) to use the chat
 
-The only requirement is that you remove any existing integration between WHMCS & Chatstack. The action hook handles everything and supports also [WHMCS multi-domain and multi-brand](https://katamaze.it/docs/mercury/48/multi-brand-e-geolocalizzazione#Multi-brand-e-multi-dominio).
+The only requirement is that you remove any existing integration between WHMCS & Chatstack. The action hook handles everything and supports also [WHMCS multi-domain and multi-brand](https://katamaze.com/docs/mercury/48/multi-brand-and-geolocation#Multi-brand-and-multi-domain).
 
 [Get the Code »](https://github.com/Katamaze/WHMCS-Free-Action-Hooks/blob/master/hooks/ChatstackDisableLoggedInAndAdmin.php)
 
