@@ -1,7 +1,5 @@
 <?php
 
-// WARNING! I'M STILL WORKING ON IT - IT WILL BE READY IN HOURS
-
 /**
  * Churn Rate
  *
@@ -19,25 +17,27 @@ if (!defined("WHMCS")) {
     die("This file cannot be accessed directly");
 }
 
-$dateFilter = Carbon::create(
-    $year,
-    $month,
-    1
-);
-
-/** @var Carbon $today */
+$dateFilter = Carbon::create($year, $month, 1);
 $startOfMonth = $dateFilter->startOfMonth()->toDateTimeString();
 $endOfMonth = $dateFilter->endOfMonth()->toDateTimeString();
 
-$reportdata["title"] = "Daily Performance for " . $months[(int) $month] . " " . $year;
-$reportdata["description"] = "This report shows a daily activity summary for a given month.";
-
+$reportdata["title"] = 'Churn Rate for ' . $year;
+$reportdata["description"] = "Rate at which customers stop doing business with you.";
 $reportdata["yearspagination"] = true;
-
 $reportdata["tableheadings"] = array(
-    "Date",
-    "Products",
-    "Domains",
+    'Date',
+    'Products',
+    '<strong class="text-success"><i class="far fa-plus-square"></i></strong>',
+    '<strong class="text-danger"><i class="far fa-minus-square"></i></strong>',
+    '<strong><i class="fas fa-percentage"></i></strong>',
+    'Domains',
+    '<strong class="text-success"><i class="far fa-plus-square"></i></strong>',
+    '<strong class="text-danger"><i class="far fa-minus-square"></i></strong>',
+    '<strong><i class="fas fa-percentage"></i></strong>',
+    'Overall',
+    '<strong class="text-success"><i class="far fa-plus-square"></i></strong>',
+    '<strong class="text-danger"><i class="far fa-minus-square"></i></strong>',
+    '<strong><i class="fas fa-percentage"></i></strong>',
 );
 
 $reportvalues = array();
@@ -56,59 +56,81 @@ $groupBy = Capsule::raw('date_format(`nextduedate`, "%Y-%c")');
 $reportvalues['domainsTerminated'] = Capsule::table('tbldomains')->whereYear('nextduedate', '=', $year)->where('nextduedate', '<=', $dateFilter->format('Y-m-d'))->groupBy($groupBy)->orderBy('nextduedate')->pluck(Capsule::raw('count(id) as total'), Capsule::raw('date_format(`nextduedate`, "%Y-%c") as month'));
 $activeDomains = Capsule::table('tbldomains')->where('status', 'Active')->pluck(Capsule::raw('count(id) as total'))[0];
 
-for ($month = 1; $month <= 12; $month++)
+for ($tmonth = 1; $tmonth <= 12; $tmonth++)
 {
-    $date = Carbon::create($year, $month, 1);
+    if (date('Y') == $year AND $tmonth > str_replace('0', '', $month)): continue; endif;
+
+    $date = Carbon::create($year, $tmonth, 1);
     $dateMonthYear = $date->format('M Y');
     $dateMonth = $date->format('M');
-    $key = $year . '-' . $month;
+    $key = $year . '-' . $tmonth;
 
-    $productsNew = ($productsNew ? $productsNew : '0');
-    $productsTerminated = ($productsTerminated ? $productsTerminated : '0');
-    // Cumulative
+    // Products
     $activeProducts = $activeProducts + $reportvalues['productsNew'][$key];
-    $productStart[$month] = $activeProducts;
+    $productStart[$tmonth] = $activeProducts;
     $reportvalues['productsCumulative'][$key] = $activeProducts;
-    $activeDomains = $activeDomains + $reportvalues['domainsNew'][$key];
-    $domainStart[$month] = $activeDomains;
-    $reportvalues['domainsCumulative'][$key] = $activeDomains;
-
     $productsNew = isset($reportvalues['productsNew'][$key]) ? $reportvalues['productsNew'][$key] : '0';
     $productsTerminated = isset($reportvalues['productsTerminated'][$key]) ? $reportvalues['productsTerminated'][$key] : '0';
     $productsCumulative = isset($reportvalues['productsCumulative'][$key]) ? $reportvalues['productsCumulative'][$key] : '0';
+    $productVariation = $productsNew - $productsTerminated;
+    $productChurnRate = number_format(($productsTerminated / $productStart[($tmonth == '1' ? '1' : $tmonth - 1)]) * 100, 1, '.', '') + 0;
+
+    // Domains
+    $activeDomains = $activeDomains + $reportvalues['domainsNew'][$key];
+    $domainStart[$tmonth] = $activeDomains;
+    $reportvalues['domainsCumulative'][$key] = $activeDomains;
     $domainsNew = isset($reportvalues['domainsNew'][$key]) ? $reportvalues['domainsNew'][$key] : '0';
     $domainsTerminated = isset($reportvalues['domainsTerminated'][$key]) ? $reportvalues['domainsTerminated'][$key] : '0';
     $domainsCumulative = isset($reportvalues['domainsCumulative'][$key]) ? $reportvalues['domainsCumulative'][$key] : '0';
-
-    $productVariation = $productsNew - $productsTerminated;
     $domainVariation = $domainsNew - $domainsTerminated;
+    $domainChurnRate = number_format(($domainsTerminated / $domainStart[($tmonth == '1' ? '1' : $tmonth - 1)]) * 100, 1, '.', '') + 0;
 
-    $reportdata["tablevalues"][] = array(
+    // Overall
+    $activeOverall = $activeProducts + $activeDomains;
+    $overallStart[$tmonth] = $activeOverall;
+    $reportvalues['overallCumulative'][$key] = $activeOverall;
+    $overallNew = $productsNew + $domainsNew;
+    $overallTerminated = $productsTerminated + $domainsTerminated;
+    $overallCumulative = $productsCumulative + $domainsCumulative;
+    $overallVariation = $productVariation + $domainVariation;
+    $overallChurnRate = $productChurnRate + $domainChurnRate;
+
+    $reportdata['tablevalues'][] = array(
         $dateMonthYear,
-        formatCell(array('variation' => $productVariation, 'increase' => $productsNew, 'decrease' => $productsTerminated, 'start' => $productStart[($month == '1' ? '1' : $month - 1)], 'end' => $productStart[($month == '1' ? '1' : $month - 1)] + $productVariation)),
-        formatCell(array('variation' => $domainVariation, 'increase' => $domainsNew, 'decrease' => $domainsTerminated, 'start' => $domainStart[($month == '1' ? '1' : $month - 1)], 'end' => $domainsCumulative + $domainVariation)),
+        formatCell(array('col' => 'products=', 'variation' => $productVariation, 'start' => $productStart[($tmonth == '1' ? '1' : $tmonth - 1)], 'end' => $productStart[($tmonth == '1' ? '1' : $tmonth - 1)] + $productVariation)),
+        formatCell(array('col' => 'products+', 'increase' => $productsNew)),
+        formatCell(array('col' => 'products-', 'decrease' => $productsTerminated)),
+        formatCell(array('col' => 'products%', 'churnRate' => $productChurnRate)),
+        formatCell(array('col' => 'domains=', 'variation' => $domainVariation, 'start' => $domainStart[($tmonth == '1' ? '1' : $tmonth - 1)], 'end' => $domainStart[($tmonth == '1' ? '1' : $tmonth - 1)] + $domainVariation)),
+        formatCell(array('col' => 'domains+', 'increase' => $domainsNew)),
+        formatCell(array('col' => 'domains-', 'decrease' => $domainsTerminated)),
+        formatCell(array('col' => 'domains%', 'churnRate' => $domainChurnRate)),
+        formatCell(array('col' => 'overall=', 'variation' => $overallVariation, 'start' => $overallStart[($tmonth == '1' ? '1' : $tmonth - 1)], 'end' => $overallStart[($tmonth == '1' ? '1' : $tmonth - 1)] + $overallVariation)),
+        formatCell(array('col' => 'overall+', 'increase' => $overallNew)),
+        formatCell(array('col' => 'overall-', 'decrease' => $overallTerminated)),
+        formatCell(array('col' => 'overall%', 'churnRate' => $overallChurnRate)),
     );
 
     $chartdata['rows'][] = array(
         'c'=>array(
             array('v' => $dateMonth),
-            array('v' => (int)$productsNew),
-            array('v' => (int)$productsCumulative),
-            array('v' => (int)$domainsNew),
-            array('v' => (int)$domainsCumulative),
+            array('v' => (int)$productStart[($tmonth == '1' ? '1' : $tmonth - 1)] + $productVariation),
+            array('v' => (int)$domainStart[($tmonth == '1' ? '1' : $tmonth - 1)] + $domainVariation),
+            array('v' => (int)$overallStart[($tmonth == '1' ? '1' : $tmonth - 1)] + $overallVariation),
         )
     );
-
 }
 
 function formatCell($data)
 {
     /**
+     * @param       string      $col            Column type
      * @param       string      $variation      Monthly change
      * @param       string      $increase       New purchases
      * @param       string      $decrease       New terminations
      * @param       string      $start          No. of customers (at the start of the period)
      * @param       string      $end            No. of customers (at the end of the period)
+     * @param       string      $churnRate      Churn Rate
      * @return      string                      Formatted HTML cell
      */
     $data['variation'] = ($data['variation'] ? $data['variation'] : '0');
@@ -116,44 +138,67 @@ function formatCell($data)
     $data['decrease'] = ($data['decrease'] ? $data['decrease'] : '0');
     $data['start'] = ($data['start'] ? $data['start'] : '0');
     $data['end'] = ($data['end'] ? $data['end'] : '0');
-    $churnRate = number_format(($data['decrease'] / $data['start']) * 100, 1, '.', '') + 0;
+    $data['churnRate'] = ($data['churnRate'] ? $data['churnRate'] : false);
 
-    if ($churnRate)
+    if (in_array($data['col'], array('products+', 'domains+', 'overall+')))
     {
-        $churnRate = ' <span class="label label-danger">' . $churnRate . '%</span>';
+        if ($data['increase'])
+        {
+            return '<span>' . $data['increase'] . '</span>';
+        }
+        else
+        {
+            return '-';
+        }
     }
-    else
+    elseif (in_array($data['col'], array('products-', 'domains-', 'overall-')))
     {
-        $churnRate = false;
+        if ($data['decrease'])
+        {
+            return '<span>' . $data['decrease'] . '</span>';
+        }
+        else
+        {
+            return '-';
+        }
     }
+    elseif (in_array($data['col'], array('products=', 'domains=', 'overall=')))
+    {
+        if ($data['variation'] > '0')
+        {
+            $variation = '<small class="pull-right" style="opacity:0.8;">' . abs($data['variation']) . '<i class="fad fa-angle-double-up fa-fw text-success"></i></span>';
+        }
+        elseif ($data['variation'] < '0')
+        {
+            $variation = '<small class="pull-right" style="opacity:0.8;">' . abs($data['variation']) . '<i class="fad fa-angle-double-down fa-fw text-danger"></i></span>';
+        }
 
-    if ($data['variation'] > '0')
-    {
-        $output .='<span class=""><i class="fad fa-angle-double-up fa-fw text-success"></i> ' . $data['variation'] . $churnRate;
+        if ($data['start'] != $data['end'])
+        {
+            return $data['start'] . ' <i class="fas fa-angle-right fa-fw"></i> ' . $data['end'] . $variation;
+        }
+        else
+        {
+            return $data['start'];
+        }
     }
-    elseif ($data['variation'] < '0')
+    elseif (in_array($data['col'], array('products%', 'domains%', 'overall%')))
     {
-        $output .='<span class=""><i class="fad fa-angle-double-down fa-fw text-danger"></i> ' . $data['variation'] . $churnRate;
+        if ($data['churnRate'] > 0)
+        {
+            return '<span class="label label-danger">' . $data['churnRate'] . '%</span>';
+        }
+        else
+        {
+            return '-';
+        }
     }
-    else
-    {
-        $output .='<span class=""><i class="fas fa-equals fa-fw text-primary"></i></span>';
-    }
-
-    $output .= '<small class="pull-right">[';
-    $output .= '<span class="text-success">' . $data['increase'] . '++</span> <span class="text-danger">' . $data['decrease'] . '--</span> ' . $data['end'];
-    $output .= ']</small>';
-
-    return $output;
 }
 
 $chartdata['cols'][] = array('label'=>'Day','type'=>'string');
-$chartdata['cols'][] = array('label'=>'Completed Orders','type'=>'number');
-$chartdata['cols'][] = array('label'=>'New Invoices','type'=>'number');
-$chartdata['cols'][] = array('label'=>'Paid Invoices','type'=>'number');
-$chartdata['cols'][] = array('label'=>'Opened Tickets','type'=>'number');
-$chartdata['cols'][] = array('label'=>'Ticket Replies','type'=>'number');
-$chartdata['cols'][] = array('label'=>'Cancellation Requests','type'=>'number');
+$chartdata['cols'][] = array('label'=>'Products','type'=>'number');
+$chartdata['cols'][] = array('label'=>'Domains','type'=>'number');
+$chartdata['cols'][] = array('label'=>'Overall','type'=>'number');
 
 $args = array();
 $args['legendpos'] = 'right';
