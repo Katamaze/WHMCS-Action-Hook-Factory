@@ -3,6 +3,7 @@
 - [Understanding Action Hooks](#understanding-action-hooks)
 - [Perfect Your WHMCS](#perfect-your-whmcs)
 - [Free Hooks Collection](#free-hooks-collection)
+- [Free Reports Collection](#free-reports-collection)
 
 # WHMCS as Fast as Possible
 
@@ -370,3 +371,15 @@ The only requirement is that you remove any existing integration between WHMCS &
 When an order is set as fraud, prior to the change of status actually occurring, the hook sends email notifications to all existing WHMCS administrators (disabled administrators are ignored).
 
 [Get the Code »](https://github.com/Katamaze/WHMCS-Free-Action-Hooks/blob/master/hooks/NotifyFradulentOrders.php)
+
+# Free Reports Collection
+
+Yay! We didn't stop to action hooks :stuck_out_tongue: Below you can find a list of custom [WHMCS Reports](https://docs.whmcs.com/Reports) to give you more in-depth reporting and analytics on the performance of your business. Let's go!
+
+## Chrun Rate
+
+Rate at which customers stop doing business with you. The report includes charts and graphs to help you interpret the data.
+
+![image](https://katamaze.com/modules/addons/Mercury/uploads/files/Blog/92b1487d05bc7249c65af0f94cde4732/whmcs-churn-rate-report.png)
+
+[Get the Code »](https://github.com/Katamaze/WHMCS-Free-Action-Hooks/blob/master/reports/ChurnRate.php)
