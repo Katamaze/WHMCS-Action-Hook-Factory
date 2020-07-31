@@ -41,6 +41,7 @@ add_hook('ClientAreaHeadOutput', 1, function($vars)
         {
             $adminUsername = ''; // Optional for WHMCS 7.2 and later
             $results = localAPI('AcceptQuote', array('quoteid' => $data->id), $adminUsername);
+            $results = localAPI('SendEmail', array('messagename' => 'Invoice Created', 'id' => $results['invoiceid']), $adminUsername);
 
             return <<<HTML
 <script>
