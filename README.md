@@ -378,7 +378,16 @@ Yay! We didn't stop to action hooks :stuck_out_tongue: Below you can find a list
 
 ## Churun Rate
 
-Rate at which customers stop doing business with you. The report includes charts and graphs to help you interpret the data.
+Rate at which customers stop doing business with you. The report includes charts and graphs to help you interpret the data. For every month of the year you can see:
+
+* No. of products/domains at the start of the month
+* No. of products/domains at the end of the month
+* Monthly change in the No. of products/domains
+* No. of products/domains acquired during the month
+* No. of products/domains lost during the month
+* Churn rate (percentage)
+
+The reports also shows cumulative statistics (products & domains combined).
 
 ![image](https://katamaze.com/modules/addons/Mercury/uploads/files/Blog/92b1487d05bc7249c65af0f94cde4732/whmcs-churn-rate-report.png)
 
