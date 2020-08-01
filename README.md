@@ -376,7 +376,7 @@ When an order is set as fraud, prior to the change of status actually occurring,
 
 Yay! We didn't stop to action hooks :stuck_out_tongue: Below you can find a list of custom [WHMCS Reports](https://docs.whmcs.com/Reports) to give you more in-depth reporting and analytics on the performance of your business. Let's go!
 
-## Churun Rate
+## Churn Rate
 
 Rate at which customers stop doing business with you. The report includes charts and graphs to help you interpret the data. For every month of the year you can see:
 
