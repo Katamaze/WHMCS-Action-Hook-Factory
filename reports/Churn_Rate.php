@@ -146,8 +146,8 @@ function formatCell($data)
      * @param       string      $variation      Monthly change
      * @param       string      $increase       New purchases
      * @param       string      $decrease       New terminations
-     * @param       string      $start          No. of customers (at the start of the period)
-     * @param       string      $end            No. of customers (at the end of the period)
+     * @param       string      $start          No. of products/services (at the start of the period)
+     * @param       string      $end            No. of products/services (at the end of the period)
      * @param       string      $churnRate      Churn Rate
      * @return      string                      Formatted HTML cell
      */
