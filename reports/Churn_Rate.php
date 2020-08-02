@@ -89,7 +89,7 @@ for ($tmonth = 1; $tmonth <= 12; $tmonth++)
     // Products
     if ($tmonth == '1')
     {
-        $products['start'][$tmonth] = $products['active']['total'];
+        $products['start'][$tmonth] = $products['active']['previousYears'] + $products['start'][$tmonth];
         $products['end'][$tmonth] = $products['start'][$tmonth] + $products['variation'][$tmonth];
     }
     else
@@ -101,7 +101,7 @@ for ($tmonth = 1; $tmonth <= 12; $tmonth++)
     // Domains
     if ($tmonth == '1')
     {
-        $domains['start'][$tmonth] = $domains['active']['total'];
+        $domains['start'][$tmonth] = $domains['active']['previousYears'] + $domains['start'][$tmonth];
         $domains['end'][$tmonth] = $domains['start'][$tmonth] + $domains['variation'][$tmonth];
     }
     else
