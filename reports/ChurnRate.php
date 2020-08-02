@@ -113,16 +113,6 @@ for ($tmonth = 1; $tmonth <= 12; $tmonth++)
     $productsChurnRate = number_format(($products['terminated'][$tmonth] / $products['start'][$tmonth]) * 100, 1, '.', '') + 0;
     $domainsChurnRate = number_format(($domains['terminated'][$tmonth] / $domains['start'][$tmonth]) * 100, 1, '.', '') + 0;
 
-    // Overall
-    $activeOverall = $activeProducts + $activeDomains;
-    $overallStart[$tmonth] = $activeOverall;
-    $reportvalues['overallCumulative'][$key] = $activeOverall;
-    $overallNew = $productsNew + $domainsNew;
-    $overallTerminated = $productsTerminated + $domainsTerminated;
-    $overallCumulative = $productsCumulative + $domainsCumulative;
-    $overallVariation = $productVariation + $domainVariation;
-    $overallChurnRate = $productChurnRate + $domainChurnRate;
-
     $reportdata['tablevalues'][] = array(
         $dateMonthYear,
         formatCell(array('col' => 'products=', 'variation' => $products[$tmonth]['variation'], 'start' => $products['start'][$tmonth], 'end' => $products['end'][$tmonth])),
