@@ -395,4 +395,4 @@ The reports also shows cumulative statistics (products & domains combined). Chur
 
 ![image](https://katamaze.com/modules/addons/Mercury/uploads/files/Blog/92b1487d05bc7249c65af0f94cde4732/whmcs-churn-rate-report-2.png)
 
-[Get the Code »](https://github.com/Katamaze/WHMCS-Free-Action-Hooks/blob/master/reports/ChurnRate.php)
+[Get the Code »](https://github.com/Katamaze/WHMCS-Free-Action-Hooks/blob/master/reports/Churn_Rate.php)
