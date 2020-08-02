@@ -13,18 +13,18 @@
 use WHMCS\Carbon;
 use WHMCS\Database\Capsule;
 
-if (!defined("WHMCS")) {
-    die("This file cannot be accessed directly");
+if (!defined('WHMCS')) {
+    die('This file cannot be accessed directly');
 }
 
 $dateFilter = Carbon::create($year, $month, 1);
 $startOfMonth = $dateFilter->startOfMonth()->toDateTimeString();
 $endOfMonth = $dateFilter->endOfMonth()->toDateTimeString();
 
-$reportdata["title"] = 'Churn Rate for ' . $year;
-$reportdata["description"] = "Rate at which customers stop doing business with you.";
-$reportdata["yearspagination"] = true;
-$reportdata["tableheadings"] = array(
+$reportdata['title'] = 'Churn Rate for ' . $year;
+$reportdata['description'] = 'Rate at which customers stop doing business with you. Visit <a href="https://github.com/Katamaze/WHMCS-Free-Action-Hooks#churn-rate" target="_blank">Github</a> or this <a href="https://katamaze.com/blog/32/whmcs-action-hooks-collection-2020-updated-monthly" target="_blank">post</a> if you need help interpreting data. Refer to this article for <a href="https://katamaze.com/docs/billing-extension/39/client-area#Customer-Retention" target="_blank">customer retention</a>.';
+$reportdata['yearspagination'] = true;
+$reportdata['tableheadings'] = array(
     'Date',
     'Products',
     '<strong class="text-success"><i class="far fa-plus-square"></i></strong>',
@@ -41,19 +41,41 @@ $reportdata["tableheadings"] = array(
 );
 
 $reportvalues = array();
+$mothMatrix = array('1' => '0', '2' => '0', '3' => '0', '4' => '0', '5' => '0', '6' => '0', '7' => '0', '8' => '0', '9' => '0', '10' => '0', '11' => '0', '12' => '0');
 
 // Products/Services
-$groupBy = Capsule::raw('date_format(`regdate`, "%Y-%c")');
-$reportvalues['productsNew'] = Capsule::table('tblhosting')->whereYear('regdate', '=', $year)->where('domainstatus', 'Active')->groupBy($groupBy)->orderBy('regdate')->pluck(Capsule::raw('count(id) as total'), Capsule::raw('date_format(`regdate`, "%Y-%c") as month'));
-$groupBy = Capsule::raw('date_format(`nextduedate`, "%Y-%c")');
-$reportvalues['productsTerminated'] = Capsule::table('tblhosting')->whereYear('nextduedate', '=', $year)->where('nextduedate', '<=', $dateFilter->format('Y-m-d'))->whereNotIn('billingcycle', ['One Time', 'Completed'])->groupBy($groupBy)->orderBy('nextduedate')->pluck(Capsule::raw('count(id) as total'), Capsule::raw('date_format(`nextduedate`, "%Y-%c") as month'));
-$activeProducts = Capsule::table('tblhosting')->where('domainstatus', 'Active')->pluck(Capsule::raw('count(id) as total'))[0];
+$groupBy = Capsule::raw('date_format(`regdate`, "%c")');
+$products['active']['previousYears'] = Capsule::table('tblhosting')->whereYear('regdate', '<=', $year - 1)->whereYear('nextduedate', '=', $year)->whereNotIn('billingcycle', ['One Time', 'Completed'])->pluck(Capsule::raw('count(id) as total'))[0];
+$products['active']['currentYear'] = Capsule::table('tblhosting')->whereYear('regdate', '=', $year)->where('domainstatus', 'Active')->whereNotIn('billingcycle', ['One Time', 'Completed'])->groupBy($groupBy)->pluck(Capsule::raw('count(id) as total'), Capsule::raw('date_format(`regdate`, "%c") as month'));
+$products['active']['currentYear'] = $products['active']['currentYear'] + $mothMatrix;
+ksort($products['active']['currentYear']);
+$products['active']['total'] = $products['active']['previousYears'] + array_sum($products['active']['currentYear']);
+$groupBy = Capsule::raw('date_format(`nextduedate`, "%c")');
+$products['terminated'] = Capsule::table('tblhosting')->whereYear('nextduedate', '=', $year)->where('nextduedate', '<=', $dateFilter->format('Y-m-d'))->whereNotIn('billingcycle', ['One Time', 'Completed'])->groupBy($groupBy)->orderBy('nextduedate')->pluck(Capsule::raw('count(id) as total'), Capsule::raw('date_format(`nextduedate`, "%c") as month'));
+$products['terminated'] = $products['terminated'] + $mothMatrix;
+ksort($products['terminated']);
+$products['variation'] = array_map('subtract', $products['active']['currentYear'], $products['terminated']);
+$products['variation'] = array_combine(range(1, count($products['variation'])), array_values($products['variation']));
 
 // Domains
-$groupBy = Capsule::raw('date_format(`registrationdate`, "%Y-%c")');
-$reportvalues['domainsNew'] = Capsule::table('tbldomains')->where('status', 'Active')->whereYear('registrationdate', '=', $year)->groupBy($groupBy)->orderBy('registrationdate')->pluck(Capsule::raw('count(id) as total'), Capsule::raw('date_format(`registrationdate`, "%Y-%c") as month'));
-$groupBy = Capsule::raw('date_format(`nextduedate`, "%Y-%c")');
-$reportvalues['domainsTerminated'] = Capsule::table('tbldomains')->whereYear('nextduedate', '=', $year)->where('nextduedate', '<=', $dateFilter->format('Y-m-d'))->groupBy($groupBy)->orderBy('nextduedate')->pluck(Capsule::raw('count(id) as total'), Capsule::raw('date_format(`nextduedate`, "%Y-%c") as month'));
+$groupBy = Capsule::raw('date_format(`registrationdate`, "%c")');
+$domains['active']['previousYears'] = Capsule::table('tbldomains')->whereYear('registrationdate', '<=', $year - 1)->whereYear('nextduedate', '=', $year)->pluck(Capsule::raw('count(id) as total'))[0];
+$domains['active']['currentYear'] = Capsule::table('tbldomains')->whereYear('registrationdate', '=', $year)->where('status', 'Active')->groupBy($groupBy)->pluck(Capsule::raw('count(id) as total'), Capsule::raw('date_format(`registrationdate`, "%c") as month'));
+$domains['active']['currentYear'] = $domains['active']['currentYear'] + $mothMatrix;
+ksort($domains['active']['currentYear']);
+$domains['active']['total'] = $domains['active']['previousYears'] + array_sum($domains['active']['currentYear']);
+$groupBy = Capsule::raw('date_format(`nextduedate`, "%c")');
+$domains['terminated'] = Capsule::table('tbldomains')->whereYear('nextduedate', '=', $year)->where('nextduedate', '<=', $dateFilter->format('Y-m-d'))->groupBy($groupBy)->orderBy('nextduedate')->pluck(Capsule::raw('count(id) as total'), Capsule::raw('date_format(`nextduedate`, "%c") as month'));
+$domains['terminated'] = $domains['terminated'] + $mothMatrix;
+ksort($domains['terminated']);
+$domains['variation'] = array_map('subtract', $domains['active']['currentYear'], $domains['terminated']);
+$domains['variation'] = array_combine(range(1, count($domains['variation'])), array_values($domains['variation']));
+
+// Domains
+$groupBy = Capsule::raw('date_format(`registrationdate`, "%c")');
+$reportvalues['domainsNew'] = Capsule::table('tbldomains')->where('status', 'Active')->whereYear('registrationdate', '=', $year)->groupBy($groupBy)->orderBy('registrationdate')->pluck(Capsule::raw('count(id) as total'), Capsule::raw('date_format(`registrationdate`, "%c") as month'));
+$groupBy = Capsule::raw('date_format(`nextduedate`, "%c")');
+$reportvalues['domainsTerminated'] = Capsule::table('tbldomains')->whereYear('nextduedate', '=', $year)->where('nextduedate', '<=', $dateFilter->format('Y-m-d'))->groupBy($groupBy)->orderBy('nextduedate')->pluck(Capsule::raw('count(id) as total'), Capsule::raw('date_format(`nextduedate`, "%c") as month'));
 $activeDomains = Capsule::table('tbldomains')->where('status', 'Active')->pluck(Capsule::raw('count(id) as total'))[0];
 
 for ($tmonth = 1; $tmonth <= 12; $tmonth++)
@@ -63,27 +85,33 @@ for ($tmonth = 1; $tmonth <= 12; $tmonth++)
     $date = Carbon::create($year, $tmonth, 1);
     $dateMonthYear = $date->format('M Y');
     $dateMonth = $date->format('M');
-    $key = $year . '-' . $tmonth;
 
     // Products
-    $activeProducts = $activeProducts + $reportvalues['productsNew'][$key];
-    $productStart[$tmonth] = $activeProducts;
-    $reportvalues['productsCumulative'][$key] = $activeProducts;
-    $productsNew = isset($reportvalues['productsNew'][$key]) ? $reportvalues['productsNew'][$key] : '0';
-    $productsTerminated = isset($reportvalues['productsTerminated'][$key]) ? $reportvalues['productsTerminated'][$key] : '0';
-    $productsCumulative = isset($reportvalues['productsCumulative'][$key]) ? $reportvalues['productsCumulative'][$key] : '0';
-    $productVariation = $productsNew - $productsTerminated;
-    $productChurnRate = number_format(($productsTerminated / $productStart[($tmonth == '1' ? '1' : $tmonth - 1)]) * 100, 1, '.', '') + 0;
+    if ($tmonth == '1')
+    {
+        $products['start'][$tmonth] = $products['active']['previousYears'];
+        $products['end'][$tmonth] = $products['start'][$tmonth] + $products['variation'][$tmonth];
+    }
+    else
+    {
+        $products['start'][$tmonth] = $products['end'][$tmonth - 1];
+        $products['end'][$tmonth] = $products['start'][$tmonth] + $products['variation'][$tmonth];
+    }
 
     // Domains
-    $activeDomains = $activeDomains + $reportvalues['domainsNew'][$key];
-    $domainStart[$tmonth] = $activeDomains;
-    $reportvalues['domainsCumulative'][$key] = $activeDomains;
-    $domainsNew = isset($reportvalues['domainsNew'][$key]) ? $reportvalues['domainsNew'][$key] : '0';
-    $domainsTerminated = isset($reportvalues['domainsTerminated'][$key]) ? $reportvalues['domainsTerminated'][$key] : '0';
-    $domainsCumulative = isset($reportvalues['domainsCumulative'][$key]) ? $reportvalues['domainsCumulative'][$key] : '0';
-    $domainVariation = $domainsNew - $domainsTerminated;
-    $domainChurnRate = number_format(($domainsTerminated / $domainStart[($tmonth == '1' ? '1' : $tmonth - 1)]) * 100, 1, '.', '') + 0;
+    if ($tmonth == '1')
+    {
+        $domains['start'][$tmonth] = $domains['active']['previousYears'];
+        $domains['end'][$tmonth] = $domains['start'][$tmonth] + $domains['variation'][$tmonth];
+    }
+    else
+    {
+        $domains['start'][$tmonth] = $domains['end'][$tmonth - 1];
+        $domains['end'][$tmonth] = $domains['start'][$tmonth] + $domains['variation'][$tmonth];
+    }
+
+    $productsChurnRate = number_format(($products['terminated'][$tmonth] / $products['start'][$tmonth]) * 100, 1, '.', '') + 0;
+    $domainsChurnRate = number_format(($domains['terminated'][$tmonth] / $domains['start'][$tmonth]) * 100, 1, '.', '') + 0;
 
     // Overall
     $activeOverall = $activeProducts + $activeDomains;
@@ -97,26 +125,26 @@ for ($tmonth = 1; $tmonth <= 12; $tmonth++)
 
     $reportdata['tablevalues'][] = array(
         $dateMonthYear,
-        formatCell(array('col' => 'products=', 'variation' => $productVariation, 'start' => $productStart[($tmonth == '1' ? '1' : $tmonth - 1)], 'end' => $productStart[($tmonth == '1' ? '1' : $tmonth - 1)] + $productVariation)),
-        formatCell(array('col' => 'products+', 'increase' => $productsNew)),
-        formatCell(array('col' => 'products-', 'decrease' => $productsTerminated)),
-        formatCell(array('col' => 'products%', 'churnRate' => $productChurnRate)),
-        formatCell(array('col' => 'domains=', 'variation' => $domainVariation, 'start' => $domainStart[($tmonth == '1' ? '1' : $tmonth - 1)], 'end' => $domainStart[($tmonth == '1' ? '1' : $tmonth - 1)] + $domainVariation)),
-        formatCell(array('col' => 'domains+', 'increase' => $domainsNew)),
-        formatCell(array('col' => 'domains-', 'decrease' => $domainsTerminated)),
-        formatCell(array('col' => 'domains%', 'churnRate' => $domainChurnRate)),
-        formatCell(array('col' => 'overall=', 'variation' => $overallVariation, 'start' => $overallStart[($tmonth == '1' ? '1' : $tmonth - 1)], 'end' => $overallStart[($tmonth == '1' ? '1' : $tmonth - 1)] + $overallVariation)),
-        formatCell(array('col' => 'overall+', 'increase' => $overallNew)),
-        formatCell(array('col' => 'overall-', 'decrease' => $overallTerminated)),
-        formatCell(array('col' => 'overall%', 'churnRate' => $overallChurnRate)),
+        formatCell(array('col' => 'products=', 'variation' => $products[$tmonth]['variation'], 'start' => $products['start'][$tmonth], 'end' => $products['end'][$tmonth])),
+        formatCell(array('col' => 'products+', 'increase' => $products['active']['currentYear'][$tmonth])),
+        formatCell(array('col' => 'products-', 'decrease' => $products['terminated'][$tmonth])),
+        formatCell(array('col' => 'products%', 'churnRate' => $productsChurnRate)),
+        formatCell(array('col' => 'domains=', 'variation' => $domains[$tmonth]['variation'], 'start' => $domains['start'][$tmonth], 'end' => $domains['end'][$tmonth])),
+        formatCell(array('col' => 'domains+', 'increase' => $domains['active']['currentYear'][$tmonth])),
+        formatCell(array('col' => 'domains-', 'decrease' => $domains['terminated'][$tmonth])),
+        formatCell(array('col' => 'domains%', 'churnRate' => $domainsChurnRate)),
+        formatCell(array('col' => 'overall=', 'variation' => $products[$tmonth]['variation'] + $domains[$tmonth]['variation'], 'start' => $products['start'][$tmonth] + $domains['start'][$tmonth], 'end' => $products['end'][$tmonth] + $domains['end'][$tmonth])),
+        formatCell(array('col' => 'overall+', 'increase' => $products['active']['currentYear'][$tmonth] + $domains['active']['currentYear'][$tmonth])),
+        formatCell(array('col' => 'overall-', 'decrease' => $products['terminated'][$tmonth] + $domains['terminated'][$tmonth])),
+        formatCell(array('col' => 'overall%', 'churnRate' => $productsChurnRate + $domainsChurnRate))
     );
 
     $chartdata['rows'][] = array(
         'c'=>array(
             array('v' => $dateMonth),
-            array('v' => (int)$productStart[($tmonth == '1' ? '1' : $tmonth - 1)] + $productVariation),
-            array('v' => (int)$domainStart[($tmonth == '1' ? '1' : $tmonth - 1)] + $domainVariation),
-            array('v' => (int)$overallStart[($tmonth == '1' ? '1' : $tmonth - 1)] + $overallVariation),
+            array('v' => (int)$products['end'][$tmonth]),
+            array('v' => (int)$domains['end'][$tmonth]),
+            array('v' => (int)$products['end'][$tmonth] + $domains['end'][$tmonth]),
         )
     );
 }
@@ -193,6 +221,11 @@ function formatCell($data)
             return '-';
         }
     }
+}
+
+function subtract($a, $b)
+{
+    return $a - $b;
 }
 
 $chartdata['cols'][] = array('label'=>'Day','type'=>'string');
