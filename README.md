@@ -389,6 +389,6 @@ Rate at which customers stop doing business with you. The report includes charts
 
 The reports also shows cumulative statistics (products & domains combined). Churn rate is usually connected to [customer retention](https://katamaze.com/docs/billing-extension/39/client-area#Customer-Retention). The linked article describes how to retain customers.
 
-![image](https://katamaze.com/modules/addons/Mercury/uploads/files/Blog/92b1487d05bc7249c65af0f94cde4732/whmcs-churn-rate-report.png)
+![image](https://katamaze.com/modules/addons/Mercury/uploads/files/Blog/92b1487d05bc7249c65af0f94cde4732/whmcs-churn-rate-report-2.png)
 
 [Get the Code »](https://github.com/Katamaze/WHMCS-Free-Action-Hooks/blob/master/reports/ChurnRate.php)
