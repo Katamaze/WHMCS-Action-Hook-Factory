@@ -45,7 +45,7 @@ $mothMatrix = array('1' => '0', '2' => '0', '3' => '0', '4' => '0', '5' => '0', 
 
 // Products/Services
 $groupBy = Capsule::raw('date_format(`regdate`, "%c")');
-$products['active']['previousYears'] = Capsule::table('tblhosting')->whereYear('regdate', '<=', $year - 1)->whereYear('nextduedate', '=', $year)->whereNotIn('billingcycle', ['One Time', 'Completed'])->pluck(Capsule::raw('count(id) as total'))[0];
+$products['active']['previousYears'] = Capsule::table('tblhosting')->whereYear('regdate', '<=', $year - 1)->where('domainstatus', 'Active')->whereNotIn('billingcycle', ['One Time', 'Completed'])->pluck(Capsule::raw('count(id) as total'))[0];
 $products['active']['currentYear'] = Capsule::table('tblhosting')->whereYear('regdate', '=', $year)->where('domainstatus', 'Active')->whereNotIn('billingcycle', ['One Time', 'Completed'])->groupBy($groupBy)->pluck(Capsule::raw('count(id) as total'), Capsule::raw('date_format(`regdate`, "%c") as month'));
 $products['active']['currentYear'] = $products['active']['currentYear'] + $mothMatrix;
 ksort($products['active']['currentYear']);
@@ -59,7 +59,7 @@ $products['variation'] = array_combine(range(1, count($products['variation'])), 
 
 // Domains
 $groupBy = Capsule::raw('date_format(`registrationdate`, "%c")');
-$domains['active']['previousYears'] = Capsule::table('tbldomains')->whereYear('registrationdate', '<=', $year - 1)->whereYear('nextduedate', '=', $year)->pluck(Capsule::raw('count(id) as total'))[0];
+$domains['active']['previousYears'] = Capsule::table('tbldomains')->whereYear('registrationdate', '<=', $year - 1)->where('status', 'Active')->pluck(Capsule::raw('count(id) as total'))[0];
 $domains['active']['currentYear'] = Capsule::table('tbldomains')->whereYear('registrationdate', '=', $year)->where('status', 'Active')->groupBy($groupBy)->pluck(Capsule::raw('count(id) as total'), Capsule::raw('date_format(`registrationdate`, "%c") as month'));
 $domains['active']['currentYear'] = $domains['active']['currentYear'] + $mothMatrix;
 ksort($domains['active']['currentYear']);
