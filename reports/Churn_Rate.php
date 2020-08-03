@@ -45,13 +45,13 @@ $mothMatrix = array('1' => '0', '2' => '0', '3' => '0', '4' => '0', '5' => '0', 
 
 // Products/Services
 $groupBy = Capsule::raw('date_format(`regdate`, "%c")');
-$products['active']['previousYears'] = Capsule::table('tblhosting')->whereYear('regdate', '<=', $year - 1)->where('domainstatus', 'Active')->whereNotIn('billingcycle', ['One Time', 'Completed'])->pluck(Capsule::raw('count(id) as total'))[0];
-$products['active']['currentYear'] = Capsule::table('tblhosting')->whereYear('regdate', '=', $year)->where('domainstatus', 'Active')->whereNotIn('billingcycle', ['One Time', 'Completed'])->groupBy($groupBy)->pluck(Capsule::raw('count(id) as total'), Capsule::raw('date_format(`regdate`, "%c") as month'));
+$products['active']['previousYears'] = Capsule::table('tblhosting')->whereYear('regdate', '<=', $year - 1)->where('domainstatus', 'Active')->whereNotIn('billingcycle', ['One Time', 'Completed', 'Free Account'])->pluck(Capsule::raw('count(id) as total'))[0];
+$products['active']['currentYear'] = Capsule::table('tblhosting')->whereYear('regdate', '=', $year)->where('domainstatus', 'Active')->whereNotIn('billingcycle', ['One Time', 'Completed', 'Free Account'])->groupBy($groupBy)->pluck(Capsule::raw('count(id) as total'), Capsule::raw('date_format(`regdate`, "%c") as month'));
 $products['active']['currentYear'] = $products['active']['currentYear'] + $mothMatrix;
 ksort($products['active']['currentYear']);
 $products['active']['total'] = $products['active']['previousYears'] + array_sum($products['active']['currentYear']);
 $groupBy = Capsule::raw('date_format(`nextduedate`, "%c")');
-$products['terminated'] = Capsule::table('tblhosting')->whereYear('nextduedate', '=', $year)->whereNotIn('billingcycle', ['One Time', 'Completed'])->groupBy($groupBy)->orderBy('nextduedate')->pluck(Capsule::raw('count(id) as total'), Capsule::raw('date_format(`nextduedate`, "%c") as month'));
+$products['terminated'] = Capsule::table('tblhosting')->whereYear('nextduedate', '=', $year)->whereNotIn('billingcycle', ['One Time', 'Completed', 'Free Account'])->groupBy($groupBy)->orderBy('nextduedate')->pluck(Capsule::raw('count(id) as total'), Capsule::raw('date_format(`nextduedate`, "%c") as month'));
 $products['terminated'] = $products['terminated'] + $mothMatrix;
 ksort($products['terminated']);
 $products['variation'] = array_map('subtract', $products['active']['currentYear'], $products['terminated']);
