@@ -393,6 +393,8 @@ The reports also shows cumulative statistics (products & domains combined). Chur
 (Lost products/domains at the end of Time Period / Acquired products/domains at the end of Time Period) * 100
 ```
 
+The report doesn't take into account products/services with any of the following billing cycles: `One Time` `Completed` `Free Account`. The reason for that is very simple. Such products don't support renewals hence churn rate doesn't apply.
+
 ![image](https://katamaze.com/modules/addons/Mercury/uploads/files/Blog/92b1487d05bc7249c65af0f94cde4732/whmcs-churn-rate-report-2.png)
 
 [Get the Code »](https://github.com/Katamaze/WHMCS-Free-Action-Hooks/blob/master/reports/Churn_Rate.php)
