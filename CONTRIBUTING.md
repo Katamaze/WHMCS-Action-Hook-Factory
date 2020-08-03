@@ -68,3 +68,7 @@ if ($country == 'IT')
     }
 }
 ```
+
+## Single quote `'` or double `"` ?
+
+Whenever possible use choose single quotes over double ones.
