@@ -51,7 +51,7 @@ $products['active']['currentYear'] = $products['active']['currentYear'] + $mothM
 ksort($products['active']['currentYear']);
 $products['active']['total'] = $products['active']['previousYears'] + array_sum($products['active']['currentYear']);
 $groupBy = Capsule::raw('date_format(`nextduedate`, "%c")');
-$products['terminated'] = Capsule::table('tblhosting')->whereYear('nextduedate', '=', $year)->where('nextduedate', '<=', $dateFilter->format('Y-m-d'))->whereNotIn('billingcycle', ['One Time', 'Completed'])->groupBy($groupBy)->orderBy('nextduedate')->pluck(Capsule::raw('count(id) as total'), Capsule::raw('date_format(`nextduedate`, "%c") as month'));
+$products['terminated'] = Capsule::table('tblhosting')->whereYear('nextduedate', '=', $year)->whereNotIn('billingcycle', ['One Time', 'Completed'])->groupBy($groupBy)->orderBy('nextduedate')->pluck(Capsule::raw('count(id) as total'), Capsule::raw('date_format(`nextduedate`, "%c") as month'));
 $products['terminated'] = $products['terminated'] + $mothMatrix;
 ksort($products['terminated']);
 $products['variation'] = array_map('subtract', $products['active']['currentYear'], $products['terminated']);
@@ -65,7 +65,7 @@ $domains['active']['currentYear'] = $domains['active']['currentYear'] + $mothMat
 ksort($domains['active']['currentYear']);
 $domains['active']['total'] = $domains['active']['previousYears'] + array_sum($domains['active']['currentYear']);
 $groupBy = Capsule::raw('date_format(`nextduedate`, "%c")');
-$domains['terminated'] = Capsule::table('tbldomains')->whereYear('nextduedate', '=', $year)->where('nextduedate', '<=', $dateFilter->format('Y-m-d'))->groupBy($groupBy)->orderBy('nextduedate')->pluck(Capsule::raw('count(id) as total'), Capsule::raw('date_format(`nextduedate`, "%c") as month'));
+$domains['terminated'] = Capsule::table('tbldomains')->whereYear('nextduedate', '=', $year)->groupBy($groupBy)->orderBy('nextduedate')->pluck(Capsule::raw('count(id) as total'), Capsule::raw('date_format(`nextduedate`, "%c") as month'));
 $domains['terminated'] = $domains['terminated'] + $mothMatrix;
 ksort($domains['terminated']);
 $domains['variation'] = array_map('subtract', $domains['active']['currentYear'], $domains['terminated']);
