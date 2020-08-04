@@ -113,7 +113,7 @@ for ($tmonth = 1; $tmonth <= 12; $tmonth++)
     $productsChurnRate = number_format(($products['terminated'][$tmonth] / $products['start'][$tmonth]) * 100, 1, '.', '') + 0;
     $domainsChurnRate = number_format(($domains['terminated'][$tmonth] / $domains['start'][$tmonth]) * 100, 1, '.', '') + 0;
 
-    if ($tmonth == str_replace('0', '', $month))
+    if ($tmonth == str_replace('0', '', $month) AND date('Y') == $year)
     {
         $dateMonthYear = '<span data-toggle="tooltip" data-placement="top" title="" data-original-title="Statistics for current month are inaccurate as renewals still have to occur">' . $dateMonthYear . ' <i class="fas fa-info-circle" style="opacity:0.8;"></i></span>';
     }
