@@ -78,11 +78,6 @@ $groupBy = Capsule::raw('date_format(`nextduedate`, "%c")');
 $reportvalues['domainsTerminated'] = Capsule::table('tbldomains')->whereYear('nextduedate', '=', $year)->where('nextduedate', '<=', $dateFilter->format('Y-m-d'))->groupBy($groupBy)->orderBy('nextduedate')->pluck(Capsule::raw('count(id) as total'), Capsule::raw('date_format(`nextduedate`, "%c") as month'));
 $activeDomains = Capsule::table('tbldomains')->where('status', 'Active')->pluck(Capsule::raw('count(id) as total'))[0];
 
-
-echo "<pre>";
-print_r($products['variation']);
-echo "</pre>";
-
 for ($tmonth = 1; $tmonth <= 12; $tmonth++)
 {
     if (date('Y') == $year AND $tmonth > str_replace('0', '', $month)): continue; endif;
