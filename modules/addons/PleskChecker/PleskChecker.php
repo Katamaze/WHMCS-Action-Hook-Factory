@@ -17,7 +17,7 @@ function PleskChecker_config()
 {
 	$configarray = array(
 		"name" => "Plesk Checker",
-	    "description" => 'Check for missing integrations between WHMCS Hosting Accounts and Plesk Servers',
+	    	"description" => 'Check for missing integrations between WHMCS Hosting Accounts and Plesk Servers',
 		"version" => "1.0.0",
 		"author" => "<a href=\"http://katamaze.com\" target=\"_blank\" title=\"katamaze.com\"><img src=\"../modules/addons/PleskFixer/images/katamaze.png\"></a>",
 		"fields" => array());
