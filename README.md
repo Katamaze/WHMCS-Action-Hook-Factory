@@ -4,6 +4,7 @@
 - [Perfect Your WHMCS](#perfect-your-whmcs)
 - [Free Hooks Collection](#free-hooks-collection)
 - [Free Reports Collection](#free-reports-collection)
+- [Free Modules Collection](#free-modules-collection)
 
 # WHMCS as Fast as Possible
 
@@ -398,3 +399,13 @@ The report doesn't take into account products/services with any of the following
 ![image](https://katamaze.com/modules/addons/Mercury/uploads/files/Blog/92b1487d05bc7249c65af0f94cde4732/whmcs-churn-rate-report-3.png)
 
 [Get the Code »](https://github.com/Katamaze/WHMCS-Free-Action-Hooks/blob/master/reports/Churn_Rate.php)
+
+# Free Modules Collection
+
+Yep, we also give you some handy modules that can help you with most common operations in WHMCS.
+
+## Plesk Checker
+
+> Error code: 1013. Error message: Customer with external id 'XXX' is not found in panel. Please contact your service provider.
+
+aaaa
