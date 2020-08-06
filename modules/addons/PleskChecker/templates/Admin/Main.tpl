@@ -80,7 +80,7 @@
 	<div class="panel panel-default">
 		<div class="panel-heading" role="tab" id="heading3">
 			<h4 class="panel-title">
-				<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse3" aria-expanded="false" aria-controls="collapse3">Invalid Plesk Usernames {if $checker.error.usernameSpace}<span class="label label-danger">{$checker.error.usernameSpace|count}</span>{else}<span class="label label-success">Ok</span>{/if}</a>
+				<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse3" aria-expanded="false" aria-controls="collapse3">Invalid Plesk Username {if $checker.error.usernameSpace}<span class="label label-danger">{$checker.error.usernameSpace|count}</span>{else}<span class="label label-success">Ok</span>{/if}</a>
 			</h4>
 		</div>
 		<div id="collapse3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading3">
