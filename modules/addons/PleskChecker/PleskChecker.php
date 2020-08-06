@@ -51,7 +51,5 @@ function PleskChecker_output($vars)
 	$checker = new Checker();
 	
 	$smarty->assign('checker', $checker->Plesk());
-    $smarty->display(dirname(__FILE__) . '/templates/Admin/Header.tpl');
-    $smarty->display(dirname(__FILE__) . '/templates/Admin/Main.tpl');
-    $smarty->display(dirname(__FILE__) . '/templates/Admin/Footer.tpl');
+    	$smarty->display(dirname(__FILE__) . '/templates/Admin/Main.tpl');
 }
