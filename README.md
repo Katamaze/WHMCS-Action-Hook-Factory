@@ -410,7 +410,7 @@ Yep, we also give you some handy modules that can help you with most common oper
 
 If you're using Plesk I bet you've seen this error at least once in your life. If you try to google it, you'll find a page from [Plesk documentation](https://support.plesk.com/hc/en-us/articles/115002988474-Cannot-login-to-Plesk-via-WHMCS-after-migration-Customer-with-external-id-whmcs-plesk-XX-is-not-found-in-panel) that claims this bug (I quote) *«has been already fixed for all versions»*. Okay, that's a bullshit :shit:
 
-Probably I'll need a week to explain why this error appears and fixing it requires your manual intervention on `psa` database (Plesk) and more in particular on `clients.external_id` column as described in the article I previously linked. We created a simple module that makes this "find and replace" process less frustrating and quicker.
+Probably I'll need a week to explain why this error appears. Let's skip this boring part. Fixing the error requires your manual intervention on `psa` database (Plesk) and more in particular on `clients.external_id` column as described in the article previously linked. We created a module that makes this "find and replace" process less frustrating and quicker.
 
 ![image](https://katamaze.com/modules/addons/Mercury/uploads/files/Blog/92b1487d05bc7249c65af0f94cde4732/whmcs-plesk-checker-external-id.png)
 
