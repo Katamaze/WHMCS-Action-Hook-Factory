@@ -10,46 +10,102 @@
  *
  */
 
-if (!defined("WHMCS"))
-	die("This file cannot be accessed directly");
+use WHMCS\Database\Capsule;
 
-function PleskChecker_config()
+class Checker
 {
-	$configarray = array(
-		"name" => "Plesk Checker",
-	    	"description" => 'Check for missing integrations between WHMCS Hosting Accounts and Plesk Servers',
-		"version" => "1.0.0",
-		"author" => "<a href=\"http://katamaze.com\" target=\"_blank\" title=\"katamaze.com\"><img src=\"../modules/addons/PleskFixer/images/katamaze.png\"></a>",
-		"fields" => array());
+    function Plesk()
+    {
+        foreach (Capsule::table('tblservers')->where('type', 'plesk')->where('disabled', '0')->where('hostname', '!=', '')->where('username', '!=', '')->where('password', '!=', '')->get(['id', 'ipaddress', 'hostname', 'username', 'password']) as $v)
+        {
+            $v->hostname = ($v->hostname ? $v->hostname : $v->ipaddress);
+            unset($v->ipaddress);
+            $v->password = Decrypt($v->password);
+            $output['servers'][$v->id] = (array) $v;
+        }
 
-	return $configarray;
-}
+        if (!$output['servers']): return array('error' => 'No Plesk servers Found. Please, check your <a href="configservers.php">Servers.</a>'); endif;
+        $servers = array_column($output['servers'], 'id');
 
-function PleskChecker_activate()
-{
+        $externalID = Capsule::table('mod_pleskaccounts')->pluck('panelexternalid', 'userid');
 
-}
+        foreach (Capsule::table('tblhosting')->whereIn('domainstatus', ['Active', 'Suspended', 'Completed'])->whereIn('server', $servers)->get(['id', 'username', 'domain', 'server', 'userid']) as $v)
+        {
+            if (!$v->domain)
+            {
+                $output['error']['noDomain'][$v->id] = array('id' => $v->id, 'userid' => $v->userid, 'server' => $v->server);
+            }
+            elseif (!$v->username)
+            {
+                $output['error']['noUsername'][$v->id] = array('id' => $v->id, 'userid' => $v->userid, 'domain' => $v->domain, 'server' => $v->server);
+            }
+            elseif (count(explode(' ', $v->username)) > 1)
+            {
+                $output['error']['usernameSpace'][$v->id] = array('id' => $v->id, 'userid' => $v->userid, 'domain' => $v->domain, 'username' => $v->username, 'server' => $v->server);
+            }
+            else
+            {
+                $output['servers'][$v->server]['accounts'] = $i++;
+                $temp[$v->server][$v->id] = array('id' => $v->id, 'userid' => $v->userid, 'username' => $v->username, 'external-id' => $externalID[$v->userid]);
+            }
+        }
 
-function PleskChecker_deactivate()
-{
+        if ($temp)
+        {
+            require_once('PleskApiClient.php');
 
-}
+            foreach ($temp as $serverID => $packages)
+            {
+                $plesk = new PleskApiClient($output['servers'][$serverID]['hostname']);
+                $plesk->setCredentials($output['servers'][$serverID]['username'], $output['servers'][$serverID]['password']);
 
-function PleskChecker_upgrade($vars)
-{
+                $request .= <<<EOF
+<packet version="1.6.3.0">
+<customer>
+EOF;
 
-}
+                foreach ($packages as $pid => $package)
+                {
+                    $login = ($package['external-id'] ? $package['external-id'] : $package['username']);
 
-function PleskChecker_output($vars)
-{
-	$smarty = new Smarty();
-	$smarty->caching = false;
-	$smarty->compile_dir = $GLOBALS['templates_compiledir'];
-	$smarty->setTemplateDir(array(0 => '../modules/addons/' . $conf->module->name . '/templates/Admin'));
+                    $request .= <<<EOF
+    <get>
+        <filter>
+            <login>{$login}</login>
+        </filter>
+        <dataset>
+            <gen_info/>
+        </dataset>
+    </get>
+EOF;
+                }
 
-	require_once('core/Katamaze/Checker.php');
-	$checker = new Checker();
-	
-	$smarty->assign('checker', $checker->Plesk());
-    	$smarty->display(dirname(__FILE__) . '/templates/Admin/Main.tpl');
+                $request .= <<<EOF
+</customer>
+</packet>
+EOF;
+
+                $response = $plesk->request($request);
+                $response = new SimpleXMLElement($response);
+                $i = 0;
+
+                foreach ($response->customer->get as $v)
+                {
+                    if ($v->result->errcode == '1013')
+                    {
+                        $key = array_search($v->result->{'filter-id'}->__toString(), $externalID);
+                        $hostingList = Capsule::table('tblhosting')->where('userid', $key)->where('server', $serverID)->pluck('domain', 'id');
+                        $output['error']['externalID'][$serverID][$key] = array('userid' => $key, 'external_id' => $v->result->{'filter-id'}->__toString(), 'server' => $serverID, 'accounts' => $hostingList);
+                        $i++;
+                    }
+                }
+
+                unset($plesk, $request, $response);
+            }
+
+            $output['externalIDCount'] = $i;
+        }
+
+        return $output;
+    }
 }
