@@ -122,7 +122,7 @@
 				</table>
 			</div>
 		</div>
-	</div>
+    </div>
 	<div class="panel panel-default">
 		<div class="panel-heading" role="tab" id="heading4">
 			<h4 class="panel-title">
