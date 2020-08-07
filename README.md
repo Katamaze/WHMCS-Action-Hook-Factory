@@ -414,6 +414,6 @@ Probably I'll need a week to explain why this error appears. Let's skip this bor
 
 We created a module that makes this "find and replace" process less frustrating and quicker. Not only it automatically detects all hosting accounts that are returing `Error code: 1013` but also additional ones. Here's a preview.
 
-![image](https://katamaze.com/modules/addons/Mercury/uploads/files/Blog/92b1487d05bc7249c65af0f94cde4732/whmcs-plesk-checker-external-id.png)
+![image](https://katamaze.com/modules/addons/Mercury/uploads/files/Blog/92b1487d05bc7249c65af0f94cde4732/whmcs-plesk-checker-external-id-2.png)
 
 [Get the Code »](https://github.com/Katamaze/WHMCS-Free-Action-Hooks/tree/master/modules/addons/PleskChecker)
