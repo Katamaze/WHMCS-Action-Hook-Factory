@@ -46,7 +46,7 @@ class Checker
             else
             {
                 $output['servers'][$v->server]['accounts'] = $i++;
-                $temp[$v->server][] = array('id' => $v->id, 'userid' => $v->userid, 'username' => $v->username, 'external-id' => $externalID[$v->userid]);
+                $temp[$v->server][] = array('id' => $v->id, 'userid' => $v->userid, 'username' => $v->username, 'external-id' => $externalID[$v->userid], 'domain' => $v->domain, 'server' => $v->server);
             }
         }
 
@@ -82,15 +82,20 @@ EOF;
 </customer>
 </packet>
 EOF;
-
                 $response = $plesk->request($request);
                 $response = new SimpleXMLElement($response);
                 $response = json_decode(json_encode($response), true);
                 $i = 0;
+                $z = 0;
 
                 foreach ($response['customer']['get'] as $k => $v)
                 {
-                    if ($v['result']['errcode'] == '1013' OR (!$v['result']['data']['gen_info']['external-id'] AND $temp[$serverID][$k]['external-id']))
+                    if ($v['result']['errtext'] == 'client does not exist')
+                    {
+                        $output['error']['clientNotFound'][$temp[$serverID][$k]['userid']] = array('id' => $temp[$serverID][$k]['id'], 'userid' => $temp[$serverID][$k]['userid'], 'domain' => $temp[$serverID][$k]['domain'], 'username' => $temp[$serverID][$k]['username'], 'server' => $temp[$serverID][$k]['server']);
+                        $z++;
+                    }
+                    elseif (!$v['result']['data']['gen_info']['external-id'] AND $temp[$serverID][$k]['external-id'])
                     {
                         $hostingList = Capsule::table('tblhosting')->where('userid', $temp[$serverID][$k]['userid'])->where('server', $serverID)->pluck('domain', 'id');
                         $output['error']['externalID'][$serverID][$temp[$serverID][$k]['userid']] = array('userid' => $temp[$serverID][$k]['userid'], 'external_id' => $v['result']['filter-id'], 'server' => $serverID, 'accounts' => $hostingList);
@@ -102,6 +107,7 @@ EOF;
             }
 
             $output['externalIDCount'] = $i;
+            $output['clientNotFoundCount'] = $z;
         }
 
         return $output;
