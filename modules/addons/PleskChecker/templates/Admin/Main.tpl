@@ -178,4 +178,49 @@
 			</div>
 		</div>
 	</div>
+	<div class="panel panel-default">
+		<div class="panel-heading" role="tab" id="heading5">
+			<h4 class="panel-title">
+				<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse5" aria-expanded="false" aria-controls="collapse5">Not using Package-specific Username {if $checker.clientNotFoundCount}<span class="label label-warning">{$checker.clientNotFoundCount}</span>{else}<span class="label label-success">Ok</span>{/if}</a>
+			</h4>
+		</div>
+		<div id="collapse5" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading5">
+			<div class="panel-body">
+				<table class="datatable" width="100%">
+					<tbody>
+						<tr>
+							<th>User ID</th>
+							<th>Hosting ID</th>
+							<th>Domain</th>
+							<th>Username</th>
+							<th>Server</th>
+						</tr>
+						{foreach $checker.error.clientNotFound as $k => $v}
+						<tr>
+							<td class="text-left">
+								<a href="clientssummary.php?userid={$v.userid}">#{$v.userid}</a>
+							</td>
+							<td class="text-left">
+								<a href="clientsservices.php?userid={$v.userid}&id={$v.id}">#{$v.id}</a>
+							</td>
+							<td class="text-left">
+								<a href="clientsservices.php?userid={$v.userid}&id={$v.id}">{$v.domain}</a>
+							</td>
+							<td class="text-left">
+								{$v.username}
+							</td>
+							<td class="text-left">
+								<a href="configservers.php">{$checker.servers[$v.server].hostname}</a>
+							</td>
+						</tr>
+						{foreachelse}
+						<tr>
+							<td colspan="5" class="text-center">No Issue Found</td>
+						</tr>
+						{/foreach}
+					</tbody>
+				</table>
+			</div>
+		</div>
+    </div>
 </div>
