@@ -86,14 +86,12 @@ EOF;
                 $response = new SimpleXMLElement($response);
                 $response = json_decode(json_encode($response), true);
                 $i = 0;
-                $z = 0;
 
                 foreach ($response['customer']['get'] as $k => $v)
                 {
                     if ($v['result']['errtext'] == 'client does not exist')
                     {
                         $output['error']['clientNotFound'][$temp[$serverID][$k]['userid']] = array('id' => $temp[$serverID][$k]['id'], 'userid' => $temp[$serverID][$k]['userid'], 'domain' => $temp[$serverID][$k]['domain'], 'username' => $temp[$serverID][$k]['username'], 'server' => $temp[$serverID][$k]['server']);
-                        $z++;
                     }
                     elseif (!$v['result']['data']['gen_info']['external-id'] AND $temp[$serverID][$k]['external-id'])
                     {
@@ -107,7 +105,6 @@ EOF;
             }
 
             $output['externalIDCount'] = $i;
-            $output['clientNotFoundCount'] = $z;
         }
 
         return $output;
