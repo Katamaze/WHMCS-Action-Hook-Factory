@@ -96,7 +96,7 @@ EOF;
                     elseif (!$v['result']['data']['gen_info']['external-id'] AND $temp[$serverID][$k]['external-id'])
                     {
                         $hostingList = Capsule::table('tblhosting')->where('userid', $temp[$serverID][$k]['userid'])->where('server', $serverID)->pluck('domain', 'id');
-                        $output['error']['externalID'][$serverID][$temp[$serverID][$k]['userid']] = array('userid' => $temp[$serverID][$k]['userid'], 'external_id' => $v['result']['filter-id'], 'server' => $serverID, 'accounts' => $hostingList);
+                        $output['error']['externalID'][$serverID][$temp[$serverID][$k]['userid']] = array('userid' => $temp[$serverID][$k]['userid'], 'username' => $v['result']['filter-id'], 'external_id' => $temp[$serverID][$k]['external-id'], 'server' => $serverID, 'accounts' => $hostingList);
                         $i++;
                     }
                 }
