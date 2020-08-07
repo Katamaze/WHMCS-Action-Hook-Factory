@@ -181,7 +181,7 @@
 	<div class="panel panel-default">
 		<div class="panel-heading" role="tab" id="heading5">
 			<h4 class="panel-title">
-				<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse5" aria-expanded="false" aria-controls="collapse5">Not using Package-specific Username {if $checker.clientNotFoundCount}<span class="label label-warning">{$checker.clientNotFoundCount}</span>{else}<span class="label label-success">Ok</span>{/if}</a>
+				<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse5" aria-expanded="false" aria-controls="collapse5">Not using Package-specific Username {if $checker.error.clientNotFound}<span class="label label-warning">{$checker.error.clientNotFound|count}</span>{else}<span class="label label-success">Ok</span>{/if}</a>
 			</h4>
 		</div>
 		<div id="collapse5" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading5">
