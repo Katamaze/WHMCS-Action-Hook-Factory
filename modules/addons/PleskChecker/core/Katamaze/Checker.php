@@ -50,6 +50,8 @@ class Checker
             }
         }
 
+        $i = 0;
+
         if ($temp)
         {
             require_once('PleskApiClient.php');
@@ -85,7 +87,6 @@ EOF;
                 $response = $plesk->request($request);
                 $response = new SimpleXMLElement($response);
                 $response = json_decode(json_encode($response), true);
-                $i = 0;
 
                 foreach ($response['customer']['get'] as $k => $v)
                 {
