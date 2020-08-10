@@ -64,6 +64,7 @@ Scripts are provided free of charge "as is" without warranty of any kind. **You'
 * [Login as Client Language](#login-as-client-language)
 * [Prevent Emails to be sent based on Client Group](#prevent-emails-to-be-sent-based-on-client-group)
 * [Abort Auto-Provisioning when there's a Note in the Order](#abort-auto-provisioning-when-theres-a-note-in-the-order)
+* [Rename Addon Module Label](#rename-addon-module-label)
 * [Add Button next to Module's Functions](#add-button-next-to-modules-functions)
 * [Announcements Meta Description](#announcements-meta-description)
 * [Promotion Code in Email Template](#promotion-code-in-email-template)
