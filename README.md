@@ -294,6 +294,12 @@ A customer orders a VPS and adds notes to request a particular configuration tha
 
 [Get the Code »](https://github.com/Katamaze/WHMCS-Action-Hooks/blob/master/hooks/NoteInTheOrderAbortAutoProvisioning.php)
 
+## Rename Addon Module Label
+
+Let's say you don't like how we named [Mercury](https://katamaze.com/whmcs/mercury/specifications), [Commission Manager](https://katamaze.com/whmcs/commission-manager/specifications), [Billing Extension](https://katamaze.com/whmcs/billing-extension/specifications) and you want to change them to *CMS*, *Affiliates* and *Accounting*. Simply change the following hook accordingly. Of course it will work with any WHMCS module.
+
+[Get the Code »](https://github.com/Katamaze/WHMCS-Free-Action-Hooks/blob/master/hooks/RenameAddonModuleLabel.php)
+
 ## Add Button next to Module's Functions
 
 Here is how you can add a button next to *Create*, *Suspend*, *Unsuspend* (...) functions in product/service view.
