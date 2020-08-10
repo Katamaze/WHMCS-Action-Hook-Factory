@@ -297,7 +297,9 @@ A customer orders a VPS and adds notes to request a particular configuration tha
 
 ## Rename Addon Module Label
 
-Let's say you don't like how we named [Mercury](https://katamaze.com/whmcs/mercury/specifications), [Commission Manager](https://katamaze.com/whmcs/commission-manager/specifications), [Billing Extension](https://katamaze.com/whmcs/billing-extension/specifications) and you want to change them to *CMS*, *Affiliates* and *Accounting*. Simply change the following hook accordingly. Of course it will work with any WHMCS module.
+Let's say you don't like how we named [Mercury](https://katamaze.com/whmcs/mercury/specifications), [Commission Manager](https://katamaze.com/whmcs/commission-manager/specifications), [Billing Extension](https://katamaze.com/whmcs/billing-extension/specifications) addon modules and you want to change them to *CMS*, *Affiliates* and *Accounting*. Simply change the following hook accordingly. It works with any WHMCS module.
+
+![image](https://katamaze.com/modules/addons/Mercury/uploads/files/Blog/92b1487d05bc7249c65af0f94cde4732/whmcs-rename-addon-module-name-label-menu.png)
 
 [Get the Code »](https://github.com/Katamaze/WHMCS-Free-Action-Hooks/blob/master/hooks/RenameAddonModuleLabel.php)
 
