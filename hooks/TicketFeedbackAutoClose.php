@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Bulk Auto Recalculate Client Domain & Products/Services
+ * Ticket Feedback on Auto Close
  *
  * @package     WHMCS
  * @copyright   Katamaze
