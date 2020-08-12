@@ -56,6 +56,7 @@ Scripts are provided free of charge "as is" without warranty of any kind. **You'
 * [One-off Products/Services & Domain purchase require Product/Service](#one-off-productsservices--domain-purchase-require-productservice)
 * [New Clients as Affiliates](#new-clients-as-affiliates)
 * [Send Email & Add Reply on Ticket Status Change](#send-email--add-reply-on-ticket-status-change)
+* [Ticket Feedback on Auto Close via Escalation Rule](#ticket-feedback-on-auto-close-via-escalation-rule)
 * [Client to Group based on Purchased Product/Service](#client-to-group-based-on-purchased-productservice)
 * [Prevent changes to Client Custom Fields](#prevent-changes-to-client-custom-fields)
 * [Quote to Invoice conversion without redirect](#quote-to-invoice-conversion-without-redirect)
@@ -231,7 +232,7 @@ When the status of a support ticket changes, WHMCS doesn't send any notification
 
 ## Ticket Feedback on Auto Close via Escalation Rule
 
-Sending [feedback request](https://docs.whmcs.com/Support_Tab#Ticket_Closure_Feedback_Request) on ticket closure is a great way to measure customer support satifaction however this feature has missing piece. A ticket in WHMCS turns into `Closed` in three different way:
+Sending [feedback request](https://docs.whmcs.com/Support_Tab#Ticket_Closure_Feedback_Request) on ticket closure is a great way to measure customer support satifaction however this feature has a missing piece. A ticket in WHMCS can be set as `Closed` in three different ways:
 
 * When the ticket is closed by an admin user
 * For inactivity `Setup > Automation Settings > Support Ticket Settings > Close Inactive Tickets`
