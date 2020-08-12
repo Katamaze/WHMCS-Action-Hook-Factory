@@ -231,11 +231,11 @@ When the status of a support ticket changes, WHMCS doesn't send any notification
 
 ## Ticket Feedback on Auto Close via Escalation Rule
 
-Sending (feedback request)[https://docs.whmcs.com/Support_Tab#Ticket_Closure_Feedback_Request] on ticket closure is a great way to measure customer support satifaction however this feature has missing piece. A ticket in WHMCS turns into `Closed` in three different way:
+Sending [feedback request](https://docs.whmcs.com/Support_Tab#Ticket_Closure_Feedback_Request) on ticket closure is a great way to measure customer support satifaction however this feature has missing piece. A ticket in WHMCS turns into `Closed` in three different way:
 
 * When the ticket is closed by an admin user
 * For inactivity `Setup > Automation Settings > Support Ticket Settings > Close Inactive Tickets`
-* Via (escalation rules)[https://docs.whmcs.com/Support_Ticket_Escalations]
+* Via [escalation rules](https://docs.whmcs.com/Support_Ticket_Escalations)
 
 WHMCS doesn't send any feedback request when the ticket is closed with an escalation rule. The hook in question solves this problem. The only requirements are the following:
 
