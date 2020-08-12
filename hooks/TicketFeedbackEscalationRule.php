@@ -12,7 +12,7 @@
 
 use WHMCS\Database\Capsule;
 
-add_hook('PostAutomationTask', 1, function($vars)
+add_hook('AfterCronJob', 1, function($vars)
 {
     $cronFrequency = '5'; // In minutes. Normally you should configure it to run every 5 minutes
     $adminUsername = ''; // Optional for WHMCS 7.2 and later
