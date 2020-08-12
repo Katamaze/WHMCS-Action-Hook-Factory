@@ -229,6 +229,21 @@ When the status of a support ticket changes, WHMCS doesn't send any notification
 
 [Get the Code »](https://github.com/Katamaze/WHMCS-Action-Hooks/blob/master/hooks/SendEmailAndAddReplyOnTicketStatusChange.php)
 
+## Ticket Feedback on Auto Close via Escalation Rule
+
+Sending (feedback request)[https://docs.whmcs.com/Support_Tab#Ticket_Closure_Feedback_Request] on ticket closure is a great way to measure customer support satifaction however this feature has missing piece. A ticket in WHMCS turns into `Closed` in three different way:
+
+* When the ticket is closed by an admin user
+* For inactivity `Setup > Automation Settings > Support Ticket Settings > Close Inactive Tickets`
+* Via (escalation rules)[https://docs.whmcs.com/Support_Ticket_Escalations]
+
+WHMCS doesn't send any feedback request when the ticket is closed with an escalation rule. The hook in question solves this problem. The only requirements are the following:
+
+* `$cronFrequency` must be equal to your [System Cron Frequency](https://docs.whmcs.com/Crons#System_Cron)
+* You must use unique names for escalation rules
+
+[Get the Code »](https://github.com/Katamaze/WHMCS-Free-Action-Hooks/blob/master/hooks/TicketFeedbackEscalationRule.php)
+
 ## Client to Group based on Purchased Product/Service
 
 Automatically assign a customer to a Client Group based on the product/service he/she has just purchased. The script triggers as soon as the order is accepted both manually and automatically.
