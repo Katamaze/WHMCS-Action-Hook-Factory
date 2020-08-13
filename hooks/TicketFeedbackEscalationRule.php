@@ -19,7 +19,7 @@ add_hook('AfterCronJob', 1, function($vars)
 
     if ($cronFrequency)
     {
-        $ticketLog = Capsule::select(Capsule::raw('SELECT t1.tid, SUBSTRING_INDEX(SUBSTRING_INDEX(t1.action, " \"", -1), "\" ", 1) as escalationrule FROM tblticketlog AS t1 LEFT JOIN tbltickets AS t2 ON t1.tid = t2.id WHERE t1.date >= DATE_SUB(NOW(), INTERVAL ' . $cronFrequency . ' MINUTE) AND t1.action LIKE ("Escalation Rule \"%%\" applied") GROUP BY t1.tid'));
+        $ticketLog = Capsule::select(Capsule::raw('SELECT t1.tid, SUBSTRING_INDEX(SUBSTRING_INDEX(t1.action, " \"", -1), "\" ", 1) as escalationrule FROM tblticketlog AS t1 LEFT JOIN tbltickets AS t2 ON t1.tid = t2.id WHERE t1.date >= DATE_FORMAT(DATE_SUB(NOW(), INTERVAL 5 MINUTE), "%Y-%m-%d %H:%i:00") AND t1.action LIKE ("Escalation Rule \"%%\" applied") GROUP BY t1.tid'));
         $ticketLog = json_decode(json_encode($ticketLog), true);
         $escalationRules = Capsule::table('tblticketescalations')->where('newstatus', 'Closed')->pluck('name');
 
