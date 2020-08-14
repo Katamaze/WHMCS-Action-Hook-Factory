@@ -263,7 +263,7 @@ $groups['1'] = array('1', '2', '3');
 $groups['2'] = array('4');
 ```
 
-They key of `$groups` (`['1']`, `['2']`) represents the client group ID. The array (`array('1', '2', '3')`) stores product IDs. Let's put it into practice:
+They key of `$groups` (`['1']`, `['2']`) represents the client group ID. `array()` stores product IDs. Let's put it into practice:
 
 * Customer A purchases product `1`. He goes to client group ID `1`
 * Customer B purchases product `2`. He still goes to client group ID `1`
