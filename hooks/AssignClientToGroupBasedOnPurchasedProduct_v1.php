@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Assign Client to Group based on purchased Product/Service
+ * Assign Client to Group based on purchased Product/Service v1
  *
  * @package     WHMCS
  * @copyright   Katamaze
