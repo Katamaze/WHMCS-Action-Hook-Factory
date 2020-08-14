@@ -245,6 +245,14 @@ WHMCS doesn't send any feedback request when the ticket is closed with an escala
 
 [Get the Code »](https://github.com/Katamaze/WHMCS-Free-Action-Hooks/blob/master/hooks/TicketFeedbackEscalationRule.php)
 
+## Disable Feedback for Unanswered Tickets
+
+WHMCS always sends feedback requests for closed tickets, no matter what. This includes the case of customers closing tickets before you even had the chance to add a reply. For example a customer opens a ticket to report an error on his website. Few minutes later he realizes that it was his fault and closes the ticket. WHMCS still sends feedback request.
+
+This is quite strange as you are asking customers to let you know the *«Quality of your experience»* with your support team. No one has even answered! Some customers could even give you a very bad rating because they feel you're tricking them. Let's patch this hole with this hook.
+
+[Get the Code »](https://github.com/Katamaze/WHMCS-Free-Action-Hooks/blob/master/hooks/DisableFeedbackRequestsForUnansweredTickets.php)
+
 ## Client to Group based on Purchased Product/Service
 
 Automatically assign a customer to a Client Group based on the product/service he/she has just purchased. The script triggers as soon as the order is accepted both manually and automatically.
