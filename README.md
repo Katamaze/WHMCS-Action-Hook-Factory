@@ -256,7 +256,20 @@ This is quite strange as you are asking customers to let you know the *«Quality
 
 ## Client to Group based on Purchased Product/Service
 
-Automatically assign a customer to a Client Group based on the product/service he/she has just purchased. The script triggers as soon as the order is accepted both manually and automatically.
+Automatically assign customers to a client group based on purchased product/service. The script triggers as soon as the order is accepted both manually and automatically and works only for customers that haven't been assigned to anyone yet. Below we're going to show you how to define group/product pairs. Let's take this code as example.
+
+```
+$groups['1'] = array('1', '2', '3');
+$groups['2'] = array('4');
+```
+
+They key of `$groups` (`['1']`, `['2']`) represents the client group ID. The array (`array('1', '2', '3')`) stores product IDs. Let's put it into practice:
+
+* Customer A purchases product `1`. He goes to client group ID `1`
+* Customer B purchases product `2`. He still goes to client group ID `1`
+* Customer C purchases product `4`. He goes to client group ID `2`
+* Customer D purchases product `5`. No action taken
+* Customer E purchases product `1` and is already assigned to a client group. No action taken
 
 [Get the Code »](https://github.com/Katamaze/WHMCS-Action-Hooks/blob/master/hooks/AssignClientToGroupBasedOnPurchasedProduct.php)
 
