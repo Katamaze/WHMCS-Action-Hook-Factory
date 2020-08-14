@@ -256,7 +256,7 @@ This is quite strange as you are asking customers to let you know the *«Quality
 
 ## Client to Group based on Purchased Product/Service
 
-Automatically assign customers to a client group based on purchased product/service. The script triggers as soon as the order is accepted both manually and automatically and works only for customers that haven't been assigned to anyone yet. Below we're going to show you how to define group/product pairs. Let's take this code as example.
+Automatically assign customers to a client group based on purchased product/service. It works only for customers that haven't been assigned to any group yet. Below we're going to show you how to define group/product pairs. Let's take this code as example.
 
 ```
 $groups['1'] = array('1', '2', '3');
@@ -271,7 +271,10 @@ They key of `$groups` (`['1']`, `['2']`) represents the client group ID. `array(
 * Customer D purchases product `5`. No action taken
 * Customer E purchases product `1` and is already assigned to a client group. No action taken
 
-[Get the Code »](https://github.com/Katamaze/WHMCS-Action-Hooks/blob/master/hooks/AssignClientToGroupBasedOnPurchasedProduct.php)
+The script is available in two versions. The configuration is the same. What changes is the hook point:
+
+* [AcceptOrder version](https://github.com/Katamaze/WHMCS-Action-Hooks/blob/master/hooks/AssignClientToGroupBasedOnPurchasedProduct_v1.php) assigns the group when the order is accepted - both manually and automatically
+* [EmailPreSend version](https://github.com/Katamaze/WHMCS-Action-Hooks/blob/master/hooks/AssignClientToGroupBasedOnPurchasedProduct_v2.php) assign the group a moment before WHMCS sends the `Welcome Email` - any type (eg. Hosting, VPS, CodeGuard, Marketgoo...). This way the group just assigned is immediately ready for use in email templates
 
 ## Prevent changes to Client Custom Fields
 
