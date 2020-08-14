@@ -29,7 +29,7 @@ add_hook('AfterCronJob', 1, function($vars)
 
             if ($key)
             {
-                $preventFeebackBouncing = Capsule::table('tblactivitylog')->where('userid', $v['userid'])->where('desription', 'LIKE', 'Support Ticket Feedback Request Sent %')->pluck('id');
+                $preventFeebackBouncing = Capsule::table('tblactivitylog')->where('userid', $v['userid'])->where('description', 'LIKE', 'Support Ticket Feedback Request Sent %')->pluck('id');
 
                 if (!$preventFeebackBouncing)
                 {
