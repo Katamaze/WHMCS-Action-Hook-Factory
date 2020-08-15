@@ -62,6 +62,7 @@ Scripts are provided free of charge "as is" without warranty of any kind. **You'
 * [Prevent changes to Client Custom Fields](#prevent-changes-to-client-custom-fields)
 * [Quote to Invoice conversion without redirect](#quote-to-invoice-conversion-without-redirect)
 * [Remove/Hide Breadcrumb](#removehide-breadcrumb)
+* [Knowledgebase Author](#knowledgebase-author)
 * [Knowledgebase Last Updated Date](#knowledgebase-last-updated-date)
 * [Login as Client Language](#login-as-client-language)
 * [Prevent Emails to be sent based on Client Group](#prevent-emails-to-be-sent-based-on-client-group)
