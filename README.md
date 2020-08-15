@@ -309,6 +309,14 @@ Bonus tip: if you don't want to use an action hook, you can use the following CS
 
 [Get the Code »](https://github.com/Katamaze/WHMCS-Action-Hooks/blob/master/hooks/RemovePortalHomeBreadcrumb.php)
 
+## Knowledgebase Author
+
+WHMCS doesn't store any information about authors - the administrator who published a KB article. This hook automatically adds a new column in `tblknowledgebase` named `kt_author` (the `kt_` prefix is important to avoid naming collision). When an admin adds an article to KB the same hook stores author information and shows it on screen.
+
+![image](https://katamaze.com/modules/addons/Mercury/uploads/files/Blog/92b1487d05bc7249c65af0f94cde4732/whmcs-author-knowledgebase-article.png)
+
+[Get the Code »](https://github.com/Katamaze/WHMCS-Free-Action-Hooks/blob/master/hooks/KnowledgebaseAuthor.php)
+
 ## Knowledgebase Last Updated Date
 
 WHMCS doesn't store *Last Updated* date when you edit Knowledgebase articles but you can retreive from Activity Log. It's not a stylish solution but it works. The hook adds `lastupdated` element to the existing `$kbarticle` Smarty array. Once done, change your KB template accordingly.
