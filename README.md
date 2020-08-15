@@ -312,7 +312,7 @@ Bonus tip: if you don't want to use an action hook, you can use the following CS
 
 ## Knowledgebase Author
 
-WHMCS doesn't store any information about authors - the administrator who published a KB article. This hook automatically adds a new column in `tblknowledgebase` named `kt_author` (the `kt_` prefix is important to avoid naming collision). When an admin adds an article to KB the same hook stores author information and shows it on screen.
+WHMCS doesn't store any information about author - the administrator who published a KB article. This hook automatically adds a new column in `tblknowledgebase` named `kt_author` (the `kt_` prefix is important to avoid naming collision). When an admin adds an article to KB the same hook stores author information and shows it on screen.
 
 ![image](https://katamaze.com/modules/addons/Mercury/uploads/files/Blog/92b1487d05bc7249c65af0f94cde4732/whmcs-author-knowledgebase-article.png)
 
