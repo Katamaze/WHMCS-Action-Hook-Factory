@@ -70,7 +70,7 @@ Scripts are provided free of charge "as is" without warranty of any kind. **You'
 * [Rename Addon Module Label](#rename-addon-module-label)
 * [Add Button next to Module's Functions](#add-button-next-to-modules-functions)
 * [Announcements Meta Description](#announcements-meta-description)
-* [Promotion Code in Email Template](#promotion-code-in-email-template)
+* [Code in Email Template](#promotion-code-in-email-template)
 * [Automatically Accept Order when Invoice is Paid](#automatically-accept-order-when-invoice-is-paid)
 * [Cancel Order when an Invoice is being Cancelled](#cancel-order-when-an-invoice-is-being-cancelled)
 * [Hide Google Invisible reCAPTCHA Badge](#hide-google-invisible-recaptcha-badge)
@@ -393,6 +393,27 @@ Here is a preview of the message.
 ![image](https://katamaze.com/modules/addons/Mercury/uploads/files/Blog/92b1487d05bc7249c65af0f94cde4732/whmcs-promotion-code-invoice-payment-confirmation.png)
 
 [Get the Code »](https://github.com/Katamaze/WHMCS-Action-Hooks/blob/master/hooks/CouponCodeInEmailTemplate.php)
+
+## Promotions array in Email Template
+
+This hook is capable of including information about existing promotions (aka coupon codes) in any email notifications sent by WHMCS. It adds `{$promotions}` Smarty array to any of the specified email templates. You only need to iterate records with a Smarty `{foreach}` as follows.
+
+```
+{if $promotions}
+Active Promotions:
+<ul>
+	{foreach from=$promotions item=promo}
+	<li>{$promo.code} ({if $promo.type == 'Percentage'}{$promo.value}% discount{elseif $promo.type == 'Fixed Amount'}{$promo.value} € discount{elseif $promo.type == 'Price Override'}Price override {$promo.value} €{elseif $promo.type == 'Free Setup'}Free Seutp{/if})</li>
+	{/foreach}
+</ul>
+{/if}
+```
+
+Here's a preview of the following code.
+
+![image](https://katamaze.com/modules/addons/Mercury/uploads/files/Blog/92b1487d05bc7249c65af0f94cde4732/whmcs-promotions-coupon-in-email-templates.png)
+
+[Get the Code »](https://github.com/Katamaze/WHMCS-Free-Action-Hooks/blob/master/hooks/PromotionsArrayInEmailTemplates.php)
 
 ## Automatically Accept Order when Invoice is Paid
 
