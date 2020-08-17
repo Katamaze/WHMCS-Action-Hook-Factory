@@ -410,7 +410,7 @@ Active Promotions:
 {/if}
 ```
 
-Here's a preview of the following code.
+Here's a preview of the following code. Keep in mind that the hook automatically removes expired promotions from the array.
 
 ![image](https://katamaze.com/modules/addons/Mercury/uploads/files/Blog/92b1487d05bc7249c65af0f94cde4732/whmcs-promotions-coupon-in-email-templates.png)
 
