@@ -70,7 +70,8 @@ Scripts are provided free of charge "as is" without warranty of any kind. **You'
 * [Rename Addon Module Label](#rename-addon-module-label)
 * [Add Button next to Module's Functions](#add-button-next-to-modules-functions)
 * [Announcements Meta Description](#announcements-meta-description)
-* [Code in Email Template](#promotion-code-in-email-template)
+* [Promotion Code in Email Template](#promotion-code-in-email-template)
+* [Promotions array in Email Templates](#promotions-array-in-email-templates)
 * [Automatically Accept Order when Invoice is Paid](#automatically-accept-order-when-invoice-is-paid)
 * [Cancel Order when an Invoice is being Cancelled](#cancel-order-when-an-invoice-is-being-cancelled)
 * [Hide Google Invisible reCAPTCHA Badge](#hide-google-invisible-recaptcha-badge)
@@ -394,7 +395,7 @@ Here is a preview of the message.
 
 [Get the Code »](https://github.com/Katamaze/WHMCS-Action-Hooks/blob/master/hooks/CouponCodeInEmailTemplate.php)
 
-## Promotions array in Email Template
+## Promotions array in Email Templates
 
 This hook is capable of including information about existing promotions (aka coupon codes) in any email notifications sent by WHMCS. It adds `{$promotions}` Smarty array to any of the specified email templates. You only need to iterate records with a Smarty `{foreach}` as follows.
 
