@@ -17,6 +17,23 @@ add_hook('EmailPreSend', 1, function($vars)
 
     if (in_array($vars['messagename'], $emailTemplates))
     {
-        return array('promotions' => json_decode(json_encode(Capsule::table('tblpromotions')->get()), true));
+        $promotions = json_decode(json_encode(Capsule::table('tblpromotions')->get()), true);
+
+        foreach ($promotions as $k => $v)
+        {
+            if ($v['expirationdate'] != '0000-00-00' AND date('Y-m-d') >= $v['expirationdate'])
+            {
+                unset($promotions[$k]);
+                continue;
+            }
+
+            if ($v['maxuses'] > '0' AND $v['uses'] == $v['maxuses'])
+            {
+                unset($promotions[$k]);
+                continue;
+            }
+        }
+
+        return array('promotions' => $promotions);
     }
 });
