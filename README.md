@@ -258,20 +258,31 @@ This is quite strange as you are asking customers to let you know the *«Quality
 
 ## Client to Group based on Purchased Product/Service
 
-Automatically assign customers to a client group based on purchased product/service. It works only for customers that haven't been assigned to any group yet. Below we're going to show you how to define group/product pairs. Let's take this code as example.
+Automatically assign customers to a client group based on purchased product/service, product addon and configurable options. It works only for customers that haven't been assigned to any group yet. Below we're going to show you how to define group/product pairs. Let's take this code as example.
 
 ```
-$groups['1'] = array('1', '2', '3');
-$groups['2'] = array('4');
+$groups['products']['1'] = array('1', '2', '3');
+$groups['products']['2'] = array('4');
+$groups['productaddons']['1'] = array('2');
+$groups['configurableoption']['3'] = array('5' => true, '6' => array('7', '8', '10'));
 ```
 
-They key of `$groups` (`['1']`, `['2']`) represents the client group ID. `array()` stores product IDs. Let's put it into practice:
+They key of the first level of `$groups` array (eg. `['products']`) can assume the following values:
+
+* `products` for group/product pairs
+* `productaddons` for group/product addon pairs
+* `configurableoption` for group/configurable option paris
+
+They key of the second level of `$groups` array (`['1']`, `['2']`) represents the client group ID. `array()` stores product IDs, product addon IDs or configurable options. Let's put it into practice explaining what the above configuration means:
 
 * Customer A purchases product `1`. He goes to client group ID `1`
 * Customer B purchases product `2`. He still goes to client group ID `1`
 * Customer C purchases product `4`. He goes to client group ID `2`
 * Customer D purchases product `5`. No action taken
 * Customer E purchases product `1` and is already assigned to a client group. No action taken
+* Customer F purchases product addon `2`. He goes to client group ID `1`
+* Customer G purchases a product selecting any value of configurable option ID `5`. He goes to client group ID `3`
+* Customer H purchases a product selecting any `7`, `8` or `10` options of configurable option ID `6`. He goes to client group ID `3`
 
 The script is available in two versions. The configuration is the same. What changes is the hook point:
 
