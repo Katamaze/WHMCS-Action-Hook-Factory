@@ -18,31 +18,35 @@ add_hook('AcceptOrder', 1, function($vars)
     $groups['products']['1'] = array('1', '2', '3');
     $groups['products']['2'] = array('4');
     $groups['productaddons']['1'] = array('2');
-    $groups['configurableoption']['3'] = array('5' => true, '6' => array('7', '8', '10'));
+    $groups['configurableoption']['1'] = array('5' => array('7', '8', '10'), '6' => true);
 
+    if (!$groups): return; endif;
     $userID = Capsule::table('tblorders')->where('id', $vars['orderid'])->pluck('userid')[0];
     $orderedProducts = Capsule::table('tblhosting')->where('orderid', $vars['orderid'])->pluck('packageid', 'id');
     $orderedProductAddons = Capsule::table('tblhostingaddons')->where('orderid', $vars['orderid'])->pluck('addonid');
 
-    foreach (Capsule::select(Capsule::raw('SELECT t1.relid, t1.configid, t1.optionid, t1.qty, t2.optiontype FROM tblhostingconfigoptions as t1 LEFT JOIN tblproductconfigoptions AS t2 ON t1.configid = t2.id LEFT JOIN tblproductconfigoptionssub AS t3 ON t1.optionid = t3.id WHERE t1.relid IN (\'' . implode('\',\'', array_keys($orderedProducts)) . '\')')) as $v)
+    if ($groups['configurableoption'])
     {
-        $relid = $v->relid;
-        $configid = $v->configid;
-
-        if (in_array($v->optiontype, array('3', '4')))
+        foreach (Capsule::select(Capsule::raw('SELECT t1.relid, t1.configid, t1.optionid, t1.qty, t2.optiontype FROM tblhostingconfigoptions as t1 LEFT JOIN tblproductconfigoptions AS t2 ON t1.configid = t2.id LEFT JOIN tblproductconfigoptionssub AS t3 ON t1.optionid = t3.id WHERE t1.relid IN (\'' . implode('\',\'', array_keys($orderedProducts)) . '\')')) as $v)
         {
-            $value = ($v->qty ? true : false);
-        }
-        else
-        {
-            $value = $v->optionid;
-        }
+            $relid = $v->relid;
+            $configid = $v->configid;
 
-        unset($v);
+            if (in_array($v->optiontype, array('3', '4')))
+            {
+                $value = ($v->qty ? true : false);
+            }
+            else
+            {
+                $value = $v->optionid;
+            }
 
-        if ($value)
-        {
-            $orderedConfigurableOptions[$relid][$configid] = $value;
+            unset($v);
+
+            if ($value)
+            {
+                $orderedConfigurableOptions[$relid][$configid] = $value;
+            }
         }
     }
 
@@ -81,7 +85,6 @@ add_hook('AcceptOrder', 1, function($vars)
             }
             else
             {
-
                 foreach ($orderedConfigurableOptions as $target)
                 {
                     if (in_array($configID, $target))
