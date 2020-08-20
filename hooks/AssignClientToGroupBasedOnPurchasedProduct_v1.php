@@ -18,7 +18,7 @@ add_hook('AcceptOrder', 1, function($vars)
     $groups['products']['1'] = array('1', '2', '3');
     $groups['products']['2'] = array('4');
     $groups['productaddons']['1'] = array('2');
-    $groups['configurableoption']['1'] = array('5' => array('7', '8', '10'), '6' => true);
+    $groups['configurableoption']['3'] = array('5' => true, '6' => array('7', '8', '10'));
 
     $userID = Capsule::table('tblorders')->where('id', $vars['orderid'])->pluck('userid')[0];
     $orderedProducts = Capsule::table('tblhosting')->where('orderid', $vars['orderid'])->pluck('packageid', 'id');
