@@ -282,7 +282,7 @@ They key of the second level of `$groups` array (`['1']`, `['2']`) represents th
 * Customer E purchases product `1` and is already assigned to a client group. No action taken
 * Customer F purchases product addon `2`. He goes to client group ID `1`
 * Customer G purchases a product selecting any value of configurable option ID `5`. He goes to client group ID `3`
-* Customer H purchases a product selecting any `7`, `8` or `10` options of configurable option ID `6`. He goes to client group ID `3`
+* Customer H purchases a product selecting specifically `7`, `8` or `10` options of configurable option ID `6`. He goes to client group ID `3`
 
 The script is available in two versions. The configuration is the same. What changes is the hook point:
 
