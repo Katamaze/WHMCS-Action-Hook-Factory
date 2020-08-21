@@ -273,7 +273,7 @@ They key of the first level of `$groups` array (eg. `['products']`) can assume t
 * `productaddons` for group/product addon pairs
 * `configurableoption` for group/configurable option paris
 
-They key of the second level of `$groups` array (`['1']`, `['2']`) represents the client group ID. `array()` stores product IDs, product addon IDs or configurable options. Let's put it into practice explaining what the above configuration means:
+They key of the second level of `$groups` array (`['1']`, `['2']`) represents the client group ID. `array()` stores product IDs, product addon IDs and configurable options. Let's put it into practice explaining what the above configuration means:
 
 * Customer A purchases product `1`. He goes to client group ID `1`
 * Customer B purchases product `2`. He still goes to client group ID `1`
