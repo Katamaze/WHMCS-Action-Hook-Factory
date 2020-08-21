@@ -507,7 +507,7 @@ Yep, we also give you some handy modules that can help you with most common oper
 
 > Error code: 1013. Error message: Customer with external id 'whmcs_plesk_XX' is not found in panel.
 
-If you're using Plesk I bet you've seen this error at least once in your life. If you try to google it, you'll find a page from [Plesk documentation](https://support.plesk.com/hc/en-us/articles/115002988474-Cannot-login-to-Plesk-via-WHMCS-after-migration-Customer-with-external-id-whmcs-plesk-XX-is-not-found-in-panel) that claims this bug (I quote) *«has been already fixed for all versions»*. Okay, that's a bullshit :shit:
+If you're using Plesk I bet you've seen this error at least once in your life. If you try to google it, you'll find a page from [Plesk documentation](https://support.plesk.com/hc/en-us/articles/115002988474-Cannot-login-to-Plesk-via-WHMCS-after-migration-Customer-with-external-id-whmcs-plesk-XX-is-not-found-in-panel) that claims this bug (I quote) *«has been already fixed for all versions»*. I respectfully disagree.
 
 Probably I'll need a week to explain why this error appears. Let's skip this boring part. Fixing the error requires your manual intervention on `psa` database (Plesk) and more in particular on `clients.external_id` column as described in the article previously linked.
 
