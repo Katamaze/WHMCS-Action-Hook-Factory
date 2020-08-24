@@ -58,7 +58,7 @@ Scripts are provided free of charge "as is" without warranty of any kind. **You'
 * [Send Email & Add Reply on Ticket Status Change](#send-email--add-reply-on-ticket-status-change)
 * [Ticket Feedback on Auto Close via Escalation Rule](#ticket-feedback-on-auto-close-via-escalation-rule)
 * [Disable Feedback for Unanswered Tickets](#disable-feedback-for-unanswered-tickets)
-* [Client to Group based on Purchased Product/Service](#client-to-group-based-on-purchased-productservice)
+* [Client to Group based on Purchased Product/Service](#client-to-group-based-on-purchased-items)
 * [Prevent changes to Client Custom Fields](#prevent-changes-to-client-custom-fields)
 * [Quote to Invoice conversion without redirect](#quote-to-invoice-conversion-without-redirect)
 * [Remove/Hide Breadcrumb](#removehide-breadcrumb)
@@ -256,7 +256,7 @@ This is quite strange as you are asking customers to let you know the *«Quality
 
 [Get the Code »](https://github.com/Katamaze/WHMCS-Free-Action-Hooks/blob/master/hooks/DisableFeedbackRequestsForUnansweredTickets.php)
 
-## Client to Group based on Purchased Product/Service
+## Client to Group based on Purchased Items
 
 Automatically assign customers to a client group based on purchased product/service, product addon and configurable options. It works only for customers that haven't been assigned to any group yet. Below we're going to show you how to define group/product pairs. Let's take this code as example.
 
