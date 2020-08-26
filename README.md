@@ -439,6 +439,12 @@ When an invoice is `Mark Cancelled` the related order (if exists) is automatical
 
 [Get the Code »](https://github.com/Katamaze/WHMCS-Free-Action-Hooks/blob/master/hooks/CancelOrderOnInvoiceCancelled.php)
 
+## Ban Order Expiration
+
+WHMCS administrators can ban IP on the fly directly from order view. The problem with this feature is that WHMCS automatically sets the ban to expire the last day of current year. As you can imagine there's an huge difference between receiving the ban on January instead of December. This hook makes sure that bans always last one full year no matter what.
+
+[Get the Code »](https://github.com/Katamaze/WHMCS-Free-Action-Hooks/blob/master/hooks/BanOrderExpiration.php)
+
 ## Hide Google Invisible reCAPTCHA Badge
 
 All it takes to hide Google Invisible reCAPTCHA Badge (bottom-right corner) is a CSS rule. If you don't want to edit your CSS and/or want preserve the change with template updates, use this hook. Before you ask, yes, the correct way to hide the Badge is to use `opacity`. Using things like `display: none` and `visibility: hidden` breaks reCAPTCHA.
