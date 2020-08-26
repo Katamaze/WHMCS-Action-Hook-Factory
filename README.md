@@ -74,6 +74,7 @@ Scripts are provided free of charge "as is" without warranty of any kind. **You'
 * [Promotions array in Email Templates](#promotions-array-in-email-templates)
 * [Automatically Accept Order when Invoice is Paid](#automatically-accept-order-when-invoice-is-paid)
 * [Cancel Order when an Invoice is being Cancelled](#cancel-order-when-an-invoice-is-being-cancelled)
+* [Ban Order Expiration](#ban-order-expiration)
 * [Hide Google Invisible reCAPTCHA Badge](#hide-google-invisible-recaptcha-badge)
 * [Chatstack Disable for Logged-In Users and Administrators](#chatstack-disable-for-logged-in-users-and-administrators)
 * [Notify Fradulent Orders](#notify-fradulent-orders)
