@@ -523,3 +523,9 @@ We created a module that makes this "find and replace" process less frustrating 
 ![image](https://katamaze.com/modules/addons/Mercury/uploads/files/Blog/92b1487d05bc7249c65af0f94cde4732/whmcs-plesk-checker-external-id-2.png)
 
 [Get the Code »](https://github.com/Katamaze/WHMCS-Free-Action-Hooks/tree/master/modules/addons/PleskChecker)
+
+# Tweaks
+
+# Client area Domain List
+
+According to WHMCS sidebar there are say 8 expired domains but when you click to apply this filter, the table could show more than 8 records. Why is it happening? Simple. WHMCS is inconsistently counting domains inconsistently. The sidebar counts expired domains while the table counts Cancelled domain as expired. This makes no sense. You can easily solve the problem by editing `clientareadomains.tpl` replacing `{if $domain.expiringSoon}` with `{if $domain.expiringSoon AND $domain.statusClass != 'cancelled'}`.
