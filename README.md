@@ -528,4 +528,6 @@ We created a module that makes this "find and replace" process less frustrating 
 
 # Client area Domain List
 
-According to WHMCS sidebar there are say 8 expired domains but when you apply this filter, the table shows more than 8 records. What is going on? That's simple. WHMCS countings are inconsistent. The sidebar counts expired domains while the table includes in this counting also cancelled domains. You can easily solve the problem by editing `clientareadomains.tpl` replacing `{if $domain.expiringSoon}` with `{if $domain.expiringSoon AND $domain.statusClass != 'cancelled'}`.
+According to WHMCS sidebar there are say 8 expired domains but when you apply this filter, the table shows more than 8 records. What is going on? That's simple. WHMCS countings are inconsistent. The sidebar counts expired domains while the table includes in this counting also cancelled domains.
+
+ You can easily solve the problem by editing `clientareadomains.tpl`. Find `{if $domain.expiringSoon}` and replace with `{if $domain.expiringSoon AND $domain.statusClass != 'cancelled'}`.
