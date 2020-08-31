@@ -176,6 +176,21 @@ Let's face it. In an ideal world we would be receiving money just with Bank Tran
 
 With this hook you can keep this money for you. As if it wasn't enough, the hook can be customized to force the payment gateway depending on customers' country. For example you can use the hook just for specific countries (eg. IT, FR, DE) and/or European Union. Don't worry about multiple currencies. The script automatically handles currency conversion when needed.
 
+It is worth to say that the hook allows administrators to lift restrictions on specific invoices. All you all you need is changing the payment method from `Options` tab (Invoice View). This will add the following note `Payment Method Unlocked by Administratror` that serves as a way to let customers freely choose their gateway.
+
+Of course we don't want such note to be visible in front-end hence the hook automatically removes it from the HTML version invoices. As for the PDF version, you'll need to place a small piece of code right above `if ($notes)` statement in your `invoicepdf.tpl` as follows:
+
+```
+# Notes
+$notes = str_replace('Payment Method Unlocked by Administratror', '', $notes);
+$notes = ($notes ? $notes : false);
+if ($notes) {
+    $pdf->Ln(5);
+    $pdf->SetFont($pdfFont, '', 8);
+    $pdf->MultiCell(170, 5, Lang::trans('invoicesnotes') . ': ' . $notes);
+}
+```
+
 [Get the Code »](https://github.com/Katamaze/WHMCS-Free-Action-Hooks/blob/master/hooks/ForcePaymentGatewayDependingOnInvoiceBalance.php)
 
 ## Auto-Terminate Free Trials After X Minutes
