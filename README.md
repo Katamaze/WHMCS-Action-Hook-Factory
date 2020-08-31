@@ -194,7 +194,7 @@ We give you not one, not two but three action hooks to override default password
 * [v2](https://github.com/Katamaze/WHMCS-Action-Hooks/blob/master/hooks/StrongerPasswordGeneratorForAutoProvisioning_v2.php) same as above but makes sure that at least one special character is included in the password
 * [v3](https://github.com/Katamaze/WHMCS-Action-Hooks/blob/master/hooks/StrongerPasswordGeneratorForAutoProvisioning_v3.php) for extremely strong passwords. Individually define the number of digits, lowercase, uppercase and special characters to use. The resulting password will not use the same character twice
 
-## One-off Products/Services & Domain purchase require Product/Service
+## One-off Products/Services & Domain purchase requires Product/Service
 
 If you have a bit of experience with WHMCS, you know that offering promotions just via [coupon codes](https://docs.whmcs.com/Promotions) isn't so flexible.
 
