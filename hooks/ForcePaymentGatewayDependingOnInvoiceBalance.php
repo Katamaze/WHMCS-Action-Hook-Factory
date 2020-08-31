@@ -26,6 +26,21 @@ add_hook('ClientAreaPage', 1, function($vars)
         if ($gateway AND $limit)
         {
             $currencyRate = Capsule::table('tblcurrencies')->where('id', '=', $vars['clientsdetails']['currency'])->where('default', '!=', '1')->pluck('rate')[0];
+            $adminUnlock = Capsule::table('tblinvoices')->where('notes', 'like', '%Payment Method Unlocked by Administratror%')->pluck('notes')[0];
+
+            if ($adminUnlock)
+            {
+                $vars['notes'] = str_replace('Payment Method Unlocked by Administratror', '', $vars['notes']);
+
+                if (!$vars['notes'])
+                {
+                    return array('notes' => false);
+                }
+                else
+                {
+                    return array('notes' => $vars['notes']);
+                }
+            }
 
             if ($currencyRate)
             {
@@ -36,7 +51,7 @@ add_hook('ClientAreaPage', 1, function($vars)
                 $balance = $vars['balance']->toNumeric();
             }
 
-            if ($balance >= $limit)
+            if ($balance >= $limit AND !$adminUnlock)
             {
                 if ($vars['paymentmodule'] == $gateway)
                 {
@@ -50,5 +65,15 @@ add_hook('ClientAreaPage', 1, function($vars)
                 }
             }
         }
+    }
+});
+
+add_hook('InvoiceChangeGateway', 1, function($vars)
+{
+    if ($_SESSION['adminid'])
+    {
+        $currentNotes = Capsule::table('tblinvoices')->where('id', $vars['invoiceid'])->pluck('notes')[0];
+        $currentNotes = str_replace('Payment Method Unlocked by Administratror', '', $currentNotes);
+        Capsule::table('tblinvoices')->where('id', $vars['invoiceid'])->update(['notes' => 'Payment Method Unlocked by Administratror' . $currentNotes]);
     }
 });
