@@ -305,6 +305,24 @@ The script is available in two versions. The configuration is the same. What cha
 * [AcceptOrder version](https://github.com/Katamaze/WHMCS-Action-Hooks/blob/master/hooks/AssignClientToGroupBasedOnPurchasedProduct_v1.php) assigns the group when the order is accepted - both manually and automatically
 * [EmailPreSend version](https://github.com/Katamaze/WHMCS-Action-Hooks/blob/master/hooks/AssignClientToGroupBasedOnPurchasedProduct_v2.php) assign the group a moment before WHMCS sends the `Welcome Email` - any type (eg. Hosting, VPS, CodeGuard, Marketgoo...). This way the group just assigned is immediately ready for use in email templates
 
+## Client to Group based on Registration Date
+
+This hook is similar to the one that [assigns clients to groups based on purchases](#client-to-group-based-on-purchased-items). This time we're assigning clients to groups based on registration date or more precisely on *user seniority*. Let's take this code as example.
+
+```
+$groups['1'] = '90';
+$groups['2'] = '180';
+$groups['3'] = '365';
+```
+
+They key of the of `$groups` array (eg. `['1']`) represent the ID of the group while the value *user seniority* (days between registration date and current date). According to the above configuration, here is what happens:
+
+* Customer A registered `34` days ago. No change
+* Customer B registered `90` days ago. He goes to client group ID `2`
+* Customer C registered `500` days ago. He goes to client group ID `3`
+
+[Get the Code »](https://github.com/Katamaze/WHMCS-Free-Action-Hooks/blob/master/hooks/AssignClientToGroupBasedRegistrationDate.php)
+
 ## Prevent changes to Client Custom Fields
 
 WHMCS has an in-built function to lock client profile fields you want to prevent clients being able to edit from clientarea (eg. email, company name). This feature however is not avaiable for client custom fields. Making such fields "disabled" via HTML is not an option. Anyone with bit of knowledge can skip this form of protection.
