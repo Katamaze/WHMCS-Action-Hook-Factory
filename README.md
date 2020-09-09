@@ -59,6 +59,7 @@ Scripts are provided free of charge "as is" without warranty of any kind. **You'
 * [Ticket Feedback on Auto Close via Escalation Rule](#ticket-feedback-on-auto-close-via-escalation-rule)
 * [Disable Feedback for Unanswered Tickets](#disable-feedback-for-unanswered-tickets)
 * [Client to Group based on Purchased Items](#client-to-group-based-on-purchased-items)
+* [Client to Group based on Registration Date](#client-to-group-based-on-registration-date)
 * [Prevent changes to Client Custom Fields](#prevent-changes-to-client-custom-fields)
 * [Quote to Invoice conversion without redirect](#quote-to-invoice-conversion-without-redirect)
 * [Remove/Hide Breadcrumb](#removehide-breadcrumb)
