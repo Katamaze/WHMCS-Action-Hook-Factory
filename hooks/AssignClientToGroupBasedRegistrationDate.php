@@ -14,7 +14,7 @@ use WHMCS\Database\Capsule;
 add_hook('DailyCronJob', 1, function($vars)
 {
     // Define group/product pairs. Instructions provided below
-    // https://github.com/Katamaze/WHMCS-Free-Action-Hooks/blob/master/README.md#client-to-group-based-on-purchased-productservice
+    // https://github.com/Katamaze/WHMCS-Free-Action-Hooks/blob/master/README.md#client-to-group-based-on-registration-date
     $groups['1'] = '90';
     $groups['2'] = '180';
     $groups['3'] = '365';
