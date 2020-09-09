@@ -320,7 +320,10 @@ They key of the of `$groups` array (eg. `['1']`) represent the ID of the group w
 
 * Customer A registered `34` days ago. No change
 * Customer B registered `90` days ago. He goes to client group ID `2`
-* Customer C registered `500` days ago. He goes to client group ID `3`
+* Customer C registered `364` days ago. Still group ID `2`
+* Customer D registered `500` days ago. He goes to client group ID `3`
+
+The hook runs with WHMCS daily cron job meaning that tomorrow the customer C of the above example will move from group `2` to `3`.
 
 [Get the Code »](https://github.com/Katamaze/WHMCS-Free-Action-Hooks/blob/master/hooks/AssignClientToGroupBasedRegistrationDate.php)
 
