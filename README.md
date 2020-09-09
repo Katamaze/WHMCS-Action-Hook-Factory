@@ -316,7 +316,7 @@ $groups['2'] = '180';
 $groups['3'] = '365';
 ```
 
-They key of the of `$groups` array (eg. `['1']`) represent the ID of the group while the value *user seniority* (days between registration date and current date). According to the above configuration, here is what happens:
+They key of `$groups` array (eg. `['1']`) represents the ID of the group while the value *user seniority* (days between registration date and current date). According to the above configuration, here is what happens:
 
 * Customer A registered `34` days ago. No change
 * Customer B registered `90` days ago. He goes to client group ID `2`
