@@ -323,12 +323,10 @@ They key of `$groups` array (eg. `['1']`) represents the ID of the group while t
 * Customer C registered `364` days ago. Still group ID `2`
 * Customer D registered `500` days ago. He goes to client group ID `3`
 
-Optionally, you can turn on any of the following features to add some restrictions:
+The hook runs with WHMCS daily cron job meaning that tomorrow the customer C of the above example will move from group `2` to `3`. Optionally, you can turn on any of the following features to add some restrictions:
 
 * `$activeCustomers` rules apply only on `Active` customers (boolean `true` or `false`)
 * `$oldestPurchase` rules apply only on if customer has a product/service or domain older than the given number of days (`integear`)
-
-The hook runs with WHMCS daily cron job meaning that tomorrow the customer C of the above example will move from group `2` to `3`.
 
 [Get the Code »](https://github.com/Katamaze/WHMCS-Free-Action-Hooks/blob/master/hooks/AssignClientToGroupBasedRegistrationDate.php)
 
