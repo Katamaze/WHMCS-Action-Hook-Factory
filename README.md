@@ -327,6 +327,8 @@ The hook runs with WHMCS daily cron job meaning that tomorrow the customer C of 
 
 * `$activeCustomers` rules apply only on `Active` customers (boolean `true` or `false`)
 * `$oldestPurchase` rules apply only on if customer has a product/service or domain older than the given number of days (`integear`)
+* `$ignoreDomains` set `true` to ignore domain purchases when `$oldestPurchase` is in use
+* `$ignoreProducts` array of product IDs to ignore when `$oldestPurchase` is in use
 
 [Get the Code »](https://github.com/Katamaze/WHMCS-Free-Action-Hooks/blob/master/hooks/AssignClientToGroupBasedRegistrationDate.php)
 
