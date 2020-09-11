@@ -19,8 +19,10 @@ add_hook('DailyCronJob', 1, function($vars)
     $groups['2'] = '180';
     $groups['3'] = '365';
 
-    $activeCustomers = false;
-    $oldestPurchase = false;
+    $activeCustomers = true;
+    $oldestPurchase = 10;
+    $ignoreDomains = false;
+    $ignoreProducts = array('1');
 
     if (!$groups): return; endif;
 
@@ -28,9 +30,21 @@ add_hook('DailyCronJob', 1, function($vars)
 
     if ($oldestPurchase)
     {
-        foreach (Capsule::select(Capsule::raw('SELECT t1.id FROM tblclients AS t1 LEFT JOIN tblhosting AS t2 ON t1.id = t2.userid LEFT JOIN tbldomains AS t3 ON t1.id = t3.userid WHERE DATEDIFF(CURDATE(), t2.regdate) >= "' . $oldestPurchase . '" OR DATEDIFF(CURDATE(), t3.registrationdate) >= "' . $oldestPurchase . '" GROUP BY t1.id')) as $v)
+        $ignoreProducts = ($ignoreProducts ? ' AND t2.packageid NOT IN (\'' . implode('\',\'', $ignoreProducts) . '\')' : false);
+
+        if ($ignoreDomains)
         {
-            $filterPurchase[] = $v->id;
+            foreach (Capsule::select(Capsule::raw('SELECT t1.id FROM tblclients AS t1 LEFT JOIN tblhosting AS t2 ON t1.id = t2.userid WHERE DATEDIFF(CURDATE(), t2.regdate) >= "' . $oldestPurchase . '" '. $ignoreProducts .' GROUP BY t1.id')) as $v)
+            {
+                $filterPurchase[] = $v->id;
+            }
+        }
+        else
+        {
+            foreach (Capsule::select(Capsule::raw('SELECT t1.id FROM tblclients AS t1 LEFT JOIN tblhosting AS t2 ON t1.id = t2.userid LEFT JOIN tbldomains AS t3 ON t1.id = t3.userid WHERE (DATEDIFF(CURDATE(), t2.regdate) >= "' . $oldestPurchase . '" '. $ignoreProducts .') OR DATEDIFF(CURDATE(), t3.registrationdate) >= "' . $oldestPurchase . '" GROUP BY t1.id')) as $v)
+            {
+                $filterPurchase[] = $v->id;
+            }
         }
 
         if ($filterPurchase)
