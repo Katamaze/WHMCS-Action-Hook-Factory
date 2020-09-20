@@ -60,6 +60,7 @@ Scripts are provided free of charge "as is" without warranty of any kind. **You'
 * [Disable Feedback for Unanswered Tickets](#disable-feedback-for-unanswered-tickets)
 * [Client to Group based on Purchased Items](#client-to-group-based-on-purchased-items)
 * [Client to Group based on Registration Date](#client-to-group-based-on-registration-date)
+* [Client to Group based on Registered Domains](#client-to-group-based-on-registered-domains)
 * [Prevent changes to Client Custom Fields](#prevent-changes-to-client-custom-fields)
 * [Quote to Invoice conversion without redirect](#quote-to-invoice-conversion-without-redirect)
 * [Remove/Hide Breadcrumb](#removehide-breadcrumb)
@@ -330,7 +331,30 @@ The hook runs with WHMCS daily cron job meaning that tomorrow the customer C of 
 * `$ignoreDomains` set `true` to ignore domain purchases when `$oldestPurchase` is in use
 * `$ignoreProducts` array of product IDs to ignore when `$oldestPurchase` is in use
 
-[Get the Code »](https://github.com/Katamaze/WHMCS-Free-Action-Hooks/blob/master/hooks/AssignClientToGroupBasedRegistrationDate.php)
+[Get the Code »](https://github.com/Katamaze/WHMCS-Free-Action-Hooks/blob/master/hooks/AssignClientToGroupBasedOnRegistrationDate.php)
+
+## Client to Group based on Registered Domains
+
+This hook is similar to the one that [assigns clients to groups based on purchases](#client-to-group-based-on-purchased-items). This time we're assigning clients to groups based on registration date or more precisely on *user seniority*. Let's take this code as example.
+
+```
+$groups['1'] = '90';
+$groups['2'] = '180';
+$groups['3'] = '365';
+```
+
+They key of `$groups` array (eg. `['1']`) represents the ID of the group while the value *user seniority* (days between registration date and current date). According to the above configuration, here is what happens:
+
+* Customer A registered `34` days ago. No change
+* Customer B registered `90` days ago. He goes to client group ID `2`
+* Customer C registered `364` days ago. Still group ID `2`
+* Customer D registered `500` days ago. He goes to client group ID `3`
+
+The hook runs with WHMCS daily cron job meaning that tomorrow the customer C of the above example will move from group `2` to `3`. Optionally, you can turn on any of the following features to add some restrictions:
+
+* `$activeCustomers` rules apply only on `Active` customers (boolean `true` or `false`)
+
+[Get the Code »](https://github.com/Katamaze/WHMCS-Free-Action-Hooks/blob/master/hooks/AssignClientToGroupBasedOnRegisteredDomains.php)
 
 ## Prevent changes to Client Custom Fields
 
