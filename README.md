@@ -285,13 +285,13 @@ $groups['productaddons']['1'] = array('2');
 $groups['configurableoption']['3'] = array('5' => true, '6' => array('7', '8', '10'));
 ```
 
-They key of the first level of `$groups` array (eg. `['products']`) can assume the following values:
+The key of the first level of `$groups` array (eg. `['products']`) can assume the following values:
 
 * `products` for group/product pairs
 * `productaddons` for group/product addon pairs
 * `configurableoption` for group/configurable option paris
 
-They key of the second level of `$groups` array (`['1']`, `['2']`) represents the client group ID. `array()` stores product IDs, product addon IDs and configurable options. Let's put it into practice explaining what the above configuration means:
+The key of the second level of `$groups` array (`['1']`, `['2']`) represents the client group ID. `array()` stores product IDs, product addon IDs and configurable options. Let's put it into practice explaining what the above configuration means:
 
 * Customer A purchases product `1`. He goes to client group ID `1`
 * Customer B purchases product `2`. He still goes to client group ID `1`
@@ -317,7 +317,7 @@ $groups['2'] = '180';
 $groups['3'] = '365';
 ```
 
-They key of `$groups` array (eg. `['1']`) represents the ID of the group while the value *user seniority* (days between registration date and current date). According to the above configuration, here is what happens:
+The key of `$groups` array (eg. `['1']`) represents the ID of the group while the value *user seniority* (days between registration date and current date). According to the above configuration, here is what happens:
 
 * Customer A registered `34` days ago. No change
 * Customer B registered `90` days ago. He goes to client group ID `2`
@@ -335,7 +335,7 @@ The hook runs with WHMCS daily cron job meaning that tomorrow the customer C of 
 
 ## Client to Group based on Registered Domains
 
-The hook assigns clients to groups based on the number of active domains (`Active`, `Grace` and `Redemption` status) in their accounts. This is particularly for [Domain Pricing slabs](https://docs.whmcs.com/Client_Groups#Domain_Pricing_Slabs). Let's take this code as example.
+The hook assigns clients to groups based on the number of active domains in their accounts (`Active`, `Grace` and `Redemption`). This is particularly useful for [Domain Pricing slabs](https://docs.whmcs.com/Client_Groups#Domain_Pricing_Slabs). Let's take this code as example.
 
 ```
 $groups['1'] = '10';
@@ -343,13 +343,13 @@ $groups['2'] = '25';
 $groups['3'] = '100';
 ```
 
-They key of `$groups` array (eg. `['1']`) represents the ID of the group while the value the number of active domains. According to the above configuration, here is what happens:
+The key of `$groups` array (eg. `['1']`) represents the ID of the group while the value the number of active domains. According to the above configuration, here is what happens:
 
-* Customer A has `10` domains. He goes to client group ID `2`. Next day domains become `9` and hence the customer is removed from the group
-* Customer B has `24` domains. He still goes to to client group ID `2`
+* Customer A has `10` domains. He goes to client group ID `2`. Next day domains become `9`. The the customer is removed from the group
+* Customer B has `99` domains. He still goes to client group ID `2` but will be moved to `3` in case he manages to reach `100` domains
 * Customer C has `250` domains. Group ID `3`
 
-The hook runs with WHMCS daily cron job meaning that customers are moved (or removed) from groups oin a daily basis. Optionally, you can use the following feature to add some restrictions:
+The hook runs with WHMCS daily cron job meaning that customers are moved (or removed) from groups on a daily basis. Optionally, you can use the following feature to add some restrictions:
 
 * `$activeCustomers` rules apply only on `Active` customers (boolean `true` or `false`)
 
