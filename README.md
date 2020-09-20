@@ -335,22 +335,21 @@ The hook runs with WHMCS daily cron job meaning that tomorrow the customer C of 
 
 ## Client to Group based on Registered Domains
 
-This hook is similar to the one that [assigns clients to groups based on purchases](#client-to-group-based-on-purchased-items). This time we're assigning clients to groups based on registration date or more precisely on *user seniority*. Let's take this code as example.
+The hook assigns clients to groups based on the number of active domains (`Active`, `Grace` and `Redemption` status) in their accounts. This is particularly for [Domain Pricing slabs](https://docs.whmcs.com/Client_Groups#Domain_Pricing_Slabs). Let's take this code as example.
 
 ```
-$groups['1'] = '90';
-$groups['2'] = '180';
-$groups['3'] = '365';
+$groups['1'] = '10';
+$groups['2'] = '25';
+$groups['3'] = '100';
 ```
 
-They key of `$groups` array (eg. `['1']`) represents the ID of the group while the value *user seniority* (days between registration date and current date). According to the above configuration, here is what happens:
+They key of `$groups` array (eg. `['1']`) represents the ID of the group while the value the number of active domains. According to the above configuration, here is what happens:
 
-* Customer A registered `34` days ago. No change
-* Customer B registered `90` days ago. He goes to client group ID `2`
-* Customer C registered `364` days ago. Still group ID `2`
-* Customer D registered `500` days ago. He goes to client group ID `3`
+* Customer A has `10` domains. He goes to client group ID `2`. Next day domains become `9` and hence the customer is removed from the group
+* Customer B has `24` domains. He still goes to to client group ID `2`
+* Customer C has `250` domains. Group ID `3`
 
-The hook runs with WHMCS daily cron job meaning that tomorrow the customer C of the above example will move from group `2` to `3`. Optionally, you can turn on any of the following features to add some restrictions:
+The hook runs with WHMCS daily cron job meaning that customers are moved (or removed) from groups oin a daily basis. Optionally, you can use the following feature to add some restrictions:
 
 * `$activeCustomers` rules apply only on `Active` customers (boolean `true` or `false`)
 
