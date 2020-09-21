@@ -352,6 +352,34 @@ The key of `$groups` array (eg. `['1']`) represents the ID of the group while th
 The hook runs with WHMCS daily cron job meaning that customers are moved (or removed) from groups on a daily basis. Optionally, you can use the following feature to add some restrictions:
 
 * `$activeCustomers` rules apply only on `Active` customers (boolean `true` or `false`)
+* `$placeholderGroup` used to restrict assignments to a specific group (group ID or `false` to disable). This option requires further explanation as detailed below
+
+Let's assume we use the following configuration.
+
+```
+$groups['1'] = '10';
+$groups['2'] = '25';
+$groups['3'] = '100';
+
+$placeholderGroup = '5';
+```
+
+The hook processes assignments only on clients assigned to group ID `5` (the placeholder), `1`, `2` and `3`. Let's see some examples:
+
+* Customer A has `250` domains and is assigned to group `5`. After cron job he's moved to group `3`
+* Customer B has `10` domains and is assigned to group `1` and transfers away one domain. After cron job he's moved to group `5` as now he owns only `9` domains
+
+The placeholder can also be one of the existing group as in the following example:
+
+```
+$groups['1'] = '10';
+$groups['2'] = '25';
+$groups['3'] = '100';
+
+$placeholderGroup = '1';
+```
+
+In this case the `10` domains requirement for group `1` is ignored.
 
 [Get the Code »](https://github.com/Katamaze/WHMCS-Free-Action-Hooks/blob/master/hooks/AssignClientToGroupBasedOnRegisteredDomains.php)
 
