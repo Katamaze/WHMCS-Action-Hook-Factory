@@ -20,14 +20,16 @@ add_hook('DailyCronJob', 1, function($vars)
     $groups['3'] = '100';
 
     $activeCustomers = true;
+    $placeholderGroup = '1';
 
     if (!$groups): return; endif;
+    $placeholderGroup = ($placeholderGroup ? $placeholderGroup : '0');
 
     $filterStatus = ($activeCustomers ? ' AND t2.status = "Active"' : false);
 
     foreach (Capsule::select(Capsule::raw('SELECT t1.userid, COUNT(t1.id) as total FROM tbldomains AS t1 LEFT JOIN tblclients AS t2 ON t1.userid = t2.id WHERE t1.status IN ("Active", "Grace", "Redemption") ' . $filterStatus . ' GROUP BY t1.userid')) as $v)
     {
-        $users[$v->userid] = '0';
+        $users[$v->userid] = $placeholderGroup;
 
         foreach ($groups as $gid => $total)
         {
