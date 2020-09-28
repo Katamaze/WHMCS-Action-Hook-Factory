@@ -28,8 +28,9 @@ add_hook('DailyCronJob', 1, function($vars)
     $filterStatus = ($activeCustomers ? ' AND t2.status = "Active"' : false);
     $filterGroup = ($placeholderGroup ? ' AND (t2.groupid = "' . $placeholderGroup . '" OR t2.groupid IN (\'' . implode('\', \'', array_keys($groups)) . '\'))' : false);
 
-    foreach (Capsule::select(Capsule::raw('SELECT t1.userid, COUNT(t1.id) as total FROM tbldomains AS t1 LEFT JOIN tblclients AS t2 ON t1.userid = t2.id WHERE t1.status IN ("Active", "Grace", "Redemption") ' . $filterStatus . ' GROUP BY t1.userid')) as $v)
+    foreach (Capsule::select(Capsule::raw('SELECT t1.userid, COUNT(t1.id) as total, t2.groupid FROM tbldomains AS t1 LEFT JOIN tblclients AS t2 ON t1.userid = t2.id WHERE t1.status IN ("Active", "Grace", "Redemption") ' . $filterStatus . ' GROUP BY t1.userid')) as $v)
     {
+        $current[$v->userid] = $v;
         $users[$v->userid] = $defaultGroup;
 
         foreach ($groups as $gid => $total)
@@ -41,8 +42,18 @@ add_hook('DailyCronJob', 1, function($vars)
         }
     }
 
+    foreach (Capsule::table('tblclientgroups')->select('id', 'groupname')->get() as $v)
+    {
+        $groupLabels[$v->id] = $v->groupname;
+    }
+
     foreach ($users as $userID => $groupID)
     {
+        if ($current[$userID]->groupid != $groupID)
+        {
+            logActivity('Client Group Modified - User ID: ' . $userID . ' now has ' . $current[$userID]->total . ' domain(s) - Moved from #' . $current[$userID]->groupid . ' ' . $groupLabels[$current[$userID]->groupid] . ' to #' . $groupID . ' ' . $groupLabels[$groupID]);
+        }
+
         Capsule::table('tblclients')->where('id', $userID)->update(['groupid' => $groupID]);
     }
 });
