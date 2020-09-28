@@ -61,6 +61,7 @@ Scripts are provided free of charge "as is" without warranty of any kind. **You'
 * [Client to Group based on Purchased Items](#client-to-group-based-on-purchased-items)
 * [Client to Group based on Registration Date](#client-to-group-based-on-registration-date)
 * [Client to Group based on Registered Domains](#client-to-group-based-on-registered-domains)
+* [Exempt Existing Clients from Affiliate Commissions](#exempt-existing-clients-from-affiliate-commissions)
 * [Prevent changes to Client Custom Fields](#prevent-changes-to-client-custom-fields)
 * [Quote to Invoice conversion without redirect](#quote-to-invoice-conversion-without-redirect)
 * [Remove/Hide Breadcrumb](#removehide-breadcrumb)
@@ -382,6 +383,14 @@ $placeholderGroup = '1';
 In this case the `10` domains requirement for group `1` is ignored.
 
 [Get the Code »](https://github.com/Katamaze/WHMCS-Free-Action-Hooks/blob/master/hooks/AssignClientToGroupBasedOnRegisteredDomains.php)
+
+## Exempt Existing Clients from Affiliate Commissions
+
+If a visitor places an order for a product or service with the [affiliation cookie](https://docs.whmcs.com/Affiliates) present, the affiliate earns a commission. The problem is that for WHMCS visitors and customers are the same thing meaning that it gives commissions to affiliates even for orders placed by existing customer.
+
+The hook prevents WHMCS from paying commission for customers registered on your from a given number of days. For example if you set `$numberOfDays = '30'`, WHMCS stops paying commissions for new orders placed by customers registered from more than 30 days on your site.
+
+[Get the Code »](https://github.com/Katamaze/WHMCS-Free-Action-Hooks/blob/master/hooks/ExemptExistingClientsFromAffiliateCommissions.php)
 
 ## Prevent changes to Client Custom Fields
 
