@@ -380,7 +380,9 @@ $groups['3'] = '100';
 $placeholderGroup = '1';
 ```
 
-In this case the `10` domains requirement for group `1` is ignored.
+In this case the `10` domains requirement for group `1` is ignored. The hook keeps track of changes to clients' group in the Activity Log.
+
+![image](https://katamaze.com/modules/addons/Mercury/uploads/files/Blog/92b1487d05bc7249c65af0f94cde4732/whmcs-move-clients-to-group-based-on-registered-domains.png)
 
 [Get the Code »](https://github.com/Katamaze/WHMCS-Free-Action-Hooks/blob/master/hooks/AssignClientToGroupBasedOnRegisteredDomains.php)
 
