@@ -73,6 +73,7 @@ Scripts are provided free of charge "as is" without warranty of any kind. **You'
 * [Rename Addon Module Label](#rename-addon-module-label)
 * [Add Button next to Module's Functions](#add-button-next-to-modules-functions)
 * [Announcements Meta Description](#announcements-meta-description)
+* [Prevent Indexing on Search Engines](#prevent-indexing-on-search-engines)
 * [Promotion Code in Email Template](#promotion-code-in-email-template)
 * [Promotions array in Email Templates](#promotions-array-in-email-templates)
 * [Automatically Accept Order when Invoice is Paid](#automatically-accept-order-when-invoice-is-paid)
@@ -489,6 +490,12 @@ Before you think *«Great! I can finally add meta descriptions to WHMCS announce
 You can use the same approach to implement other meta tags but stay away from [meta keywords](https://katamaze.com/blog/37/whmcs-seo-ways-to-improve-your-site-ranking-in-2020#Meta-keywords). It is useless and has been deprecated more than a decade ago by all search engines.
 
 [Get the Code »](https://github.com/Katamaze/WHMCS-Action-Hooks/blob/master/hooks/AnnuncementsMetaDescription.php)
+
+## Prevent Indexing on Search Engines
+
+With this hook you can stop search engines from indexing your WHMCS site. This is particularly useful for test installations and for sites you still need to launch. The hook adds `noindex` meta tag in the `<head>` of your WHMCS that tells search engine crawlers to not index pages.
+
+[Get the Code »](https://github.com/Katamaze/WHMCS-Free-Action-Hooks/blob/master/hooks/PreventSearchEngineIndexing.php)
 
 ## Promotion Code in Email Template
 
