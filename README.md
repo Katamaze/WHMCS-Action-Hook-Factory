@@ -605,7 +605,7 @@ Rate at which customers stop doing business with you. The report includes charts
 * No. of products/domains lost during the month
 * Churn rate (percentage)
 
-The reports also shows cumulative statistics (products & domains combined). Churn rate is usually connected to [customer retention](https://katamaze.com/docs/billing-extension/39/client-area#Customer-Retention). The linked article describes how to retain customers. For your information the formula to calculate churn rate is the following.
+The report also shows cumulative statistics (products & domains combined). Churn rate is usually connected to [customer retention](https://katamaze.com/docs/billing-extension/39/client-area#Customer-Retention). The linked article describes how to retain customers. For your information the formula to calculate churn rate is the following.
 
 ```
 (Lost products/domains at the end of Time Period / Acquired products/domains at the end of Time Period) * 100
