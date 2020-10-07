@@ -45,7 +45,7 @@ function PleskChecker_output($vars)
 	$smarty = new Smarty();
 	$smarty->caching = false;
 	$smarty->compile_dir = $GLOBALS['templates_compiledir'];
-	$smarty->setTemplateDir(array(0 => '../modules/addons/' . $conf->module->name . '/templates/Admin'));
+	$smarty->setTemplateDir(array(0 => '../modules/addons/PleskChecker/templates/Admin'));
 
 	require_once('core/Katamaze/Checker.php');
 	$checker = new Checker();
