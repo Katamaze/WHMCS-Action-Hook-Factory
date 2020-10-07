@@ -45,7 +45,7 @@ This [blog post](https://katamaze.com/blog/32/whmcs-action-hooks-collection-2020
 
 Scripts are provided free of charge "as is" without warranty of any kind. **You're not allowed to remove copyright notice**. Let's start!
 
-* [Admin Stats for WHMCS v8](#simulate--run-whmcs-daily-cron-job-on-demand)
+* [Admin Stats for WHMCS v8](#admin-stats-for-whmcs-v8)
 * [Simulate / Run WHMCS Daily Cron Job on Demand](#simulate--run-whmcs-daily-cron-job-on-demand)
 * [Accept Quote without Logging In](#accept-quote-without-logging-in)
 * [Bulk Auto Recalculate Client Domain & Products/Services](#bulk-auto-recalculate-client-domain--productsservices)
@@ -86,7 +86,15 @@ Scripts are provided free of charge "as is" without warranty of any kind. **You'
 
 ## Admin Stats for WHMCS v8
 
-aaaa
+As you probably know WHMCS v8 no longer provides statistics on top of the page about pending orders, overdue invoices and tickets awaiting reply. This action hook adds them back to interface as you can see from the following screenshot.
+
+![image](https://katamaze.com/modules/addons/Mercury/uploads/files/Blog/92b1487d05bc7249c65af0f94cde4732/whmcs-admin-bar-stats-navbar.png)
+
+![image](https://katamaze.com/modules/addons/Mercury/uploads/files/Blog/92b1487d05bc7249c65af0f94cde4732/whmcs-admin-bar-stats-sidebar.png)
+
+This badge is fully responsive and appears if there's at least one pending order, overdue invoice or ticket awaiting reply. If there's nothing to show it disappears. To avoid any possibility of confusion, the hook automatically detects if you're running v8.
+
+[Get the Code »](https://github.com/Katamaze/WHMCS-Action-Hooks/blob/master/hooks/DailyCronJonOnDemand.php)
 
 ## Simulate / Run WHMCS Daily Cron Job on Demand
 
