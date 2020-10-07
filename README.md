@@ -94,7 +94,7 @@ As you probably know WHMCS v8 no longer provides statistics on top of the page a
 
 This badge is fully responsive and appears if there's at least one pending order, overdue invoice or ticket awaiting reply. If there's nothing to show it disappears. To avoid any possibility of confusion, the hook automatically detects if you're running v8.
 
-[Get the Code »](https://github.com/Katamaze/WHMCS-Action-Hooks/blob/master/hooks/DailyCronJonOnDemand.php)
+[Get the Code »](https://github.com/Katamaze/WHMCS-Free-Action-Hooks/blob/master/hooks/AdminStatsForWHMCSv8.php)
 
 ## Simulate / Run WHMCS Daily Cron Job on Demand
 
