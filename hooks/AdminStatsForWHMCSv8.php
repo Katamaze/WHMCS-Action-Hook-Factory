@@ -50,8 +50,8 @@ $(document).on('ready', function() {
     });
 
     var orders = '<li><a href="orders.php?status=Pending" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="{$hover}" style="word-wrap:break-word"><span class="ico-container"><i class="fad fa-shopping-cart"></i></span>{$ordersLabel}</a></li>';
-    var invoices = '<li><a href="invoices.php?status=Overdue" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="{$hover}" style="word-wrap:break-word"><span class="ico-container"><i class="fad fa-question-circle"></i></span>{$invoicesLabel}</a></li>';
-    var tickets = '<li><a href="supporttickets.php" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="{$hover}" style="word-wrap:break-word"><span class="ico-container"><i class="fad fa-sack-dollar"></i></span>{$ticketsLabel}</a></li>';
+    var invoices = '<li><a href="invoices.php?status=Overdue" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="{$hover}" style="word-wrap:break-word"><span class="ico-container"><i class="fad fa-sack-dollar"></i></span>{$invoicesLabel}</a></li>';
+    var tickets = '<li><a href="supporttickets.php" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="{$hover}" style="word-wrap:break-word"><span class="ico-container"><i class="fad fa-question-circle"></i></span>{$ticketsLabel}</a></li>';
     $('#v8fallback').next('ul').append(orders.concat(invoices).concat(tickets));
 });
 </script>
