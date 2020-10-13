@@ -15,8 +15,8 @@ add_hook('AdminAreaHeaderOutput', 1, function($vars)
 {
     if (explode('.', $vars['licenseinfo']['currentversion'])[0] != '8'): return; endif;
     $ordersTotal = Capsule::select(Capsule::raw('SELECT COUNT(t1.id) AS total FROM tblorders AS t1 LEFT JOIN tblorderstatuses AS t2 ON t1.status = t2.title WHERE t2.showpending = "1"'))[0]->total;
-    $invoicesTotal = Capsule::select(Capsule::raw('SELECT COUNT(id) AS total FROM tblinvoices WHERE status = "Unpaid"'))[0]->total;
-    $ticketsTotal = Capsule::select(Capsule::raw('SELECT COUNT(t1.id) AS total FROM tbltickets AS t1 LEFT JOIN tblticketstatuses AS t2 ON t1.status = t2.title WHERE t2.showawaiting = "1"  AND merged_ticket_id = "0"'))[0]->total;
+    $invoicesTotal = Capsule::select(Capsule::raw('SELECT COUNT(id) AS total FROM tblinvoices WHERE status = "Unpaid" AND duedate <= CURDATE()'))[0]->total;
+    $ticketsTotal = Capsule::select(Capsule::raw('SELECT COUNT(t1.id) AS total FROM tbltickets AS t1 LEFT JOIN tblticketstatuses AS t2 ON t1.status = t2.title WHERE t2.showawaiting = "1" AND merged_ticket_id = "0"'))[0]->total;
     if (!$ordersTotal AND !$invoicesTotal AND !$ticketsTotal): return; endif;
     $notificationsLabel = AdminLang::trans('setup.notifications');
     $ordersLabel = '<span class="v8fallback">' . $ordersTotal . '</span> ' . AdminLang::trans('stats.pendingorders');
