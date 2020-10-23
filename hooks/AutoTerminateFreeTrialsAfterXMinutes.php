@@ -13,8 +13,8 @@ use WHMCS\Database\Capsule;
 
 add_hook('AfterCronJob', 1, function($vars)
 {
-    $productIDs = array('1', '2'); // WHMCS Product IDs to terminate
-    $terminateAfter = 1; // Terminate (or suspend - see below) products after the given number of minutes (1440 = full day - 0 to disable)
+    $productIDs = array('1', '2'); // WHMCS Product IDs to terminate or suspend
+    $terminateAfter = 1; // Terminate or suspend products after the given number of minutes (1440 = full day - 0 to disable)
     $performAction = 'Terminate'; // Terminate or Suspend
     $adminUsername = ''; // Optional for WHMCS 7.2 and later
 
