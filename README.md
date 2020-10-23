@@ -214,7 +214,11 @@ if ($notes) {
 
 Free trials for a limited period is a good marketing strategy to capitalize on the leads you get. The problem with trials is that the smallest unit of time for WHMCS is the day meaning that for example you can't provide a trial for VPS that last for a couple of hours. WHMCS can't "think" for a period of less than a full day.
 
-The following action hook allows to automatically terminate the given products/services after a certain number of minutes. It runs AfterCronJob hook point that normally triggers once every 5 minutes. Visit Setup > Automation Settings and make sure that cron.php runs every 5 minutes as suggested by WHMCS. The hook will do the rest. It also logs terminations in Activity Log.
+The following action hook allows to automatically terminate or suspend the given products/services after a certain number of minutes. It runs AfterCronJob hook point that normally triggers once every 5 minutes. Visit Setup > Automation Settings and make sure that cron.php runs every 5 minutes as suggested by WHMCS. The hook will do the rest. It also logs terminations in Activity Log. Here are the variables you need to configure:
+
+* `$productIDs` array of Product ID you want to terminate or suspend
+* `$terminateAfter` terminate or suspend products after the given number of minutes (1440 = full day - 0 to disable) `integer`
+* `$performAction` can choose between `Terminate` and `Suspend`
 
 [Get the Code »](https://github.com/Katamaze/WHMCS-Action-Hooks/blob/master/hooks/AutoTerminateFreeTrialsAfterXMinutes.php)
 
