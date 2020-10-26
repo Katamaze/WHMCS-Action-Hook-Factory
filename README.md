@@ -54,7 +54,7 @@ Scripts are provided free of charge "as is" without warranty of any kind. **You'
 * [Force Payment Gateway depending on Invoice Balance](#force-payment-gateway-depending-on-invoice-balance)
 * [Auto-Terminate Free Trials After X Minutes](#auto-terminate-free-trials-after-x-minutes)
 * [Stronger Password Generator for Auto-Provisioning](#stronger-password-generator-for-auto-provisioning)
-* [One-off Products/Services & Domain purchase require Product/Service](#one-off-productsservices--domain-purchase-require-productservice)
+* [One-off Products/Services & Domain purchase require Product/Service](#one-off-productsservices--domain-purchase-requires-productservice)
 * [New Clients as Affiliates](#new-clients-as-affiliates)
 * [Send Email & Add Reply on Ticket Status Change](#send-email--add-reply-on-ticket-status-change)
 * [Ticket Feedback on Auto Close via Escalation Rule](#ticket-feedback-on-auto-close-via-escalation-rule)
