@@ -92,7 +92,9 @@ As you probably know WHMCS v8 no longer provides statistics on top of the page a
 
 ![image](https://katamaze.com/modules/addons/Mercury/uploads/files/Blog/92b1487d05bc7249c65af0f94cde4732/whmcs-admin-bar-stats-sidebar.png)
 
-This badge is fully responsive and appears if there's at least one pending order, overdue invoice or ticket awaiting reply. If there's nothing to show it disappears. To avoid any possibility of confusion, the hook automatically detects if you're running v8.
+The one thing you can customize is `$showZero` variable. Let's focus on the *0 Ticket(s) Awaiting Reply* badge of above images. If `$showZero` is set to `false`, the widget doesn't show this specific badge.
+
+This widget is fully responsive and appears if there's at least one pending order, overdue invoice or ticket awaiting reply. If there's nothing to show it disappears. To avoid any possibility of confusion, the hook automatically detects if you're running v8.
 
 [Get the Code »](https://github.com/Katamaze/WHMCS-Free-Action-Hooks/blob/master/hooks/AdminStatsForWHMCSv8.php)
 
