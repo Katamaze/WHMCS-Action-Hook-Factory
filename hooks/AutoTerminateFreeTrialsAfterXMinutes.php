@@ -14,7 +14,7 @@ use WHMCS\Database\Capsule;
 add_hook('AfterCronJob', 1, function($vars)
 {
     $productIDs = array('1', '2'); // WHMCS Product IDs to terminate or suspend
-    $terminateAfter = 5; // Terminate or suspend products after the given number of minutes (1440 = full day - 0 to disable)
+    $terminateAfter = 30; // Terminate or suspend products after the given number of minutes (1440 = full day - 0 to disable)
     $performAction = 'Terminate'; // Terminate or Suspend
     $adminUsername = ''; // Optional for WHMCS 7.2 and later
 
@@ -50,18 +50,12 @@ add_hook('AfterCronJob', 1, function($vars)
         foreach ($hostingIDs as $k => $v)
         {
             $orderDate = new DateTime($orderIDs[$v]);
-            $interval = $limit->diff($orderDate);
-            $elapsed = $interval->format('%i');
+            $now = new DateTime('now');
+            $elapsed = $now->getTimestamp() - $orderDate->getTimestamp();
 
             if ($elapsed >= $terminateAfter)
             {
-                $response = localAPI($moduleAction, array('serviceid' => $k), $adminUsername);
-
-                if ($response['message'] == 'Module Not Found')
-                {
-                    localAPI('UpdateClientProduct', array('serviceid' => $k, 'status' => $domainStatus), $adminUsername);
-                }
-
+                localAPI($moduleAction, array('serviceid' => $k), $adminUsername);
                 $log[] = 'Service ID: ' . $k;
             }
         }
