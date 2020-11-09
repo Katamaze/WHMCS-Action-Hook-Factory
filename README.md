@@ -46,6 +46,7 @@ This [blog post](https://katamaze.com/blog/32/whmcs-action-hooks-collection-2020
 Scripts are provided free of charge "as is" without warranty of any kind. **You're not allowed to remove copyright notice**. Let's start!
 
 * [Admin Stats for WHMCS v8](#admin-stats-for-whmcs-v8)
+* [Client Group Color in Ticket View for WHMCS v8](#client-group-color-in-ticket-view-for-whmcs-v8)
 * [Simulate / Run WHMCS Daily Cron Job on Demand](#simulate--run-whmcs-daily-cron-job-on-demand)
 * [Accept Quote without Logging In](#accept-quote-without-logging-in)
 * [Bulk Auto Recalculate Client Domain & Products/Services](#bulk-auto-recalculate-client-domain--productsservices)
