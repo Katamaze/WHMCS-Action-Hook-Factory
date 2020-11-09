@@ -98,6 +98,14 @@ This widget is fully responsive and appears if there's at least one pending orde
 
 [Get the Code »](https://github.com/Katamaze/WHMCS-Free-Action-Hooks/blob/master/hooks/AdminStatsForWHMCSv8.php)
 
+## Client Group Color in Ticket View for WHMCS v8
+
+Client group background colors no longer display on ticket view page. Go figure out why WHMCS decided to remove it from v8. This action hook puts the styling back.
+
+![image](https://katamaze.com/modules/addons/Mercury/uploads/files/Blog/92b1487d05bc7249c65af0f94cde4732/whmcs-client-group-color-ticket-view.png)
+
+[Get the Code »](https://github.com/Katamaze/WHMCS-Free-Scripts/blob/master/hooks/ClientGroupColorInTicketView.php)
+
 ## Simulate / Run WHMCS Daily Cron Job on Demand
 
 As the name suggests, WHMCS daily cron job runs once per day. There's no easy way to make it run multiple times. This could be frustrating in case you're coding or testing new features that's where this hook comes to help.
