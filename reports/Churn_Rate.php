@@ -17,12 +17,13 @@ if (!defined('WHMCS')) {
     die('This file cannot be accessed directly');
 }
 
+if (substr($GLOBALS['CONFIG']['Version'], 0, 1) === '8'): $v8 = true; endif;
 $dateFilter = Carbon::create($year, $month, 1);
 $startOfMonth = $dateFilter->startOfMonth()->toDateTimeString();
 $endOfMonth = $dateFilter->endOfMonth()->toDateTimeString();
 
 $reportdata['title'] = 'Churn Rate for ' . $year;
-$reportdata['description'] = 'Rate at which customers stop doing business with you. Visit <a href="https://github.com/Katamaze/WHMCS-Free-Action-Hooks#churn-rate" target="_blank">Github</a> or this <a href="https://katamaze.com/blog/32/whmcs-action-hooks-collection-2020-updated-monthly" target="_blank">post</a> if you need help interpreting data. Refer to this article for <a href="https://katamaze.com/docs/billing-extension/39/client-area#Customer-Retention" target="_blank">customer retention</a>.';
+$reportdata['description'] = 'Rate at which customers stop doing business with you.';
 $reportdata['yearspagination'] = true;
 $reportdata['tableheadings'] = array(
     'Date',
@@ -47,11 +48,13 @@ $mothMatrix = array('1' => '0', '2' => '0', '3' => '0', '4' => '0', '5' => '0', 
 $groupBy = Capsule::raw('date_format(`regdate`, "%c")');
 $products['active']['previousYears'] = Capsule::table('tblhosting')->whereYear('regdate', '<=', $year - 1)->whereYear('nextduedate', '>=', $year)->whereNotIn('billingcycle', ['One Time', 'Completed', 'Free Account'])->whereNotIn('domainstatus', ['Pending', 'Fraud'])->pluck(Capsule::raw('count(id) as total'))[0];
 $products['active']['currentYear'] = Capsule::table('tblhosting')->whereYear('regdate', '=', $year)->whereYear('nextduedate', '>=', $year)->whereNotIn('billingcycle', ['One Time', 'Completed', 'Free Account'])->whereNotIn('domainstatus', ['Pending', 'Fraud'])->groupBy($groupBy)->pluck(Capsule::raw('count(id) as total'), Capsule::raw('date_format(`regdate`, "%c") as month'));
+if ($v8): $products['active']['currentYear'] = $products['active']['currentYear']->all(); endif;
 $products['active']['currentYear'] = $products['active']['currentYear'] + $mothMatrix;
 ksort($products['active']['currentYear']);
 $products['active']['total'] = $products['active']['previousYears'] + array_sum($products['active']['currentYear']);
 $groupBy = Capsule::raw('date_format(`nextduedate`, "%c")');
 $products['terminated'] = Capsule::table('tblhosting')->whereYear('nextduedate', '=', $year)->whereIn('domainstatus', ['Suspended', 'Terminated', 'Cancelled'])->whereNotIn('billingcycle', ['One Time', 'Completed', 'Free Account'])->groupBy($groupBy)->orderBy('nextduedate')->pluck(Capsule::raw('count(id) as total'), Capsule::raw('date_format(`nextduedate`, "%c") as month'));
+if ($v8): $products['terminated'] = $products['terminated']->all(); endif;
 $products['terminated'] = $products['terminated'] + $mothMatrix;
 ksort($products['terminated']);
 $products['variation'] = array_map('subtract', $products['active']['currentYear'], $products['terminated']);
@@ -61,11 +64,13 @@ $products['variation'] = array_combine(range(1, count($products['variation'])), 
 $groupBy = Capsule::raw('date_format(`registrationdate`, "%c")');
 $domains['active']['previousYears'] = Capsule::table('tbldomains')->whereYear('registrationdate', '<=', $year - 1)->whereYear('nextduedate', '>=', $year)->whereNotIn('status', ['Pending', 'Pending Registration', 'Pending Transfer', 'Fraud'])->pluck(Capsule::raw('count(id) as total'))[0];
 $domains['active']['currentYear'] = Capsule::table('tbldomains')->whereYear('registrationdate', '=', $year)->whereYear('nextduedate', '>=', $year)->whereNotIn('status', ['Pending', 'Pending Registration', 'Pending Transfer', 'Fraud'])->groupBy($groupBy)->pluck(Capsule::raw('count(id) as total'), Capsule::raw('date_format(`registrationdate`, "%c") as month'));
+if ($v8): $domains['active']['currentYear'] = $domains['active']['currentYear']->all(); endif;
 $domains['active']['currentYear'] = $domains['active']['currentYear'] + $mothMatrix;
 ksort($domains['active']['currentYear']);
 $domains['active']['total'] = $domains['active']['previousYears'] + array_sum($domains['active']['currentYear']);
 $groupBy = Capsule::raw('date_format(`nextduedate`, "%c")');
 $domains['terminated'] = Capsule::table('tbldomains')->whereYear('nextduedate', '=', $year)->whereIn('status', ['Grace', 'Redemption', 'Expired', 'Transferred Away', 'Cancelled'])->groupBy($groupBy)->orderBy('nextduedate')->pluck(Capsule::raw('count(id) as total'), Capsule::raw('date_format(`nextduedate`, "%c") as month'));
+if ($v8): $domains['terminated'] = $domains['terminated']->all(); endif;
 $domains['terminated'] = $domains['terminated'] + $mothMatrix;
 ksort($domains['terminated']);
 $domains['variation'] = array_map('subtract', $domains['active']['currentYear'], $domains['terminated']);
