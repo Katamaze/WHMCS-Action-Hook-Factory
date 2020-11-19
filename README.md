@@ -571,7 +571,7 @@ Here's a preview of the following code. Keep in mind that the hook automatically
 
 WHMCS requires administrators to manually accept orders even if automation tasks already took place. This hook automatically accepts orders via API when Invoice is paid. 
 
-* Restrict order acceptance based on `$invoiceTotal`. The script automatically performs currency conversion. Leave false to auto-accept everything
+* Restrict order acceptance based on `$invoiceTotal`. The script automatically performs currency conversion. Leave `false` to auto-accept everything
 * Use `<=` as `$operator` to auto-accept orders greater than or equal to `$invoiceTotal`. Use `>=` for the opposite
 
 [Get the Code »](https://github.com/Katamaze/WHMCS-Free-Action-Hooks/blob/master/hooks/AcceptOrderOnInvociePaid.php)
