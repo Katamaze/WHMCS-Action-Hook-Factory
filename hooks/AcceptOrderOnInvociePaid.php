@@ -16,7 +16,7 @@ add_hook('InvoicePaid', 1, function($vars)
     $orderID = Capsule::table('tblorders')->where('invoiceid', '=', $vars['invoiceid'])->pluck('id')[0];
     if (!$orderID): return; endif;
 
-    $invoiceTotal = 0.93; // Auto-accept order based on invoice total. Set false to auto-accept everything. The hook automatically handles currency conversion
+    $invoiceTotal = false; // Auto-accept order based on invoice total. Set false to auto-accept everything. The hook automatically handles currency conversion
     $operator = '<='; // Use ">=" to auto-accept orders greater than or equal to $invoiceTotal. Use "<=" for less than or equal to $invoiceTotal
 
     if ($invoiceTotal)
