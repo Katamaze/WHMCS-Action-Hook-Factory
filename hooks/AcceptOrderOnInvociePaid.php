@@ -17,7 +17,7 @@ add_hook('InvoicePaid', 1, function($vars)
     if (!$orderID): return; endif;
 
     $invoiceTotal = false; // Auto-accept order based on invoice total. The script performs currency conversion automatically. Leave false to auto-accept everything
-    $operator = '<='; // Use ">=" to auto-accept orders greater than or equal to $invoiceTotal. Use "<=" for less than or equal to $invoiceTotal
+    $operator = '<='; // Use ">=" to auto-accept orders greater than or equal to $invoiceTotal. Use "<=" for the opposite
 
     if ($invoiceTotal)
     {
