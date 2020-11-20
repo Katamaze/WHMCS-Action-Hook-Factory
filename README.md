@@ -640,6 +640,7 @@ Here are few more things to consider:
 * Access via direct link `submitticket.php?step=2&deptid=2` triggers a redirect to `submitticket.php`
 * Department dropdown lists only allowed department
 * The same product can be used for multiple rules
+* `Pending`, `Suspended`, `Terminated`, `Cancelled` and `Fraud` products are ignored
 
 [Get the Code »](https://github.com/Katamaze/WHMCS-Free-Scripts/blob/master/hooks/ConditionalSupportDepartments.php)
 
