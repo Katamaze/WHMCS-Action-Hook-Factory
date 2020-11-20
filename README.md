@@ -624,7 +624,7 @@ When an order is set as fraud, prior to the change of status actually occurring,
 
 ## Conditional Support Departments
 
-Restrict the access to support departments based on the products purchased by users. Define restrictions as follows.
+Restrict the access to support departments based on the products purchased by users. Define rules as follows.
 
 ```
 $department['1'] = array('45', '46', '10');
@@ -632,14 +632,14 @@ $department['2'] = array('85', '86', '10');
 // Keep adding rules one per line
 ```
 
-The key of `$department` array (the `[1]` and `[2]` between square brackets) corresponds to the ID of the support department we are restricting. The value is an `array()` of product IDs required for accessing the department. In a in nutshell, the above configuration unlocks department `#1` to users with product IDs `45`, `46` and `10`. Department `#2` requires `85`, `86` and `10`.
+The key of `$department` array (the `[1]` and `[2]` between square brackets) corresponds to the ID of the support department for which we are creating a rule. The value is an `array()` of product IDs required for access. In a in nutshell, the above configuration unlocks department `#1` to users with product IDs `45`, `46` and `10`. Department `#2` requires `85`, `86` and `10`.
 
-Here are few more things to keep in mind:
+Here are few more things to consider:
 
-* The restricted department is removed from `submitticket.php` page
-* Accessing to a restricted department via direct link `submitticket.php?step=2&deptid=2` triggers a redirect to `submitticket.php`
-* Restricted departments don't show up in the department dropdown
-* The same product ID can be used for multiple departments
+* `submitticket.php` doesn't show restricted departments
+* Access via direct link `submitticket.php?step=2&deptid=2` triggers a redirect to `submitticket.php`
+* Department dropdown lists only allowed department
+* The same product can be used for multiple rules
 
 [Get the Code »](https://github.com/Katamaze/WHMCS-Free-Scripts/blob/master/hooks/ConditionalSupportDepartments.php)
 
