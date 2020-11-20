@@ -22,7 +22,7 @@ add_hook('ClientAreaPage', 1, function($vars)
     if (!$department): return; endif;
     $departmentIDs = array_keys($department);
 
-    foreach (Capsule::select(Capsule::raw('SELECT packageid FROM tblhosting WHERE userid = "' . $vars['clientsdetails']['userid'] . '" GROUP BY packageid')) as $v)
+    foreach (Capsule::select(Capsule::raw('SELECT packageid FROM tblhosting WHERE userid = "' . $vars['clientsdetails']['userid'] . '" AND domainstatus NOT IN ("Pending", "Suspended", "Terminated", "Cancelled", "Fraud") GROUP BY packageid')) as $v)
     {
         $packageIDs[] = $v->packageid;
     }
