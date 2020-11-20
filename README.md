@@ -84,6 +84,7 @@ Scripts are provided free of charge "as is" without warranty of any kind. **You'
 * [Hide Google Invisible reCAPTCHA Badge](#hide-google-invisible-recaptcha-badge)
 * [Chatstack Disable for Logged-In Users and Administrators](#chatstack-disable-for-logged-in-users-and-administrators)
 * [Notify Fradulent Orders](#notify-fradulent-orders)
+* [Conditional Support Departments](#conditional-support-departments)
 
 ## Admin Stats for WHMCS v8
 
