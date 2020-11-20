@@ -637,7 +637,7 @@ The key of `$department` array (the `[1]` and `[2]` between square brackets) cor
 Here are few more things to keep in mind:
 
 * The restricted department is removed from `submitticket.php` page
-* The access to a restricted department via direct link `submitticket.php?step=2&deptid=2` will trigger a redirect to `submitticket.php`
+* Accessing to a restricted department via direct link `submitticket.php?step=2&deptid=2` triggers a redirect to `submitticket.php`
 * Restricted departments don't show up in the department dropdown
 * The same product ID can be used for multiple departments
 
