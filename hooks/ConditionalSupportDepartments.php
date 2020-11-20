@@ -13,11 +13,12 @@ use WHMCS\Database\Capsule;
 
 add_hook('ClientAreaPage', 1, function($vars)
 {
-    if ($vars['filename'] != 'submitticket'): return; endif;
-
-    $department['1'] = array('45', '46', '47'); // The access to support department #1 (the ['1'] between square brackets) is restricted to users with product ID #45, #46 and #47
+    // Define department/product pairs. Instructions provided below
+    // https://github.com/Katamaze/WHMCS-Free-Scripts/blob/master/README.md#conditional-support-departments
+    $department['1'] = array('1', '46', '47'); // The access to support department #1 (the ['1'] between square brackets) is restricted to users with product ID #45, #45 and #47
     $department['2'] = array('12', '13', '14');
 
+    if ($vars['filename'] != 'submitticket'): return; endif;
     if (!$department): return; endif;
     $departmentIDs = array_keys($department);
 
