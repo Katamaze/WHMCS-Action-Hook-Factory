@@ -85,6 +85,7 @@ Scripts are provided free of charge "as is" without warranty of any kind. **You'
 * [Chatstack Disable for Logged-In Users and Administrators](#chatstack-disable-for-logged-in-users-and-administrators)
 * [Notify Fradulent Orders](#notify-fradulent-orders)
 * [Conditional Support Departments](#conditional-support-departments)
+* [Abort Email Sending based on User ID and/or Client Group ID](#abort-email-sending-based-on-user-id-andor-client-group-id)
 
 ## Admin Stats for WHMCS v8
 
