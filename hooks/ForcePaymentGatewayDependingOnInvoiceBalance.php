@@ -26,7 +26,7 @@ add_hook('ClientAreaPage', 1, function($vars)
         if ($gateway AND $limit)
         {
             $currencyRate = Capsule::table('tblcurrencies')->where('id', '=', $vars['clientsdetails']['currency'])->where('default', '!=', '1')->pluck('rate')[0];
-            $adminUnlock = Capsule::table('tblinvoices')->where('notes', 'like', '%Payment Method Unlocked by Administratror%')->pluck('notes')[0];
+            $adminUnlock = Capsule::table('tblinvoices')->where('id', '=', $_GET['id'])->where('notes', 'like', '%Payment Method Unlocked by Administratror%')->pluck('notes')[0];
 
             if ($adminUnlock)
             {
