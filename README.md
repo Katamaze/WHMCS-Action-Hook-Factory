@@ -644,6 +644,24 @@ Here are few more things to consider:
 
 [Get the Code »](https://github.com/Katamaze/WHMCS-Free-Scripts/blob/master/hooks/ConditionalSupportDepartments.php)
 
+## Abort Email Sending based on User ID and/or Client Group ID
+
+Let's take as example the following configuration:
+
+```
+$disallowedEmailTemplates = array('Invoice Created'); // The name of the email template being sent
+$disallowedClientGroups = array('3'); // Client Group ID
+$disallowedUserIDs = array('1'); // User ID
+```
+
+Here we are abort the sending of `Invoice Created` email template to client ID `1` and also to clients assigned to client group `3`. Of course you can specify multiple email templates, client groups and user ID as all these variables are `array()`:
+
+* `$disallowedEmailTemplates` the system name of the email template that can be found in `Setup > Email Templates`. When you edit a template, the system name appears right below `Email Templates` title
+* `$disallowedClientGroups` an array of client group IDs that can be found in `Setup > Client Groups`
+* `$disallowedUserIDs` an array of user IDs
+
+[Get the Code »](https://github.com/Katamaze/WHMCS-Free-Scripts/blob/master/hooks/AbortEmailSendingBasedOnUserIDClientGroupID.php)
+
 # Free Reports Collection
 
 Yay! We didn't stop to action hooks :stuck_out_tongue: Below you can find a list of custom [WHMCS Reports](https://docs.whmcs.com/Reports) to give you more in-depth reporting and analytics on the performance of your business. Let's go!
