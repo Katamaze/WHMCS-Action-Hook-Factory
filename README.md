@@ -655,7 +655,7 @@ $disallowedClientGroups = array('3'); // Client Group ID
 $disallowedUserIDs = array('1'); // User ID
 ```
 
-Here we are abort the sending of `Invoice Created` email template to client ID `1` and also to clients assigned to client group `3`. Of course you can specify multiple email templates, client groups and user ID as all these variables are `array()`:
+Here we are abort the sending of `Invoice Created` email template to client ID `1` and also to clients assigned to client group `3`. Of course you can specify multiple email templates, client groups and user ID as all these parameters are `array()`:
 
 * `$disallowedEmailTemplates` the system name of the email template that can be found in `Setup > Email Templates`. When you edit a template, the system name appears right below `Email Templates` title
 * `$disallowedClientGroups` an array of client group IDs that can be found in `Setup > Client Groups`
