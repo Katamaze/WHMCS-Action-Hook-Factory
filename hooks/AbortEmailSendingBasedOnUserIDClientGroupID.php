@@ -14,9 +14,9 @@ use WHMCS\Database\Capsule;
 add_hook('EmailPreSend', 1, function($vars)
 {
     $disallowedEmailTemplates = array('Invoice Created'); // The name of the email template being sent
-    $disallowedClientGroups = array('4'); // Affected Client Group ID
+    $disallowedClientGroups = array('3'); // Affected Client Group ID
     $disallowedUserIDs = array('5'); // Affected User ID
-    $removePDFAttachments = false; // Set true to send emails to the selected users as normal but remove PDF invoice attachments
+    $removePDFAttachments = true; // Set true if you simply want to remove PDF invoice attachments for the selected users
 
     switch (Capsule::table('tblemailtemplates')->select('type')->where('name', $vars['messagename'])->first()->type)
     {
