@@ -249,23 +249,27 @@ If you have a bit of experience with WHMCS, you know that offering promotions ju
 
 Many prefer to have products/services created specifically for special deals. Similarly others want to restrict domain purchase to customers with at least a product/service in their accounts. The hook lets you achieve both goals. Simply configure the following variables:
 
-* `$onetimeProducts` array of product IDs to treat as "one-off" (customer is not allowed to order the same product multiple times)
-* `$onetimeProductGroups` same as above but for product group IDs. Producs inside such groups are treated as one-off
-* `$firstTimerTollerance` product-based restrictions are disabled for new customers placing their first order with you
-* `$notRepeatable` if a customer already has a one-off product, he can't purchase further one-offs (`$firstTimerTollerance` is ignored)
-* `$domainRequiresProduct` domain purchase is allowed only if any of the following conditions is met:
+* `kt_onetimeProducts` array of product IDs to treat as "one-off" (customer is not allowed to order the same product multiple times)
+* `kt_onetimeProductGroups` same as above but for product group IDs. Producs inside such groups are treated as one-off
+* `kt_firstTimerTollerance` product-based restrictions are disabled for new customers placing their first order with you
+* `kt_notRepeatable` if a customer already has a one-off product, he can't purchase further one-offs (`$firstTimerTollerance` is ignored)
+* `kt_domainRequiresProduct` domain purchase is allowed only if any of the following conditions is met:
 	* Customer has an existing product/service (`Pending` and `Terminated` don't count)
 	* Customer is purchasing a domain and a product/service
-* `$promptRemoval` notify customer about restrictions via (previews are below):
+* `kt_promptRemoval` notify customer about restrictions via (previews are below):
 	* `bootstrap-alert` right below *Review & Checkout*
 	* `modal` on screen
 	* `js-alert` on scren
-* `$textDisallowed` message displayed for product-based restriction
-* `$textRequireProduct` message displayed for domain-based resrticion
+* `kt_textDisallowed` message displayed for product-based restriction
+* `kt_textRequireProduct` message displayed for domain-based resrticion
 	
 When the hook detects that the customer is not allowed to order specific products/services and/or domains, it removes them from WHMCS cart showing alerts.
 
 ![image](https://katamaze.com/modules/addons/Mercury/uploads/files/Blog/92b1487d05bc7249c65af0f94cde4732/whmcs-domain-require-product-one-off-products-2.png)
+
+The script highlights products/services used for promotions in green and with "promo" label.
+
+![image](https://katamaze.com/modules/addons/Mercury/uploads/files/Blog/92b1487d05bc7249c65af0f94cde4732/whmcs-offer-products-services-promo.png)
 
 [Get the Code »](https://github.com/Katamaze/WHMCS-Free-Action-Hooks/blob/master/hooks/OneOffProductsDomainRequireProduct.php)
 
