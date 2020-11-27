@@ -252,7 +252,7 @@ Many prefer to have products/services created specifically for special deals. Si
 * `kt_onetimeProducts` array of product IDs to treat as "one-off" (customer is not allowed to order the same product multiple times)
 * `kt_onetimeProductGroups` same as above but for product group IDs. Producs inside such groups are treated as one-off
 * `kt_firstTimerTollerance` product-based restrictions are disabled for new customers placing their first order with you
-* `kt_notRepeatable` if a customer already has a one-off product, he can't purchase further one-offs (`$firstTimerTollerance` is ignored)
+* `kt_notRepeatable` if a customer already has a one-off product, he can't purchase further one-offs (`kt_firstTimerTollerance` is ignored)
 * `kt_domainRequiresProduct` domain purchase is allowed only if any of the following conditions is met:
 	* Customer has an existing product/service (`Pending` and `Terminated` don't count)
 	* Customer is purchasing a domain and a product/service
