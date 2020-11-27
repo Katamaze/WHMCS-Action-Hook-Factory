@@ -27,14 +27,17 @@ $(document).on('ready', function() {
 
     $("table#sortabletbl2 tr:has(td), table#sortabletbl1 tr:has(td)").each(function () {
         var href = $(this).find('td:nth-child(5) a[href^="clientssummary.php?userid="]');
-
         if (typeof href !== undefined)
         {
-            var params = $(href).attr('href').split('=');
-            var id = params[params.length - 1];
+            var params = $(href).attr('href');
 
-            if (typeof data[id] !== 'undefined') {
-                $(this).find('a[href^="clientssummary.php?userid="]').css('background-color', data[id]);
+            if (params) {
+                var params = params.split('=');
+                var id = params[params.length - 1];
+
+                if (typeof data[id] !== 'undefined') {
+                    $(this).find('a[href^="clientssummary.php?userid="]').css('background-color', data[id]);
+                }
             }
         }
     });
