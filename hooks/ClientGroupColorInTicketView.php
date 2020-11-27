@@ -24,7 +24,7 @@ add_hook('AdminAreaHeaderOutput', 1, function($vars)
 <script type="text/javascript">
 $(document).on('ready', function() {
     var data = {$users};
-console.log(data);
+
     $("table#sortabletbl2 tr:has(td), table#sortabletbl1 tr:has(td)").each(function () {
         var href = $(this).find('td:nth-child(5) a[href^="clientssummary.php?userid="]');
 
