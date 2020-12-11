@@ -9,7 +9,13 @@
  * @author      Davide Mantenuto <info@katamaze.com>
  */
 
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 use WHMCS\Database\Capsule;
+
+require '../vendor/phpmailer/phpmailer/src/Exception.php';
+require '../vendor/phpmailer/phpmailer/src/PHPMailer.php';
+require '../vendor/phpmailer/phpmailer/src/SMTP.php';
 
 add_hook('EmailPreSend', 1, function($vars)
 {
@@ -36,62 +42,57 @@ add_hook('EmailPreSend', 1, function($vars)
 
     if ($removePDFAttachments AND $attachments AND $abortSend)
     {
-        if (file_exists(ROOTDIR . '/vendor/phpmailer/phpmailer/PHPMailerAutoload.php'))
+        foreach (Capsule::select(Capsule::raw('SELECT setting, value FROM tblconfiguration WHERE setting IN ("CompanyName", "Email", "MailType", "SMTPHost", "SMTPUsername", "SMTPPassword", "SMTPPort", "SMTPSSL")')) as $v)
         {
-            require_once( ROOTDIR . '/vendor/phpmailer/phpmailer/PHPMailerAutoload.php');
+            if ($v->setting == 'SMTPPassword' AND $v->value): $v->value = Decrypt($v->value); endif;
+            $conf[$v->setting] = $v->value;
+        }
 
-            foreach (Capsule::select(Capsule::raw('SELECT setting, value FROM tblconfiguration WHERE setting IN ("CompanyName", "Email", "MailType", "SMTPHost", "SMTPUsername", "SMTPPassword", "SMTPPort", "SMTPSSL")')) as $v)
+        $mail = new PHPMailer;
+        $mail->CharSet = 'UTF-8';
+
+        try
+        {
+            if ($conf->MailType == 'smtp')
             {
-                if ($v->setting == 'SMTPPassword' AND $v->value): $v->value = Decrypt($v->value); endif;
-                $conf[$v->setting] = $v->value;
+                $mail->IsSMTP();
+                $mail->Host       = $conf['SMTPHost'];
+                $mail->SMTPAuth   = true;
+                $mail->SMTPSecure = $conf['SMTPSSL'];
+                $mail->Port       = $conf['SMTPPort'];
+                $mail->Username   = $conf['SMTPUsername'];
+                $mail->Password   = $conf['SMTPPassword'];
+                $mail->Mailer     = 'smtp';
+                $mail->CharSet    = 'UTF-8';
+            }
+            else
+            {
+                $mail->IsMail();
+                $mail->CharSet    = 'UTF-8';
             }
 
-            $mail = new PHPMailer;
-            $mail->CharSet = 'UTF-8';
+            $emailTemplate = Capsule::select(Capsule::raw('SELECT subject, message FROM tblemailtemplates WHERE name = "' . $vars['messagename'] . '" AND language = "' . $user->language . '" LIMIT 1'))[0];
 
-            try
+            foreach (array('invoice_html_contents', 'client_name', 'invoice_date_created', 'invoice_payment_method', 'invoice_num', 'invoice_total', 'invoice_date_due', 'signature') as $v)
             {
-                if ($conf->MailType == 'smtp')
-                {
-                    $mail->IsSMTP();
-                    $mail->Host       = $conf['SMTPHost'];
-                    $mail->SMTPAuth   = true;
-                    $mail->SMTPSecure = $conf['SMTPSSL'];
-                    $mail->Port       = $conf['SMTPPort'];
-                    $mail->Username   = $conf['SMTPUsername'];
-                    $mail->Password   = $conf['SMTPPassword'];
-                    $mail->Mailer     = 'smtp';
-                    $mail->CharSet    = 'UTF-8';
-                }
-                else
-                {
-                    $mail->IsMail();
-                    $mail->CharSet    = 'UTF-8';
-                }
-
-                $emailTemplate = Capsule::select(Capsule::raw('SELECT subject, message FROM tblemailtemplates WHERE name = "' . $vars['messagename'] . '" AND language = "' . $user->language . '" LIMIT 1'))[0];
-
-                foreach (array('invoice_html_contents', 'client_name', 'invoice_date_created', 'invoice_payment_method', 'invoice_num', 'invoice_total', 'invoice_date_due', 'signature') as $v)
-                {
-                    $emailTemplate->subject = str_replace('{$' . $v . '}', $vars['mergefields'][$v], $emailTemplate->subject);
-                    $emailTemplate->message = str_replace('{$' . $v . '}', $vars['mergefields'][$v], $emailTemplate->message);
-                }
-
-                $mail->AddAddress($vars['mergefields']['client_email'], $vars['mergefields']['client_name']);
-                $mail->SetFrom($conf['Email'], $conf['CompanyName']);
-                $mail->Subject = $emailTemplate->subject;
-                $mail->MsgHTML($emailTemplate->message);
-                $mail->Send();
-                $mail->ClearAllRecipients();
+                $emailTemplate->subject = str_replace('{$' . $v . '}', $vars['mergefields'][$v], $emailTemplate->subject);
+                $emailTemplate->message = str_replace('{$' . $v . '}', $vars['mergefields'][$v], $emailTemplate->message);
             }
-            catch (phpmailerException $e)
-            {
-                //echo $e->errorMessage(); // Pretty error
-            }
-            catch (Exception $e)
-            {
-                //echo $e->getMessage(); // Boring error
-            }
+
+            $mail->AddAddress($vars['mergefields']['client_email'], $vars['mergefields']['client_name']);
+            $mail->SetFrom($conf['Email'], $conf['CompanyName']);
+            $mail->Subject = $emailTemplate->subject;
+            $mail->MsgHTML($emailTemplate->message);
+            $mail->Send();
+            $mail->ClearAllRecipients();
+        }
+        catch (phpmailerException $e)
+        {
+            //echo $e->errorMessage(); // Pretty error
+        }
+        catch (Exception $e)
+        {
+            //echo $e->getMessage(); // Boring error
         }
     }
 
