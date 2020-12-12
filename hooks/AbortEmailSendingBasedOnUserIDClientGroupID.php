@@ -13,10 +13,6 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 use WHMCS\Database\Capsule;
 
-require '../vendor/phpmailer/phpmailer/src/Exception.php';
-require '../vendor/phpmailer/phpmailer/src/PHPMailer.php';
-require '../vendor/phpmailer/phpmailer/src/SMTP.php';
-
 add_hook('EmailPreSend', 1, function($vars)
 {
     $disallowedEmailTemplates = array('Invoice Created'); // The name of the email template being sent
@@ -42,6 +38,10 @@ add_hook('EmailPreSend', 1, function($vars)
 
     if ($removePDFAttachments AND $attachments AND $abortSend)
     {
+        require __DIR__ . '/../../vendor/phpmailer/phpmailer/src/Exception.php';
+        require __DIR__ . '/../../vendor/phpmailer/phpmailer/src/PHPMailer.php';
+        require __DIR__ . '/../../vendor/phpmailer/phpmailer/src/SMTP.php';
+
         foreach (Capsule::select(Capsule::raw('SELECT setting, value FROM tblconfiguration WHERE setting IN ("CompanyName", "Email", "MailType", "SMTPHost", "SMTPUsername", "SMTPPassword", "SMTPPort", "SMTPSSL")')) as $v)
         {
             if ($v->setting == 'SMTPPassword' AND $v->value): $v->value = Decrypt($v->value); endif;
