@@ -11,7 +11,7 @@
 
 use WHMCS\Database\Capsule;
 
-add_hook('PreModuleCreate', 1, function($vars)
+add_hook('OverrideModuleUsernameGeneration', 1, function($vars)
 {
     $chars              = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
     $specialChars       = '!@#$%^&*?'; // Plesk does not consider (, ), -, = and + as special characters
