@@ -11,7 +11,7 @@
 
 use WHMCS\Database\Capsule;
 
-add_hook('PreModuleCreate', 1, function($vars)
+add_hook('OverrideModuleUsernameGeneration', 1, function($vars)
 {
     $length['digit']    = '3'; // Number of digits in password
     $length['lower']    = '4'; // Number of UNIQUE lowercase characters in password
