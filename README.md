@@ -431,7 +431,7 @@ The hook prevents WHMCS from paying commission for customers registered on your 
 
 ## Prevent changes to Client Custom Fields
 
-WHMCS has an in-built function to lock client profile fields you want to prevent clients being able to edit from clientarea (eg. email, company name). This feature however is not avaiable for client custom fields. Making such fields "disabled" via HTML is not an option. Anyone with bit of knowledge can skip this form of protection.
+WHMCS has an in-built function to lock client profile fields you want to prevent clients being able to edit from clientarea (eg. email, company name). This feature however is not avaiable for client custom fields. Making such fields "disabled" via HTML is not an option. Anyone with bit of HTML knowledge can skip this form of protection.
 
 This hook acts as the last line of defense. It grants that no customer can submit changes. If necessary it can be enabled also for WHMCS Administrators.
 
