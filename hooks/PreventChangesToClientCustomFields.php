@@ -18,8 +18,9 @@ add_hook('CustomFieldSave', 1, function($vars)
 
     /* Do not edit below */
     $IsAdmin = (basename($_SERVER['PHP_SELF']) == 'clientsprofile.php' ? true : false);
+    $IsNewClient = (in_array(basename($_SERVER['PHP_SELF']), array('register.php', 'cart.php')) ? true : false);
 
-    if (in_array($vars['fieldid'], $ReadOnlyFields) AND (($IsAdmin AND $DisallowAdmin) OR (!$IsAdmin)))
+    if (in_array($vars['fieldid'], $ReadOnlyFields) AND (($IsAdmin AND $DisallowAdmin) OR (!$IsAdmin)) AND !$IsNewClient)
     {
         return array('value' => Capsule::table('tblcustomfieldsvalues')->where(['fieldid' => $vars['fieldid'], 'relid' => $vars['relid']])->first(['value'])->value);
     }
