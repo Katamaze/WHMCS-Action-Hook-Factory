@@ -85,6 +85,7 @@ EOF;
 </packet>
 EOF;
                 $response = $plesk->request($request);
+                if (!$response): continue; endif;
                 $response = new SimpleXMLElement($response);
                 $response = json_decode(json_encode($response), true);
 
