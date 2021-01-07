@@ -54,7 +54,7 @@ class Checker
 
         if ($temp)
         {
-            require_once('PleskApiClient.php');
+            require_once('PleskAPIClient.php');
 
             foreach ($temp as $serverID => $packages)
             {
