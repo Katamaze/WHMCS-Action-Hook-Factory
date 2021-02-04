@@ -669,6 +669,12 @@ We are aborting the sending of `Invoice Created` email to client ID `1` and also
 
 [Get the Code »](https://github.com/Katamaze/WHMCS-Free-Scripts/blob/master/hooks/AbortEmailSendingBasedOnUserIDClientGroupID.php)
 
+## Generate Missing UUID in tblclients
+
+Importing clients in `tblclients` table via queries or from phpMyAdmin, does not automatically create `uuid` values. This script will generate `uuid` for clients that don't have one yet. It triggers by visiting any page of frontend. Don't forget to remove the it when you finished.
+
+[Get the Code »](https://github.com/Katamaze/WHMCS-Action-Hook-Factory/blob/master/hooks/GenerateUUID.php)
+
 # Free Reports Collection
 
 Yay! We didn't stop to action hooks :stuck_out_tongue: Below you can find a list of custom [WHMCS Reports](https://docs.whmcs.com/Reports) to give you more in-depth reporting and analytics on the performance of your business. Let's go!
