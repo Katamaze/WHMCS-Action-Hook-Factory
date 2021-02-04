@@ -86,6 +86,7 @@ Scripts are provided free of charge "as is" without warranty of any kind. **You'
 * [Notify Fradulent Orders](#notify-fradulent-orders)
 * [Conditional Support Departments](#conditional-support-departments)
 * [Abort Email Sending based on User ID and/or Client Group ID](#abort-email-sending-based-on-user-id-andor-client-group-id)
+* [Generate Missing UUID in tblclients](#generate-missing-uuid-in-tblclients)
 
 ## Admin Stats for WHMCS v8
 
