@@ -676,6 +676,14 @@ Importing clients in `tblclients` table via queries or from phpMyAdmin, does not
 
 [Get the Code »](https://github.com/Katamaze/WHMCS-Action-Hook-Factory/blob/master/hooks/GenerateUUID.php)
 
+## Change Default Sorting of Tables in Backend
+
+It feels weird when you open `Billing > Invoices` and WHMCS sorts records by `Due Date`. A more convenient way to sort invoices is by `Invoice Date`. It took me plenty of time to figure out how to change default sorting for tables in backend.
+
+WHMCS stores sorting order for each page in the mysterious `$_COOKIE['WHMCSSD']` array. Why am I saying mysterious? Because for reasons I can't understand, WHMCS staff decided to `json_encode` and `base64_encode` its content. That's why nobody before me knew this secret :P Enjoy the hook and adapt it to your needs.
+
+[Get the Code »](https://github.com/Katamaze/WHMCS-Action-Hook-Factory/blob/master/hooks/GenerateUUID.php)
+
 # Free Reports Collection
 
 Yay! We didn't stop to action hooks :stuck_out_tongue: Below you can find a list of custom [WHMCS Reports](https://docs.whmcs.com/Reports) to give you more in-depth reporting and analytics on the performance of your business. Let's go!
