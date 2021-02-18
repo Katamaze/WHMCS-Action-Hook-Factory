@@ -681,7 +681,7 @@ Importing clients in `tblclients` table via queries or from phpMyAdmin, does not
 
 It feels weird when you open `Billing > Invoices` and WHMCS sorts records by `Due Date`. A more convenient way to sort invoices is by `Invoice Date`. It took me plenty of time to figure out how to change default sorting for tables in backend.
 
-WHMCS stores sorting order for each page in the mysterious `$_COOKIE['WHMCSSD']` array. Why am I saying mysterious? Because for reasons I can't understand, WHMCS staff decided to `json_encode` and `base64_encode` its content. That's why nobody before me knew this secret :P
+WHMCS stores sorting order for each page in the mysterious `$_COOKIE['WHMCSSD']` array. Why am I saying mysterious? Because for reasons I can't understand, WHMCS staff decided to `json_encode` and `base64_encode` its content. That's why nobody before me knew this secret.
 
 [Get the Code »](https://github.com/Katamaze/WHMCS-Action-Hook-Factory/blob/master/hooks/ChangeDefaultSortingBackendTables.php)
 
