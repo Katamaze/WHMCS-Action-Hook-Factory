@@ -11,16 +11,16 @@
 
 use WHMCS\Database\Capsule;
 
-add_hook('TicketStatusChange', 1, function($vars)
-{
+add_hook('TicketStatusChange', 1, function($vars) {
+
     $adminUsername = 'admin'; // The reply will be added by this Admin user. Set false to open the ticket using your own customer
-    $userID = Capsule::table('tbltickets')->where('id', $vars['ticketid'])->first(['userid'])->userid;
+    $ticketDetails = Capsule::table('tbltickets')->where('id', $vars['ticketid'])->first(['userid', 'tid', 'title']);
 
     // Email notification
     $EmailData = array(
-        'id' => $userID,
+        'id' => $ticketDetails->userid,
         'customtype' => 'general',
-        'customsubject' => 'Thank you for contacting us',
+        'customsubject' => $ticketDetails->title. ' Changed to ' . strtoupper($vars['status']) . ' [Ticket ID #' . $ticketDetails->tid . ']',
         'custommessage' => 'Your ticket status has been changed to ' .$vars['status']
     );
 
@@ -29,7 +29,7 @@ add_hook('TicketStatusChange', 1, function($vars)
     // Ticket reply
     $TicketData = array(
         'ticketid' => $vars['ticketid'],
-        'message' => 'Your ticket status has been changed to ' .$vars['status'],
+        'message' => $ticketDetails->title. ' Changed to ' . strtoupper($vars['status']) . ' [Ticket ID #' . $ticketDetails->tid . ']',
         'clientid' => $userID,
         'adminusername' => $adminUsername,
     );
