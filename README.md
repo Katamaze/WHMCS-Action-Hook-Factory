@@ -258,6 +258,7 @@ Many prefer to have products/services created specifically for special deals. Si
 * `kt_domainRequiresProduct` domain purchase is allowed only if any of the following conditions is met:
 	* Customer has an existing product/service (`Pending` and `Terminated` don't count)
 	* Customer is purchasing a domain and a product/service
+* `kt_onClientRegister` Ordering one-off products is possible only for clients who registered within the last X number of days (`int`). Leave `false` to disable
 * `kt_promptRemoval` notify customer about restrictions via (previews are below):
 	* `bootstrap-alert` right below *Review & Checkout*
 	* `modal` on screen
