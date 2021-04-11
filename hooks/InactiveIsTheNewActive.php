@@ -36,6 +36,7 @@ add_hook('AdminAreaHeadOutput', 1, function($vars) {
 
         $autoPost = <<<HTML
 if ($('input#checkboxShowHidden').is(':checked')) {
+
     $('body').addClass('hidden');
     $('#checkboxShowHidden').click();
 }
@@ -46,9 +47,13 @@ HTML;
     return <<<HTML
 <script>
 $(document).on('ready', function() {
+
     if ($('input#intelliSearchHideInactiveSwitch').is(':checked')) {
+
         $('#intelliSearchHideInactiveSwitch').click();
+        $('#intelligentSearchResults').css('display', 'none');
     }
+
     {$autoPost}
 })
 </script>
