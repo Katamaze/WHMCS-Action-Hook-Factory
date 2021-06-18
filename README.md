@@ -1,5 +1,5 @@
 #### Table of Contents
-- [Disclaimer: I'm done with WHMCS](#disclaimer-im-done-with-whmcs)
+- [Disclaimer: I'm done with WHMCS](#%EF%B8%8F-disclaimer-im-done-with-whmcs-%EF%B8%8F)
 - [WHMCS as Fast as Possible](#whmcs-as-fast-as-possible)
 - [Understanding Action Hooks](#understanding-action-hooks)
 - [Perfect Your WHMCS](#perfect-your-whmcs)
