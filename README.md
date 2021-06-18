@@ -6,6 +6,20 @@
 - [Free Reports Collection](#free-reports-collection)
 - [Free Modules Collection](#free-modules-collection)
 
+# Disclaimer: I'm Done with WHMCS
+
+This page has helped a lot of people over the course of years. All the tips and scripts I provided here for free have been used many times even by my competitors. Helping others is rewarning and I would have continued without any issue but I'm done with WHMCS. I keep receiving emails, tickets, phone calls, DM on whmcs.community and messages on LinkedIn & Skype. I think is time to explain the reasons why I'm done with WHMCS and why I don't even read incoming messages.
+
+In the middle of the COVID-19 crisis, WHMCS increased prices up to 3154%. That's not a typo. I personally know companies that will start paying 15.599$ per year instead of 479$ while the vast majority will move from 479$ to 3599$. That's not a price increase to my mind but a disgusting move considering that WHMCS is getting worse and worse.
+
+I've been using this software since 2007 and I've always supported them till WebPros joined the game aquiring Plesk, cPanel and WHMCS. Since then, this software kept getting worse filled with a bunch of buggy features that no one ever asked for. WHMCS no longer listen to customers. They're slowly killing providers pumping out sponsored stuff which is perfectly in line with WebPros mission: become a monopoly of the hosting business and rule on everyone.
+
+I am no longer in the mood to help this company with my time and skills. Every time I see WHMCS interface I feel disgusted 🤮 For what is worth I tured from their number one supporter to a fierce enemy. I [have plenty of nasty things](https://katamaze.com/blog/41/whmcs-cons) to reveal about WHMCS. Feel free to share & discuss it. I'm so against them that I started working on an open source and free alternative named [Leap](https://github.com/Katamaze/Leap).
+
+That being said, I'll leave online all my WHMCS modules, scripts, posts and free projects like this same page you are reading since they can still help many people. On the other hand I have no intention to write a single line of code for WHMCS unless I really have to due to people still purchasing and renewing my modules.
+
+Apart from that, I'm 100% focused on [Leap](https://github.com/Katamaze/Leap) and the new awesome company I'm working for 😊 
+
 # WHMCS as Fast as Possible
 
 It's much easier to understand what is WHMCS making a parallelism with WordPress. Of the many free CMS, WordPress is the best and most popular solution to start a blog. WHMCS is the same in its reference market. It's the way go to [start an hosting business](https://katamaze.com/blog/38/starting-a-domain-and-hosting-company-in-2020) for **providers, web agencies and IT professionals**.
