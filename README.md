@@ -16,11 +16,15 @@ I think is time to explain the reasons why I'm done with this software and why I
 
 In the middle of the COVID-19 crisis, WHMCS increased prices up to 3154%. That's not a typo. I personally know companies that will start paying 15.599$ per year instead of 479$ while the vast majority will move to 3599$. That's still pretty darn price increase considering that WHMCS is getting worse and worse.
 
-I've been using this software since 2007 and I've always supported them till WebPros joined the game aquiring Plesk, cPanel and WHMCS. Since then, this software kept getting worse filled with a bunch of buggy features that no one ever asked for. WHMCS no longer listen to customers. They're slowly killing providers pumping out sponsored stuff which is perfectly in line with WebPros mission: become a monopoly of the hosting business and rule on everyone.
+I've been using this software since 2007 and I've always supported them till WebPros joined the game aquiring Plesk, cPanel and WHMCS. Since then, this software kept getting worse filled with a bunch of buggy features that no one ever asked for.
 
-I am no longer in the mood to help this company with my time and skills. Every time I see WHMCS interface I feel disgusted 🤮 For what is worth I tured from their number one supporter to a fierce enemy. I [have plenty of nasty things](https://katamaze.com/blog/41/whmcs-cons) to reveal about WHMCS. Feel free to share & discuss it. I'm so against them that I started working on an open source and free alternative named [Leap](https://github.com/Katamaze/Leap).
+WHMCS no longer listen to customers. They're slowly killing providers pumping out sponsored stuff which is perfectly in line with WebPros mission: become a monopoly of the hosting business and rule on everyone.
 
-That being said, I'll leave online all my WHMCS modules, scripts, posts and free projects like this same page you are reading since they can still help many people. On the other hand I have no intention to write a single line of code for WHMCS unless I really have to due to people still purchasing and renewing my modules.
+I am no longer in the mood to help this company with my time and skills. Every time I see WHMCS interface I feel disgusted 🤮 For what is worth I tured from their number one supporter to a fierce enemy.
+
+I [have plenty of nasty things](https://katamaze.com/blog/41/whmcs-cons) to reveal about WHMCS. Feel free to share & discuss it. I'm so against them that I started working on an open source and free alternative named [Leap](https://github.com/Katamaze/Leap).
+
+That being said, I'll leave online all my WHMCS modules, scripts, posts and free projects like this same page you are reading since they can still be helpful for many. On the other hand I have no intention to write again a single line of code for WHMCS unless I really have to due to people still purchasing and renewing my modules.
 
 Apart from that, I'm 100% focused on [Leap](https://github.com/Katamaze/Leap) and the new awesome company I'm working for 😊 
 
