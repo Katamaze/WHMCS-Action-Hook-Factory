@@ -8,7 +8,9 @@
 
 # Disclaimer: I'm Done with WHMCS
 
-This page has helped a lot of people over the course of years. All the free tips and scripts I provided here have been used many times by providers, other developers and even competitors. Helping others is rewarning and I would have continued without any issue but I'm done with WHMCS. I keep receiving emails, tickets, phone calls, DM on whmcs.community and messages on LinkedIn & Skype. I think is time to explain the reasons why I'm done with WHMCS and why I don't even read incoming messages.
+This page has helped a lot of people over the course of years. All the free tips and scripts I provided here have been used many times by providers, other developers and even competitors.
+
+Helping others is rewarning and I would have continued without any issue but I'm done with WHMCS. I keep receiving emails, tickets, phone calls, DM on whmcs.community and messages on LinkedIn & Skype. I think is time to explain the reasons why I'm done with this software and why I won't read any message.
 
 In the middle of the COVID-19 crisis, WHMCS increased prices up to 3154%. That's not a typo. I personally know companies that will start paying 15.599$ per year instead of 479$ while the vast majority will move from 479$ to 3599$. That's not a price increase to my mind but a disgusting move considering that WHMCS is getting worse and worse.
 
