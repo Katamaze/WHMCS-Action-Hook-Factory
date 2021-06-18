@@ -1,4 +1,5 @@
 #### Table of Contents
+- [Disclaimer: I'm done with WHMCS](#disclaimer-im-done-with-whmcs)
 - [WHMCS as Fast as Possible](#whmcs-as-fast-as-possible)
 - [Understanding Action Hooks](#understanding-action-hooks)
 - [Perfect Your WHMCS](#perfect-your-whmcs)
@@ -6,7 +7,7 @@
 - [Free Reports Collection](#free-reports-collection)
 - [Free Modules Collection](#free-modules-collection)
 
-# Disclaimer: I'm Done with WHMCS
+# ⚠️ Disclaimer: I'm Done with WHMCS ⚠️
 
 This page has helped a lot of people over the course of years. All the free tips and scripts I provided here have been used many times by providers, other developers and even competitors.
 
