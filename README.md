@@ -9,7 +9,7 @@
 
 # ⚠️ Disclaimer: I'm Done with WHMCS ⚠️
 
-This page has helped a lot of people but I'm done with this software. WHMCS no longer deserves my time and skills. I wrote a post to explain [why I am leaving WHMCS](https://katamaze.com/blog/54/avoid-whmcs-blesta-hostbill-clientexec-ubersmith-hosting) and why you should consider to do the same thing.
+This page has helped a lot of people but I'm done with this software. WHMCS no longer deserves my time and skills. I wrote a post to explain [why after 15 years I am leaving WHMCS](https://katamaze.com/blog/54/avoid-whmcs-blesta-hostbill-clientexec-ubersmith-hosting) and why you should consider to do the same thing.
 
 TL;DR version. Leave WHMCS because:
 
