@@ -11,7 +11,7 @@
 
 use WHMCS\Database\Capsule;
 
-add_hook('InvoiceCreated', 1, function($vars) {
+add_hook('InvoiceCreationPreEmail', 1, function($vars) {
 
     $items = Capsule::table('tblinvoiceitems')->select('id', 'description')->where('invoiceid', '=', $vars['invoiceid'])->get();
 
