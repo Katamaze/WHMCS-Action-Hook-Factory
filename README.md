@@ -159,9 +159,16 @@ Second it shows this modal on screen where you can freely choose to auto-recalcu
 
 ## No Dates in Invoice Items Description
 
-When it comes to service/domain renewal, WHMCS always puts dates in invoice description like so `Hosting Silver - example.com (10/05/2022 - 09/05/2023)`. With this hook you can get rid of the ` (10/05/2022 - 09/05/2023)` part (initial space included).
+When it comes to service/domain renewal, WHMCS always puts dates in invoice description like so `Hosting Silver - example.com (10/05/2022 - 09/05/2023)`. With this hook you can get rid of the ` (10/05/2022 - 09/05/2023)` part (initial space included). The hook automatically detects what is the Date Format in use on your WHMCS:
 
-The hook automatically detects what is the Date Format in use on your WHMCS so that it uses the right regex to match the string. It triggers on `InvoiceCreated` hence it will not affect your existing invoices. Lastly it works also with descriptions that go on multiple lines (eg. addons, configurable options).
+* `DD/MM/YYYY`
+* `DD.MM.YYYY`
+* `DD-MM-YYYY`
+* `MM/DD/YYYY`
+* `YYYY/MM/DD`
+* `YYYY-MM-DD`
+
+This way it always uses the right regex to match the string. The hook triggers on `InvoiceCreated` hence it will not affect your existing invoices. Lastly it works also with multiple-lines descriptions (eg. addons, configurable options).
 
 [Get the Code »](https://github.com/Katamaze/WHMCS-Action-Hook-Factory/blob/master/hooks/noDatesInInvoiceItemsDescription.php)
 
