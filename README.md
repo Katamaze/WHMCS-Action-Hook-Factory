@@ -63,7 +63,7 @@ Scripts are provided free of charge "as is" without warranty of any kind. **You'
 * [Simulate / Run WHMCS Daily Cron Job on Demand](#simulate--run-whmcs-daily-cron-job-on-demand)
 * [Accept Quote without Logging In](#accept-quote-without-logging-in)
 * [Bulk Auto Recalculate Client Domain & Products/Services](#bulk-auto-recalculate-client-domain--productsservices)
-* [No Dates in Invoice Items Description](#no-dates-in-invoice-items-descruiption.php)
+* [No Dates in Invoice Items Description](#no-dates-in-invoice-items-description)
 * [cPanel & Plesk login button in My Services](#cpanel--plesk-login-button-in-my-services)
 * [Related Service in Ticket Sidebar](#related-service-in-ticket-sidebar)
 * [Force Payment Gateway depending on Invoice Balance](#force-payment-gateway-depending-on-invoice-balance)
