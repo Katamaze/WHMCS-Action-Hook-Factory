@@ -168,7 +168,7 @@ When it comes to service/domain renewal, WHMCS always puts dates in invoice desc
 * `YYYY/MM/DD`
 * `YYYY-MM-DD`
 
-This way it always uses the right regex to match the string. The hook triggers on `InvoiceCreated` hence it will not affect your existing invoices. Lastly it works also with multiple-lines descriptions (eg. addons, configurable options).
+This way it always uses the right regex to match the string. The hook triggers on `InvoiceCreationPreEmail` hence it will not affect your existing invoices. Lastly it works also with multiple-lines descriptions (eg. addons, configurable options).
 
 [Get the Code »](https://github.com/Katamaze/WHMCS-Action-Hook-Factory/blob/master/hooks/noDatesInInvoiceItemsDescription.php)
 
