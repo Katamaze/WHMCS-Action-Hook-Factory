@@ -63,6 +63,7 @@ Scripts are provided free of charge "as is" without warranty of any kind. **You'
 * [Simulate / Run WHMCS Daily Cron Job on Demand](#simulate--run-whmcs-daily-cron-job-on-demand)
 * [Accept Quote without Logging In](#accept-quote-without-logging-in)
 * [Bulk Auto Recalculate Client Domain & Products/Services](#bulk-auto-recalculate-client-domain--productsservices)
+* [No Dates in Invoice Items Description](#no-dates-in-invoice-items-descruiption.php)
 * [cPanel & Plesk login button in My Services](#cpanel--plesk-login-button-in-my-services)
 * [Related Service in Ticket Sidebar](#related-service-in-ticket-sidebar)
 * [Force Payment Gateway depending on Invoice Balance](#force-payment-gateway-depending-on-invoice-balance)
@@ -155,6 +156,14 @@ Second it shows this modal on screen where you can freely choose to auto-recalcu
 ![image](https://katamaze.com/modules/addons/Mercury/uploads/files/Blog/92b1487d05bc7249c65af0f94cde4732/whmcs-bulk-auto-recalculate-customer-domain-product.png)
 
 [Get the Code »](https://github.com/Katamaze/WHMCS-Action-Hooks/blob/master/hooks/BulkAutoRecalculateClientDomainsProducts.php)
+
+## No Dates in Invoice Items Description
+
+When it comes to service/domain renewal, WHMCS always puts dates in invoice description like so `Hosting Silver - example.com (10/05/2022 - 09/05/2023)`. With this hook you can get rid of the ` (10/05/2022 - 09/05/2023)` part (initial space included).
+
+The hook automatically detects what is the Date Format in use on your WHMCS so that it uses the right regex to match the string. It triggers on `InvoiceCreated` hence it will not affect your existing invoices. Lastly it works also with descriptions that go on multiple lines (eg. addons, configurable options).
+
+[Get the Code »](https://github.com/Katamaze/WHMCS-Action-Hook-Factory/blob/master/hooks/noDatesInInvoiceItemsDescription.php)
 
 ## cPanel & Plesk login button in My Services
 
