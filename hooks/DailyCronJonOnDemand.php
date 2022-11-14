@@ -13,8 +13,8 @@ use WHMCS\Database\Capsule;
 
 add_hook('AdminAreaHeaderOutput', 1, function($vars)
 {
-    if ($_GET['simulatecron'])
-    {
+    if ($_GET['simulatecron']) {
+
         $SystemURL = Capsule::table('tblconfiguration')->where('setting', 'SystemURL')->first(['value'])->value;
         Capsule::table('tblconfiguration')->where('setting', 'lastDailyCronInvocationTime')->update(['value' => '']);
         Capsule::table('tblconfiguration')->where('setting', 'DailyCronExecutionHour')->update(['value' => date('H')]);
@@ -32,17 +32,24 @@ add_hook('AdminAreaHeaderOutput', 1, function($vars)
 .katademo1 { color:#fff !important; background-color:#eaae53 !important;}
 </style>
 <script type="text/javascript">
-$(document).on('ready', function(){
-    $('body>.topbar>.pull-left').append('<a href="index.php?simulatecron=1" title="Each press simulates the Daily Cron of WHMCS" class="update-now katademo1" id="simulatingcronjob">Run Daily CronJob <i class="fa"></i></a><a href="index.php?reinstalldemo=1" title="Reinstall Demo with new sets of data" class="update-now katademo3" id="reinstallingdemo">Reinstall <i class="fa"></i></a><a href="https://katamaze.com/demo" target="_blank" title="Extend or End your Demo" class="update-now katademo2">Manage Demo</a>');
-    $("#simulatingcronjob").on('click', function(e){
-        if (confirm('Simulating the Cron Job might take a few minutes especially the very first time. Please be patient.'))
-        {
+$(document).on('ready', function() {
+
+    // For WHMCS up to v7
+    $('body > .topbar > .pull-left').append('<a href="index.php?simulatecron=1" title="Each press simulates the Daily Cron of WHMCS" class="update-now katademo1" id="simulatingcronjob">Run Daily CronJob <i class="fa"></i></a><a href="index.php?reinstalldemo=1" title="Reinstall Demo with new sets of data" class="update-now katademo3" id="reinstallingdemo">Reinstall <i class="fa"></i></a><a href="https://katamaze.com/demo" target="_blank" title="Extend or End your Demo" class="update-now katademo2">Manage Demo</a>');
+
+    // For WHMCS v8 and newer
+    $('#sidebar .sidebar-collapse').prepend('<div class="sidebar-header"><i class="fas fa-code"></i> Developer Tools</div><ul class="menu"><li><a href="index.php?simulatecron=1" title="Each press simulates the Daily Cron of WHMCS" id="simulatingcronjob">Run Daily CronJob <i class="fa"></i></a></li></ul>');
+
+    $("#simulatingcronjob").on('click', function(e) {
+
+        if (confirm('Simulating the Cron Job might take a few minutes. Please be patient.')) {
+
             $(e.currentTarget).find('.fa').addClass('fa-pulse fa-spinner');
         }
-	else
-	{
-	    e.preventDefault();
-	}
+	    else {
+
+	        e.preventDefault();
+    	}
     });
 });
 </script>
