@@ -133,6 +133,10 @@ As the name suggests, WHMCS daily cron job runs once per day. There's no easy wa
 
 The hook adds *Run Daily Cronjob* button (the orange one) on top of your WHMCS Administration. Clicking it allows to run WHMCS daily cron job whenever you want. All it takes is a click. Please, ignore *Reinstall* and *Manage Demo* buttons. We use them for [Live Demo](https://katamaze.com/demo) to let visitors try our modules before purchase.
 
+Be advised that on WHMCS v8 and newer versions the *Run Daily Cronjob* button is placed on top of the sidebar as shown in the screenshot.
+
+![image](https://katamaze.com/modules/addons/Mercury/uploads/files/Blog/92b1487d05bc7249c65af0f94cde4732/whmcs-run-cron-on-demand.png)
+
 [Get the Code »](https://github.com/Katamaze/WHMCS-Action-Hooks/blob/master/hooks/DailyCronJonOnDemand.php)
 
 ## Accept Quote without Logging In
