@@ -59,6 +59,7 @@ This [blog post](https://katamaze.com/blog/32/whmcs-action-hooks-collection-2020
 Scripts are provided free of charge "as is" without warranty of any kind. **You're not allowed to remove copyright notice**. Let's start!
 
 * [If client's group this than that](#if-clients-group-this-than-that)
+* [Restrict payment gateways based on client group](#restrict-payment-gateways-based-on-client-group)
 * [Admin Stats for WHMCS v8](#admin-stats-for-whmcs-v8)
 * [Client Group Color in Ticket View for WHMCS v8](#client-group-color-in-ticket-view-for-whmcs-v8)
 * [Simulate / Run WHMCS Daily Cron Job on Demand](#simulate--run-whmcs-daily-cron-job-on-demand)
