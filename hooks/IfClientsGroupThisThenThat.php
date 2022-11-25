@@ -20,7 +20,7 @@ define('kt_groups', [
         'invoice_header' => 'Ferrari S.p.A.' . PHP_EOL . 'Via Emilia Est 1163' . PHP_EOL . '41121 Modena - Italia', // Replaces the `Pay to` section of invoices with this one. Set `false` to leave default details. IMPORTANT! This does't affect `invoicepdf.tpl` file (the PDF version of invoice). This file can't be accessed via hooks. You'll need to put an if/else statement yourself
         'allowed_payment_gateways' => [ // Array of payment gateways that clients from this group are allowed to use. Leave empty for no restriction
 
-            'paypalcheckout', // The first gateway in the array is always used as default when it comes to replacing restricted ones from open invoices (not in Paid, Collections, Refund, Payment Pending status)
+            'paypalcheckout', // The first gateway in the array is always used as default when it comes to replacing restricted ones from open invoices (not in `Paid`, `Collections`, `Refund`, `Payment Pending` status)
             'banktransfer'
         ]
     ],
