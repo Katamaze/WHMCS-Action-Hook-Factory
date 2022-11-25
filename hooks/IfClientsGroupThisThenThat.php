@@ -110,7 +110,7 @@ function kt_UpdateClient($data = null)
     }
 }
 
-// Apply `kt_groups` settings on as a client is being added to WHMCS 
+// Apply `kt_groups` settings as a client is being added to WHMCS 
 add_hook('ClientAdd', 1, function($vars) {
 
     $data = kt_LoadCompanySettings($vars['client_id']);
