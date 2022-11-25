@@ -103,6 +103,31 @@ Scripts are provided free of charge "as is" without warranty of any kind. **You'
 * [Generate Missing UUID in tblclients](#generate-missing-uuid-in-tblclients)
 * [Change Default Sorting of Tables in Backend](#change-default-sorting-of-tables-in-backend)
 
+## If client's group this than that
+
+Over the years I coded hundreds of hooks involving WHMCS client's group. It is common that people want to tie very specific logic to groups. The hook that I am going to present you can be used as starting point to begin playing with WHMCS client groups.
+
+I got inspiration from [IFTTT](https://ifttt.com/explore/new_to_ifttt) (If This Then That). It all starts from the initial array where you define what should happen for every client group of WHMCS. My initial version lets you apply the following rules/actions to given client groups:
+
+* Enable/disable tax exempt status
+* Replace `Pay to` text of invoices with anything you want
+* Define an array of allowed payment methods. This implies that other payment methods are restriced
+
+In the example you find in the script, I prepared the following scenario:
+
+* Clients belonging to group id `1`:
+	* Tax exempt: Enabled
+	* Default Invoice header (Pay To) replaced with `Ferrari S.p.A. ...`
+	* Allowed payment methods: `paypalcheckout` (default), `banktransfer`. All other payment methods get automatically removed from open invoices (not in `Paid`, `Collections`, `Refund`, `Payment Pending` status). Moreover the script also removes them from `Payment Method` dropdown accessible from `viewinvoice.php`
+* Clients belonging to group id `2`:
+	* Tax exempt: Disabled
+	* Default Invoice header (Pay To) replaced with `Juventus S.p.A. ...`
+	* Allowed payment methods: `banktransfer` (default). Same principle previously described. Other gateways get restricted from open invoices and dropdown
+
+You can extend this hook to meet your specific goals. For example you could add conditional invoice logo rather than currency, language, email preferences etc.
+
+[Get the Code »](https://github.com/Katamaze/WHMCS-Action-Hook-Factory/blob/master/hooks/IfClientsGroupThisThenThat.php)
+
 ## Admin Stats for WHMCS v8
 
 As you probably know WHMCS v8 no longer provides statistics on top of the page about pending orders, overdue invoices and tickets awaiting reply. This action hook adds them back to interface as you can see from the following screenshot.
