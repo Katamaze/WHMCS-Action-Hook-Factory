@@ -13,7 +13,7 @@ use WHMCS\Database\Capsule;
 
 define('kt_groups', [
 
-    // Rules to apply to client group id `1` (visit `configclientgroups.php`)
+    // Rules for client group id `1` (visit `configclientgroups.php`)
     1 => [
 
         'tax_exempt' => true, // `true` = enable tax exempt | `false` = disable tax exempt | `null` = don't cange. Changes to tax exempt status only apply to new invoices. Existing ones are left unchanged
@@ -24,7 +24,7 @@ define('kt_groups', [
             'banktransfer'
         ]
     ],
-    // Rules to apply to client group id `2` (visit `configclientgroups.php`)
+    // Rules for client group id `2` (visit `configclientgroups.php`)
     2 => [
 
         'tax_exempt' => false,
