@@ -129,6 +129,12 @@ You can extend this hook to meet your specific goals. For example you could add 
 
 [Get the Code »](https://github.com/Katamaze/WHMCS-Action-Hook-Factory/blob/master/hooks/IfClientsGroupThisThenThat.php)
 
+## Restrict payment gateways based on client group
+
+As the title says, define what payment gateways each client group is allowed to use to pay invoices. The hook automatically removes restricted payment gateways from `viewinvoice.php` page (Paymeth Method dropdown menu). It also replaces restricted gateways from open invoices (not in `Paid`, `Collections`, `Refund`, `Payment Pending` status) with the first gateway you defined in `allowed_payment_gateways` array.
+
+[Get the Code »](https://github.com/Katamaze/WHMCS-Action-Hook-Factory/blob/master/hooks/RestrictPaymentGatewaysBasedOnClientGroup.php)
+
 ## Admin Stats for WHMCS v8
 
 As you probably know WHMCS v8 no longer provides statistics on top of the page about pending orders, overdue invoices and tickets awaiting reply. This action hook adds them back to interface as you can see from the following screenshot.
