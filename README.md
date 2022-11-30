@@ -105,6 +105,12 @@ Scripts are provided free of charge "as is" without warranty of any kind. **You'
 * [Generate Missing UUID in tblclients](#generate-missing-uuid-in-tblclients)
 * [Change Default Sorting of Tables in Backend](#change-default-sorting-of-tables-in-backend)
 
+## Prevent Admins from accessing WHMCS backend during Maintenance
+
+Define an array of Admin and/or Admin Roles that are allowed to access WHMCS backend when Maintenance Mode is enabled. All other Admins are logged out automatically.
+
+[Get the Code »](https://github.com/Katamaze/WHMCS-Action-Hook-Factory/blob/master/hooks/PreventAccessToBackendDuringMaintenance.php)
+
 ## If client's group this than that
 
 Over the years I coded hundreds of hooks involving WHMCS client's group. It is common that people want to tie very specific logic to groups. The hook that I am going to present you can be used as starting point to begin playing with WHMCS client groups.
