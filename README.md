@@ -58,6 +58,7 @@ This [blog post](https://katamaze.com/blog/32/whmcs-action-hooks-collection-2020
 
 Scripts are provided free of charge "as is" without warranty of any kind. **You're not allowed to remove copyright notice**. Let's start!
 
+* [Prevent Admins from accessing WHMCS backend during Maintenance](#prevent-admins-from-accessing-whmcs-backend-during-maintenance)
 * [If client's group this than that](#if-clients-group-this-than-that)
 * [Restrict payment gateways based on client group](#restrict-payment-gateways-based-on-client-group)
 * [Admin Stats for WHMCS v8](#admin-stats-for-whmcs-v8)
