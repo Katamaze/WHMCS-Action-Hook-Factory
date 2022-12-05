@@ -58,7 +58,7 @@ This [blog post](https://katamaze.com/blog/32/whmcs-action-hooks-collection-2020
 
 Scripts are provided free of charge "as is" without warranty of any kind. **You're not allowed to remove copyright notice**. Let's start!
 
-* [Conditional Client Custom Fields based on selected country](#prevent-admins-from-accessing-whmcs-backend-during-maintenance)
+* [Conditional Client Custom Fields based on selected country](#conditional-client-custom-fields-based-on-selected-country)
 * [Prevent Admins from accessing WHMCS backend during Maintenance](#prevent-admins-from-accessing-whmcs-backend-during-maintenance)
 * [If client's group this than that](#if-clients-group-this-than-that)
 * [Restrict payment gateways based on client group](#restrict-payment-gateways-based-on-client-group)
@@ -109,7 +109,9 @@ Scripts are provided free of charge "as is" without warranty of any kind. **You'
 
 ## Conditional Client Custom Fields based on selected country
 
-Define an array of Admin and/or Admin Roles that are allowed to access WHMCS backend when Maintenance Mode is enabled. All other Admins are logged out automatically.
+Hide/show Client Custom Fields based on the currently selected country as shown in the following animated gif.
+
+![image](https://katamaze.com/modules/addons/Mercury/uploads/files/Blog/92b1487d05bc7249c65af0f94cde4732/whmcs-conditional-custom-fields-based-on-country.gif)
 
 [Get the Code »](https://github.com/Katamaze/WHMCS-Action-Hook-Factory/blob/master/hooks/ConditionalClientCustomFieldsBasedOnSelectedCountry.php)
 
