@@ -111,7 +111,7 @@ Scripts are provided free of charge "as is" without warranty of any kind. **You'
 
 Hide/show Client Custom Fields based on the currently selected country as shown in the following animated gif.
 
-<img src="https://katamaze.com/modules/addons/Mercury/uploads/files/Blog/92b1487d05bc7249c65af0f94cde4732/whmcs-conditional-custom-fields-based-on-country.gif" width="250"/>
+<img src="https://katamaze.com/modules/addons/Mercury/uploads/files/Blog/92b1487d05bc7249c65af0f94cde4732/whmcs-conditional-custom-fields-based-on-country.gif" width="400"/>
 
 [Get the Code »](https://github.com/Katamaze/WHMCS-Action-Hook-Factory/blob/master/hooks/ConditionalClientCustomFieldsBasedOnSelectedCountry.php)
 
