@@ -58,7 +58,7 @@ This [blog post](https://katamaze.com/blog/32/whmcs-action-hooks-collection-2020
 
 Scripts are provided free of charge "as is" without warranty of any kind. **You're not allowed to remove copyright notice**. Let's start!
 
-* [Remove IP Address from View Ticket page in Client Area](##remove-ip-address-from-view-ticket-page-in-client-area)
+* [Remove IP Address from View Ticket page in Client Area](#remove-ip-address-from-view-ticket-page-in-client-area)
 * [Conditional Client Custom Fields based on selected country](#conditional-client-custom-fields-based-on-selected-country)
 * [Prevent Admins from accessing WHMCS backend during Maintenance](#prevent-admins-from-accessing-whmcs-backend-during-maintenance)
 * [If client's group this than that](#if-clients-group-this-than-that)
