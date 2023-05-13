@@ -58,6 +58,7 @@ This [blog post](https://katamaze.com/blog/32/whmcs-action-hooks-collection-2020
 
 Scripts are provided free of charge "as is" without warranty of any kind. **You're not allowed to remove copyright notice**. Let's start!
 
+* [Remove IP Address from View Ticket page in Client Area](#conditional-client-custom-fields-based-on-selected-country)
 * [Conditional Client Custom Fields based on selected country](#conditional-client-custom-fields-based-on-selected-country)
 * [Prevent Admins from accessing WHMCS backend during Maintenance](#prevent-admins-from-accessing-whmcs-backend-during-maintenance)
 * [If client's group this than that](#if-clients-group-this-than-that)
@@ -106,6 +107,12 @@ Scripts are provided free of charge "as is" without warranty of any kind. **You'
 * [Abort Email Sending based on User ID and/or Client Group ID](#abort-email-sending-based-on-user-id-andor-client-group-id)
 * [Generate Missing UUID in tblclients](#generate-missing-uuid-in-tblclients)
 * [Change Default Sorting of Tables in Backend](#change-default-sorting-of-tables-in-backend)
+
+## Remove IP Address from View Ticket page in Client Area
+
+WHMCS automatically inserts visitor/customer IP address in every submitted reply. If you don't like it you can remove this section via action hook. There's no other way since in modern versions of WHMCS this parameter is hardcoded and can't be changed from template file.
+
+[Get the Code »](https://github.com/Katamaze/WHMCS-Action-Hook-Factory/blob/master/hooks/RemoveIPAddressFromViewTicketClientArea.php)
 
 ## Conditional Client Custom Fields based on selected country
 
