@@ -16,8 +16,23 @@ add_hook('AdminAreaHeaderOutput', 1, function($vars)
         return <<<HTML
 <script type="text/javascript">
 $(document).on('ready', function(){
+
     href = $("#summary-login-as-client").attr('href');
-    $("#summary-login-as-client").attr('href', href.replace(/&?language=\w+/, ''));
+
+    if (typeof href !== "undefined") {
+
+        $("#summary-login-as-client").attr('href', href.replace(/&?language=\w+/, ''));
+    }
+
+    href = $("#summary-login-as-owner").attr('href');
+
+    if (typeof href !== "undefined") {
+
+        $("#summary-login-as-owner").attr('href', href.replace(/&?language=\w+/, ''));
+
+        href = $("#summary-login-as-owner-new-window").attr('href');
+        $("#summary-login-as-owner-new-window").attr('href', href.replace(/&?language=\w+/, ''));
+    }
 });
 </script>
 HTML;
