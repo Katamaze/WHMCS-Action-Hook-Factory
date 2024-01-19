@@ -123,6 +123,8 @@ This action hook detects when you change Custom Admin Path via `configuration.ph
 * Notes (`tblnotes.note`)
 * Ticket Notes (`tblticketnotes.message`)
 * To-do entries (`tbltodolist.description`)
+* Project Management Tasks (`mod_projecttasks.task`, `mod_projecttasks.notes`) - Optional
+* Project Management Messages (`mod_projectmessages.message`) - Optional
 
 [Get the Code »](https://github.com/Katamaze/WHMCS-Action-Hook-Factory/blob/master/hooks/UpdateAdminLinksWhenCustomAdminPathChanges.php)
 
