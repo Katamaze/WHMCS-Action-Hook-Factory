@@ -46,5 +46,10 @@ add_hook('AdminAreaPage', 1, function($vars) {
     Capsule::table('tblnotes')->update([ 'note' => Capsule::raw('REPLACE(note, "' . $find . '", "' . $replace . '")') ]);
     Capsule::table('tblticketnotes')->update([ 'message' => Capsule::raw('REPLACE(`message`, "' . $find . '", "' . $replace . '")') ]);
     Capsule::table('tbltodolist')->update([ 'description' => Capsule::raw('REPLACE(`description`, "' . $find . '", "' . $replace . '")') ]);
+
+    // Uncomment if you have Project Management on your system
+    //Capsule::table('mod_projectmessages')->update([ 'message' => Capsule::raw('REPLACE(`message`, "' . $find . '", "' . $replace . '")') ]);
+    //Capsule::table('mod_projecttasks')->update([ 'task' => Capsule::raw('REPLACE(`task`, "' . $find . '", "' . $replace . '")'), 'notes' => Capsule::raw('REPLACE(`notes`, "' . $find . '", "' . $replace . '")') ]);
+
     Setting::setValue('KtStoredCustomAdminPath', KtConfigurationCustomAdminPath);
 });
