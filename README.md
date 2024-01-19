@@ -117,7 +117,7 @@ Ticket notes, admin notes and to-do lists keep hundreds if not thousands of inte
 
 ![whmcs-auto-update-old-url-with-new-admin-path](https://github.com/Katamaze/WHMCS-Action-Hook-Factory/assets/68689332/6f0ed229-c5f7-40ab-9ab1-d341f5b73c4c)
 
-This action hook detects when you change Custom Admin Path via configuration.php and automatically find and replace old path with current one in all URLs. For example it takes `https://katamaze.com/admin/invoices.php?action=edit&id=589` and replaces it with `https://katamaze.com/admin_new/invoices.php?action=edit&id=589`. The action is performed on:
+This action hook detects when you change Custom Admin Path via `configuration.php` and automatically find and replace old path with current one in all URLs. That's how `https://katamaze.com/admin/invoices.php?action=edit&id=589` becomes `https://katamaze.com/admin_new/invoices.php?action=edit&id=589`. The action is performed on:
 
 * Admin notes (`tbladmins.notes`)
 * Notes (`tblnotes.note`)
