@@ -58,7 +58,7 @@ This [blog post](https://katamaze.com/blog/32/whmcs-action-hooks-collection-2020
 
 Scripts are provided free of charge "as is" without warranty of any kind. **You're not allowed to remove copyright notice**. Let's start!
 
-* [Update Existing URLs to Admin when Custom Admin Path Changes]
+* [Update Existing URLs to Admin when Custom Admin Path Changes](#update-existing-urls-to-admin-when-custom-admin-path-changes)
 * [Remove IP Address from View Ticket page in Client Area](#remove-ip-address-from-view-ticket-page-in-client-area)
 * [Conditional Client Custom Fields based on selected country](#conditional-client-custom-fields-based-on-selected-country)
 * [Prevent Admins from accessing WHMCS backend during Maintenance](#prevent-admins-from-accessing-whmcs-backend-during-maintenance)
@@ -111,7 +111,18 @@ Scripts are provided free of charge "as is" without warranty of any kind. **You'
 
 ## Update Existing URLs to Admin when Custom Admin Path Changes
 
-WHMCS automatically inserts visitor/customer IP address in every submitted reply. If you don't like it you can remove this section via action hook. There's no other way since in modern versions of WHMCS this parameter is hardcoded and can't be changed from template file.
+Let's say you need to change your Custom Admin Path from `https://katamaze.com/admin` to `https://katamaze.com/new_admin`. [Renaming the WHMCS admin diretcory](https://help.whmcs.com/m/installation/l/1650304-renaming-the-whmcs-admin-directory) is a straightforward process that however doesn't automatically search old links and replace them with new ones.
+
+Ticket notes, admin notes and to-do lists keep hundreds if not thousands of internal URLs still pointing to old paths like in the following example.
+
+![whmcs-auto-update-old-url-with-new-admin-path](https://github.com/Katamaze/WHMCS-Action-Hook-Factory/assets/68689332/6f0ed229-c5f7-40ab-9ab1-d341f5b73c4c)
+
+This action hook detects when you change Custom Admin Path via configuration.php and automatically find and replace old path with current one in all URLs. For example it takes `https://katamaze.com/admin/invoices.php?action=edit&id=589` and replaces it with `https://katamaze.com/admin_new/invoices.php?action=edit&id=589`. The action is performed on:
+
+* Admin notes (`tbladmins.notes`)
+* Notes (`tblnotes.note`)
+* Ticket Notes (`tblticketnotes.message`)
+* To-do entries (`tbltodolist.description`)
 
 [Get the Code »](https://github.com/Katamaze/WHMCS-Action-Hook-Factory/blob/master/hooks/UpdateAdminLinksWhenCustomAdminPathChanges.php)
 
