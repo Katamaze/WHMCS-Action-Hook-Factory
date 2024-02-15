@@ -21,6 +21,7 @@ define('kt_promptRemoval', 'bootstrap-alert'); // Only 'bootstrap-alert' works w
 define('kt_textDisallowed', 'The Product/Service can be purchased only once.'); // Don't forget to "\" escape
 define('kt_textRequireProduct', 'Domain purchase require an active Product/Service.'); // Don't forget to "\" escape
 
+
 add_hook('ClientAreaHeadOutput', 1, function($vars)
 {
     if ($_SESSION['cart']['products'] AND (kt_onetimeProductGroups OR kt_onetimeProducts))
@@ -84,7 +85,7 @@ add_hook('ClientAreaHeadOutput', 1, function($vars)
 
         foreach ($_SESSION['cart']['products'] as $k => $v)
         {
-            if (isset($v['pid'], $userProducts))
+            if ($v['pid'] == $userProducts)
             {
                 $removedFromCart = true;
                 unset($_SESSION['cart']['products'][$k]);
