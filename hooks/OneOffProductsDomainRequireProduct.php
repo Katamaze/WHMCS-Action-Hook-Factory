@@ -11,13 +11,13 @@
 
 use WHMCS\Database\Capsule;
 
-define('kt_onetimeProducts', array()); // Array of product IDs to treat as "one-off" (customer is not allowed to order the same product multiple times
-define('kt_onetimeProductGroups', array()); // Same as above but for product group IDs. All producs inside such groups are treated as one-off
+define('kt_onetimeProducts', array()); // Written as array('##','##') Array of product IDs to treat as "one-off" (customer is not allowed to order the same product multiple times
+define('kt_onetimeProductGroups', array()); // Written as array('##','##') Same as above but for product group IDs. All producs inside such groups are treated as one-off
 define('kt_firstTimerTollerance', true); // Product-based restrictions are disabled for new customers placing their first order with you
 define('kt_notRepeatable', true); // If a customer already has a one-off product, he can't purchase further one-offs ($firstTimerTollerance is ignored)
-define('kt_domainRequiresProduct', false); // Domain purchase is allowed only if any of the following conditions is met: a) Customer has an existing product/service (`Pending` and `Terminated` don't count) b) Customer is purchasing a domain and a product/service
+define('kt_domainRequiresProduct', true); // Domain purchase is allowed only if any of the following conditions is met: a) Customer has an existing product/service (`Pending` and `Terminated` don't count) b) Customer is purchasing a domain and a product/service
 define('kt_onClientRegister', false); // Ordering one-off products is possible only for clients who registered within the last X number of days. Leave false to disable
-define('kt_promptRemoval', 'modal'); // Choose one of the following options: "bootstrap-alert", "modal", "js-alert" (works on Six template. Change jQuery selectors accordingly for custom templates)
+define('kt_promptRemoval', 'bootstrap-alert'); // Only 'bootstrap-alert' works with redirects. Choose one of the following options: "bootstrap-alert", "modal", "js-alert" (works on Six template. Change jQuery selectors accordingly for custom templates)
 define('kt_textDisallowed', 'The Product/Service can be purchased only once.'); // Don't forget to "\" escape
 define('kt_textRequireProduct', 'Domain purchase require an active Product/Service.'); // Don't forget to "\" escape
 
@@ -58,7 +58,7 @@ add_hook('ClientAreaHeadOutput', 1, function($vars)
 
             foreach ($_SESSION['cart']['products'] as $k => $v)
             {
-                if (in_array($v['pid'], $groupByProductsKeys) AND in_array($v['pid'], $disallowedPids))
+                if (isset($v['pid'], $groupByProductsKeys) AND isset($v['pid'], $disallowedPids))
                 {
                     if ($i > 1)
                     {
@@ -84,7 +84,7 @@ add_hook('ClientAreaHeadOutput', 1, function($vars)
 
         foreach ($_SESSION['cart']['products'] as $k => $v)
         {
-            if (in_array($v['pid'], $userProducts))
+            if (isset($v['pid'], $userProducts))
             {
                 $removedFromCart = true;
                 unset($_SESSION['cart']['products'][$k]);
